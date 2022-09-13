@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="seed">
+    <moqui.basic.LocalizedMessage localized="Chương trình" lastUpdatedStamp="1439791417112" original="Application" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Tìm các tùy chọn" lastUpdatedStamp="1439791562830" original="Find Options" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Quản trị thương mại POP" lastUpdatedStamp="1439791750578" original="POP Commerce Admin" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Loại sản phẩm" lastUpdatedStamp="1439791805458" original="Product Type" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Tìm kiếm bất kỳ trường nào" lastUpdatedStamp="1439791875436" original="Search Any Field" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Bất kỳ lĩnh vực nào" lastUpdatedStamp="1439791897554" original="Any Field" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Các ID khác" lastUpdatedStamp="1439791920537" original="Other IDs" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Danh mục" lastUpdatedStamp="1439791967083" original="Category" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Số lượng / đơn vị" lastUpdatedStamp="1439791985577" original="Amount/UOM" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Tính năng" lastUpdatedStamp="1439792031369" original="Feature" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Tính năng 2" lastUpdatedStamp="1439792046644" original="Feature 2" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Đơn vị đo số lượng" lastUpdatedStamp="1439792123977" original="Amount UOM" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Ngành hàng" lastUpdatedStamp="1439794164624" original="Catalog" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Tìm kiếm sản phẩm" lastUpdatedStamp="1439794456384" original="Search Products" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Sản phẩm sao chép" lastUpdatedStamp="1439801920632" original="Clone Product" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Lớp" lastUpdatedStamp="1439801939650" original="Class" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Số lượng" lastUpdatedStamp="1439801948564" original="Amount" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Đơn vị" lastUpdatedStamp="1439801957071" original="UOM" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Đặc trưng" lastUpdatedStamp="1439801968952" original="Features" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Kích thước" lastUpdatedStamp="1439801983983" original="Dimensions" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Thể loại" lastUpdatedStamp="1439802002992" original="Catgories" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Kết hợp" lastUpdatedStamp="1439802019951" original="Associated" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Giá bán" lastUpdatedStamp="1439802029018" original="Prices" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Thêm kích thước" lastUpdatedStamp="1439802065041" original="Add Dimension" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Thêm tính năng" lastUpdatedStamp="1439802050513" original="Apply Feature" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Các sản phẩm" lastUpdatedStamp="1439802740736" original="Products" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Sản phẩm" lastUpdatedStamp="1439802779073" original="Product" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Thể loại" lastUpdatedStamp="1439802819996" original="Categories" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Xóa" lastUpdatedStamp="1439802819996" original="Remove" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Lưu" lastUpdatedStamp="1439802819996" original="Save" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Sửa" lastUpdatedStamp="1439802819996" original="Edit" locale="vi_VN"/>
+
+    <moqui.basic.LocalizedMessage localized="Từ ngày" lastUpdatedStamp="1439802819996" original="From Date" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Tới ngày" lastUpdatedStamp="1439802819996" original="Thru Date" locale="vi_VN"/>
+
+
+
+</entity-facade-xml>
