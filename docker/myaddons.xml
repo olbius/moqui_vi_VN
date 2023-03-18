@@ -1,0 +1,3 @@
+<addons default-repository="github">
+    <component name="moqui_vi_VN" group="olbius" version="" branch="main" repository="github"/>
+</addons>

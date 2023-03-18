@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- No copyright or license for configuration file, details here are not considered a creative work. -->
+
+<!-- NOTE: for default settings, examples, and comments see the MoquiDefaultConf.xml file at
+    https://github.com/moqui/moqui-framework/blob/master/framework/src/main/resources/MoquiDefaultConf.xml -->
+<moqui-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/moqui-conf-2.1.xsd">
+
+    <default-property name="instance_purpose" value="production"/>
+    <!-- Locale and Time Zone Properties -->
+    <default-property name="default_locale" value="vi_VN"/>
+    <default-property name="default_time_zone" value="Asia/Ho_Chi_Minh"/>
+    <default-property name="database_time_zone" value="Asia/Ho_Chi_Minh"/>
+
+    <default-property name="webapp_handle_cors" value="true"/>
+    <default-property name="webapp_allow_origins" value="*"/>
+
+    <default-property name="query_stats" value="false"/>
+
+    <server-stats stats-skip-condition="pathInfo?.startsWith('/rpc') || pathInfo?.startsWith('/rest') || pathInfo?.startsWith('/status')"/>
+    <webapp-list>
+        <webapp name="webroot">
+            <response-header type="cors-actual" name="Access-Control-Expose-Headers" value="Access-Control-Allow-Origin,Access-Control-Allow-Credentials,X-CSRF-Token,moquiSessionToken,x-total-count"/>
+        </webapp>
+    </webapp-list>
+    <!-- NOTE: using the environment variable is relatively secure in a container environment, but for more security set it here instead -->
+    <entity-facade query-stats="${query_stats}">
+        <!-- add datasource elements here to configure databases -->
+    </entity-facade>
+</moqui-conf>

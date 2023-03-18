@@ -32,6 +32,13 @@
     <moqui.basic.LocalizedMessage localized="Lưu" lastUpdatedStamp="1439802819996" original="Save" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage localized="Sửa" lastUpdatedStamp="1439802819996" original="Edit" locale="vi_VN"/>
 
+    <moqui.basic.LocalizedMessage localized="Đơn hàng bán" lastUpdatedStamp="1439802819996" original="Sales Orders" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Khách hàng" lastUpdatedStamp="1439802819996" original="Customers" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Nhà cung cấp" lastUpdatedStamp="1439802819996" original="Suppliers" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Đơn hàng mua" lastUpdatedStamp="1439802819996" original="Purchase Orders" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Yêu cầu" lastUpdatedStamp="1439802819996" original="Requests" locale="vi_VN"/>
+
+
     <moqui.basic.LocalizedMessage localized="Từ ngày" lastUpdatedStamp="1439802819996" original="From Date" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage localized="Tới ngày" lastUpdatedStamp="1439802819996" original="Thru Date" locale="vi_VN"/>
 
