@@ -121,14 +121,14 @@
 
 
     <!-- Payment Method Type -->
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.EnumerationType" fieldName="description" pkValue="PaymentMethodType" locale="vi_VN" localized="Phương tiện thanh toán"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.EnumerationType" fieldName="description" pkValue="PaymentMethodType" locale="vi_VN" localized="Phương thức thanh toán"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PmtBankAccount" locale="vi_VN" localized="Tài khoản ngân hàng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PmtBitcoinWallet" locale="vi_VN" localized="Ví Bitcoin"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PmtCreditCard" locale="vi_VN" localized="Thẻ tín dụng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PmtFinancialAccount" locale="vi_VN" localized="Từ tài khoản tài chính"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PmtPayPalAccount" locale="vi_VN" localized="Paypal"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PmtAmazonPayAccount" locale="vi_VN" localized="Amazon Pay"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PmtOther" locale="vi_VN" localized="Phương tiện khác"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PmtOther" locale="vi_VN" localized="Phương thức khác"/>
 
     <!-- Payment Method Purpose -->
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.EnumerationType" fieldName="description" pkValue="PaymentMethodPurpose" locale="vi_VN" localized="Mục đích thanh toán"/>
