@@ -1,7 +1,7 @@
 pipeline {
   agent {label'Master11'}
   environment {
-    IMAGE = "fndocker/moqui-rest:latest"
+    IMAGE = "fndocker/moqui-vi-rest:latest"
   }
   stages {
     stage('Prepare') {
