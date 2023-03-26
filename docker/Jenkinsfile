@@ -19,7 +19,7 @@ pipeline {
             }
         }
        dir('moqui/runtime/component/moqui_vi_VN') {
-            git branch: 'main', credentialsId: 'loind', url: 'git@github.com:olbius/moqui_vi_VN.git'
+            git branch: 'main', credentialsId: '7edd89d3-5fc8-4d96-89ad-d093cbf8e2c0', url: 'git@github.com:olbius/moqui_vi_VN.git'
         }
         dir('moqui') {
              withDockerContainer("openjdk:11-jdk") {
