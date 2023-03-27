@@ -366,7 +366,7 @@ along with this software (see the LICENSE.md file). If not, see
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemTaxStateWhold" locale="vi_VN" localized="Thuế - Khấu trừ thu nhập của tiểu bang"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemTaxStatePensionEmpe" locale="vi_VN" localized="Thuế - Lương hưu Nhà nước"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemTaxStateUnInsEmpe" locale="vi_VN" localized="Thuế - Nhân viên Bảo hiểm Thất nghiệp Tiểu bang"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemTaxStateWrkCmpInsEmpe" locale="vi_VN" localized="Thuế - Công nhân nhà nước & Apos; Nhân viên bảo hiểm comp"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemTaxStateWrkCmpInsEmpe" locale="vi_VN" localized="Thuế - Công nhân nhà nước &amp; Apos; Nhân viên bảo hiểm comp"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemTaxStateDisInsEmpe" locale="vi_VN" localized="Thuế - Nhân viên Bảo hiểm Khuyết tật Tiểu bang"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemTaxStateMiscEmpe" locale="vi_VN" localized="Thuế - Nhân Viên Khác Của Tiểu Bang"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemTaxCountyWhold" locale="vi_VN" localized="Thuế - Khấu trừ Thu nhập của Quận"/>
@@ -388,7 +388,7 @@ along with this software (see the LICENSE.md file). If not, see
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemPrlExpTaxFedPensionEmpr" locale="vi_VN" localized="Nhà tuyển dụng hưu trí liên bang"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemPrlExpTaxStatePensionEmpr" locale="vi_VN" localized="Nhà tuyển dụng lương hưu nhà nước"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemPrlExpTaxStateUnInsEmpr" locale="vi_VN" localized="Nhà tuyển dụng bảo hiểm thất nghiệp nhà nước"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemPrlExpTaxStateWrkCmpInsEmpr" locale="vi_VN" localized="Công nhân nhà nước & apos; Nhà tuyển dụng bảo hiểm comp"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemPrlExpTaxStateWrkCmpInsEmpr" locale="vi_VN" localized="Công nhân nhà nước &amp; apos; Nhà tuyển dụng bảo hiểm comp"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemPrlExpTaxStateDisInsEmpr" locale="vi_VN" localized="Nhà tuyển dụng Bảo hiểm Khuyết tật Nhà nước"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemPrlExpTaxStateMiscEmpr" locale="vi_VN" localized="Nhà tuyển dụng linh tinh nhà nước"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemPrlExpTaxOccPrivEmpr" locale="vi_VN" localized="Nhà tuyển dụng đặc quyền nghề nghiệp"/>
