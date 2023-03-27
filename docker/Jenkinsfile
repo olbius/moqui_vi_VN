@@ -14,8 +14,12 @@ pipeline {
         dir('moqui') {
             git branch: 'master', credentialsId: '7edd89d3-5fc8-4d96-89ad-d093cbf8e2c0', url: 'git@github.com:moqui/moqui-framework.git'
             withDockerContainer("openjdk:11-jdk") {
+                // sh "./gradlew getRuntime"
+                // sh "./gradlew getComponent -Pcomponent=PopCommerce"
                 sh "./gradlew getRuntime"
                 sh "./gradlew getComponent -Pcomponent=PopCommerce"
+                sh "./gradlew getComponent -Pcomponent=HiveMind"
+                sh "./gradlew getComponent -Pcomponent=SimpleScreens"
             }
         }
        dir('moqui/runtime/component/moqui_vi_VN') {
@@ -25,6 +29,10 @@ pipeline {
              withDockerContainer("openjdk:11-jdk") {
                 sh "./gradlew getDepends"
             }
+        }
+        dir('moqui/runtime/component/mantle-usl') {
+            sh "rm -rf *"
+            git branch: 'master', credentialsId: 'loind', url: 'git@github.com:olbius/mantle-usl.git'
         }
       }
     }
