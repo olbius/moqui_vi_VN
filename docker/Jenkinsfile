@@ -12,7 +12,7 @@ pipeline {
     stage('Source') {
       steps {
         dir('moqui') {
-            git branch: 'master', credentialsId: 'loind', url: 'git@github.com:moqui/moqui-framework.git'
+            git branch: 'master', credentialsId: '7edd89d3-5fc8-4d96-89ad-d093cbf8e2c0', url: 'git@github.com:moqui/moqui-framework.git'
             withDockerContainer("openjdk:11-jdk") {
                 sh "./gradlew getRuntime"
                 sh "./gradlew getComponent -Pcomponent=PopCommerce"
