@@ -43,5 +43,70 @@
     <moqui.basic.LocalizedMessage localized="Tới ngày" original="Thru Date" locale="vi_VN"/>
 
 
+    <!-- Message templates for formatting common sets of entity fields (generally for a view-entity) -->
+    <!-- NOTE: Other common message templates in CommonL10nData -->
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="PartyFullNameTemplate"
+                                  localized="${organizationName?:''}${lastName?:''}${middleName ? ' ' + middleName : ''}${firstName ? ' ' + firstName : ''}"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="PartyNameOnlyTemplate"
+                                  localized="${organizationName?:''}${lastName?:''}${firstName ? ' ' + firstName : ''}"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="PartyNameTemplate"
+                                  localized="${pseudoId}: ${organizationName?:''}${lastName?:''}${firstName ? ' ' + firstName : ''}"/>
+
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="UsernameTemplate"
+                                  localized="${userFullName ?: (firstName ? (lastName ? lastName + ' ' : '') + firstName : '')} [${username?:userId?:''}]"/>
+
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="UserAuthcOtpMessage" localized="Mã sử dụng một lần của bạn là ${code}"/>
+
+    <!--Sales - Order-->
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderInventoryNotAvailable"
+                                  localized="${product?.productName ?: productId} hết hàng"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderInventoryInsufficient"
+                                  localized="sản phẩm ${product?.productName ?: productId} chỉ có sẵn số lượng ${ec.l10n.format(availableToPromiseTotal, '#,##0')}"/>
+
+    <!-- Order Approve warning and other messages - used in OrderInfoServices.check#OrderPreApprove -->
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderApproveCurrencyDifferent"
+                                  localized="Đơn vị tiền tệ thanh toán ${payment.amountUomId} khác với đơn vị tiền tệ đơn hàng ${orderHeader.currencyUomId}"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderApprovePaymentPromisedLow"
+                                  localized="Tổng số tiền thanh toán đã cam kết hoặc thanh toán sau đó ${ec.l10n.formatCurrency(totalPromised, orderHeader.currencyUomId)} ít hơn tổng số tiền đơn hàng ${ec.l10n.formatCurrency(orderHeader.grandTotal, orderHeader.currencyUomId)}"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderApprovePaymentAuthorizedLow"
+                                  localized="Tổng số tiền thanh toán được ủy quyền hoặc thanh toán sau đó ${ec.l10n.formatCurrency(totalAuthorized, orderHeader.currencyUomId)} ít hơn tổng số tiền đơn hàng ${ec.l10n.formatCurrency(orderHeader.grandTotal, orderHeader.currencyUomId)}"/>
+    <!-- TODO more to do between these in service -->
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderApproveStoreManualApprove"
+                                  localized="==> Kênh/Cửa hàng được cấu hình để yêu cầu phê duyệt thủ công"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderApprovePartNoVendor"
+                                  localized="Phần ${orderPart.orderPartSeqId} không có nhà cung cấp"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderApprovePartNoCustomer"
+                                  localized="Phần ${orderPart.orderPartSeqId} không có khách hàng"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderApproveNewCustomer"
+                                  localized="Khách hàng ${firstOrderPart.customerPartyId} là khách hàng mới"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderApproveNearOrder"
+                                  localized="Đã tìm thấy đơn hàng tương tự ${nearOrder.orderId}:${nearOrder.orderPartSeqId} đã đặt ${ec.l10n.format(nearOrder.placedDate, null)} (${ec.l10n.format(diffHours, '0.0')}h $ {isFuture ? 'after' : 'before'}) với số lượng ${ec.l10n.format(nearItem.quantity, '0.##')} của sản phẩm ${nearItem.productId}"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderApproveShippingAddressTrust"
+                                  localized="Phần địa chỉ giao hàng ${orderPart.orderPartSeqId} ${postalCm.address1}, ${postalCm.postalCode ?: '-'} có mức độ tin cậy là ${trustLevelEnum.description}"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderDetailPartPaymentIncomplete"
+                                  localized="Tổng thanh toán (${ec.l10n.formatCurrency(orderPartInfo.paymentsTotal ?: 0.0, orderHeader?.currencyUomId)}) nhỏ hơn tổng tiền phần đơn hàng (${ec.l10n.formatCurrency(orderPartInfo.orderPart.partTotal ?: 0.0, orderHeader ?.currencyUomId)})"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderPlacePartPaymentIncomplete"
+                                  localized="Tổng thanh toán phần đơn hàng ${orderPart.orderPartSeqId} (${ec.l10n.formatCurrency(paymentsTotal ?: 0.0, (String) orderHeader?.currencyUomId)}) ít hơn tổng số tiền phần đơn hàng (${ec.l10n.formatCurrency(orderPart. partTotal ?: 0.0, (String) orderHeader?.currencyUomId)})"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderPlacePartNoVendor"
+                                  localized="Phần ${orderPart.orderPartSeqId} không có nhà cung cấp"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderPlacePartNoCustomer"
+                                  localized="Phần ${orderPart.orderPartSeqId} không có khách hàng"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderPlacePartNoShippingAddress"
+                                  localized="Phần ${orderPart.orderPartSeqId} không có địa chỉ giao hàng nào được chọn"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderPlacePartNoShippingMethod"
+                                  localized="Phần ${orderPart.orderPartSeqId} không có phương thức vận chuyển nào được chọn"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderPlaceNoItems" localized="Đơn hàng không có mặt hàng nào"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderDetailConfirmCloseOrder"
+                                  localized="Thực sự chốt đơn hàng? Nếu không có mặt hàng nào được vận chuyển, đơn hàng sẽ bị Hủy. Nếu được vận chuyển một phần, tất cả các mặt hàng sẽ được giảm xuống số lượng đã vận chuyển và đơn hàng sẽ được Hoàn thành."/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderDetailItemBilled"
+                                  localized="Đã lập hóa đơn:${returnableOut.isProductItemType ? ec.l10n.format(returnableOut.invoiceQuantity, '#,##0.###') : ec.l10n.format(returnableOut.invoiceTotal, '#,##0.00')}"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderDetailItemReturned"
+                                  localized="Returned:${returnableOut.isProductItemType ? ec.l10n.format(returnableOut.returnedQuantity, '#,##0.###') : ec.l10n.format(returnableOut.returnedTotal, '#,##0.00')}"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderDetailItemReturnable"
+                                  localized="Có thể trả lại:${returnableOut.isProductItemType? ec.l10n.format(returnableOut.returnableQuantity, '#,##0.###') : ec.l10n.format(returnableOut.returnableTotal, '#,##0.00')}"/>
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="OrderDetailConfirmClosePart"
+                                  localized="Thực sự chốt phần đơn hàng? Nếu không có mặt hàng nào được vận chuyển, phần đơn hàng đó sẽ bị hủy. Nếu được vận chuyển một phần, tất cả các mặt hàng sẽ được giảm xuống số lượng đã vận chuyển và phần đó sẽ được Hoàn thành."/>
+
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="PayrollPayeeInvoiceItemDescription" localized="${payeeAdjustment.description} cho ${partyDetail.lastName?:''} ${partyDetail.?:'firstName'}${partyDetail.organizationName?:''} SSN ${partySsn?.idValue ?: 'N/A '} Tham chiếu ${payeeAdjustment.payeeReference ?: 'N/A'}"/>
 
 </entity-facade-xml>
