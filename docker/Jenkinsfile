@@ -1,7 +1,7 @@
 pipeline {
   agent {label'Master11'}
   environment {
-    IMAGE = "fndocker/moqui-rest:latest"
+    IMAGE = "fndocker/moqui-vi-rest:latest"
   }
   stages {
     stage('Prepare') {
@@ -12,14 +12,14 @@ pipeline {
     stage('Source') {
       steps {
         dir('moqui') {
-            git branch: 'master', credentialsId: 'loind', url: 'git@github.com:moqui/moqui-framework.git'
+            git branch: 'master', credentialsId: '7edd89d3-5fc8-4d96-89ad-d093cbf8e2c0', url: 'git@github.com:moqui/moqui-framework.git'
             withDockerContainer("openjdk:11-jdk") {
                 sh "./gradlew getRuntime"
                 sh "./gradlew getComponent -Pcomponent=PopCommerce"
             }
         }
        dir('moqui/runtime/component/moqui_vi_VN') {
-            git branch: 'main', credentialsId: 'loind', url: 'git@github.com:olbius/moqui_vi_VN.git'
+            git branch: 'main', credentialsId: '7edd89d3-5fc8-4d96-89ad-d093cbf8e2c0', url: 'git@github.com:olbius/moqui_vi_VN.git'
         }
         dir('moqui') {
              withDockerContainer("openjdk:11-jdk") {
@@ -49,7 +49,7 @@ pipeline {
     stage('Deploy') {
       steps {
         sh '''
-            kubectl -n moqui-test  rollout restart deploy moqui-rest
+            kubectl -n moqui-test  rollout restart deploy test-stest
         '''
       }
     }
