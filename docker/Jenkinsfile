@@ -16,6 +16,7 @@ pipeline {
             withDockerContainer("openjdk:11-jdk") {
                 sh "./gradlew getRuntime"
                 sh "./gradlew getComponent -Pcomponent=PopCommerce"
+                sh "./gradlew getRuntime"
             }
         }
        dir('moqui/runtime/component/moqui_vi_VN') {
