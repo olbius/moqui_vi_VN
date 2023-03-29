@@ -12,7 +12,6 @@ pipeline {
     stage('Source') {
       steps {
         dir('moqui') {
-            sh "rm -rf ./runtime"
             git branch: 'master', credentialsId: '7edd89d3-5fc8-4d96-89ad-d093cbf8e2c0', url: 'git@github.com:moqui/moqui-framework.git'
             sh "git checkout tags/v3.0.0"
             withDockerContainer("openjdk:11-jdk") {
