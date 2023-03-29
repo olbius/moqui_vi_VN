@@ -49,7 +49,7 @@ pipeline {
     stage('Deploy') {
       steps {
         sh '''
-            kubectl -n moqui-test  rollout restart deploy test-stest
+            kubectl -n lienhiep  rollout restart deploy moqui-vi-rest
         '''
       }
     }
