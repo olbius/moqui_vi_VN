@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="install">
+    <mantle.party.PartySettingType partySettingTypeId="ZaloAppId" description="Zalo OA gsources app id" />
+    <mantle.party.PartySettingType partySettingTypeId="ZaloSecretKey" description="Zalo OA app gsources secret key" />
+    <mantle.party.PartySettingType partySettingTypeId="ZaloRefreshToken" description="Zalo Refresh Token valid in 3 months" />
+    <mantle.party.PartySettingType partySettingTypeId="ZaloAccessToken" description="Zalo Access Token valid in 25 hour" />
+</entity-facade-xml>

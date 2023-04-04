@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="install">
+
+    <!-- NOTE 1265184000000 = 2010-02-03 00:00:00 US/Pacific -->
+
+    <!-- ========== ORG (internal organization) DATA ========== -->
+    <mantle.party.Party partyId="ORG_COMPANY_CORP" pseudoId="THE_COMPANY" partyTypeEnumId="PtyOrganization" ownerPartyId="ORG_COMPANY_CORP">
+        <mantle.party.contact.ContactMech contactMechId="ORG_COMPANY_PA" contactMechTypeEnumId="CmtPostalAddress">
+            <mantle.party.contact.PostalAddress toName="The Company Name"
+                                                address1="No X Street Y" address2="" unitNumber="100"
+                                                city="VNM-HCM" stateProvinceGeoId="VNM-HCM" countryGeoId="VNM" postalCode="10000" postalCodeExt=""/>
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="PostalPayment" fromDate="1265184000000"/>
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="PostalBilling" fromDate="1265184000000"/>
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="PostalPrimary" fromDate="1265184000000"/>
+        </mantle.party.contact.ContactMech>
+        <mantle.party.contact.ContactMech contactMechId="ORG_COMPANY_SA" contactMechTypeEnumId="CmtPostalAddress">
+            <mantle.party.contact.PostalAddress toName="The Company Name"
+                                                address1="No X Street Y" address2="" unitNumber="5432"
+                                                city="VNM-HCM" stateProvinceGeoId="VNM-HCM" countryGeoId="VNM" postalCode="10000" postalCodeExt=""/>
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="PostalShippingDest" fromDate="1265184000000"/>
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="PostalShippingOrigin" fromDate="1265184000000"/>
+        </mantle.party.contact.ContactMech>
+
+        <mantle.party.contact.ContactMech contactMechId="ORG_COMPANY_PT" contactMechTypeEnumId="CmtTelecomNumber">
+            <mantle.party.contact.TelecomNumber countryCode="84" areaCode="" contactNumber="987654321"/>
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="PhonePrimary" fromDate="1265184000000"/>
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="PhonePayment" fromDate="1265184000000"/>
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="PhoneBilling" fromDate="1265184000000"/>
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="PhoneShippingOrigin" fromDate="1265184000000"/>
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="PhoneShippingDest" fromDate="1265184000000"/>
+        </mantle.party.contact.ContactMech>
+
+        <mantle.party.contact.ContactMech contactMechId="ORG_COMPANY_PE" contactMechTypeEnumId="CmtEmailAddress"
+                                          infoString="company@domain.com">
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="EmailPayment" fromDate="1265184000000"/>
+        </mantle.party.contact.ContactMech>
+        <mantle.party.contact.ContactMech contactMechId="ORG_COMPANY_BE" contactMechTypeEnumId="CmtEmailAddress"
+                                          infoString="billing.company@domain.com">
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="EmailBilling" fromDate="1265184000000"/>
+        </mantle.party.contact.ContactMech>
+        <mantle.party.contact.ContactMech contactMechId="ORG_COMPANY_SE" contactMechTypeEnumId="CmtEmailAddress"
+                                          infoString="shipping.company@domain.com">
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="EmailShippingDest" fromDate="1265184000000"/>
+            <mantle.party.contact.PartyContactMech contactMechPurposeId="EmailShippingOrigin" fromDate="1265184000000"/>
+        </mantle.party.contact.ContactMech>
+
+        <paymentMethods paymentMethodId="COMPANY_BA" paymentMethodTypeEnumId="PmtBankAccount"
+                        ownerPartyId="ORG_COMPANY_CORP" fromDate="1265184000000" description="The Company Bank Account"
+                        postalContactMechId="ORG_COMPANY_PA" telecomContactMechId="ORG_COMPANY_PT"
+                        companyNameOnAccount="The Company Name">
+            <bankAccount bankName="Demo Bank" typeEnumId="BatChecking" routingNumber="123456789" accountNumber="54321"
+                         lastCheckNumber="1000" posPayFormatEnumId="PmftZionsBankCsv"
+                         nachaImmedDest="123456789" nachaImmedOrig="000054321" nachaCompanyId="54321" nachaEntryDescription="Operations"/>
+        </paymentMethods>
+        <settings partySettingTypeId="ZaloAppId" settingValue=""/>
+        <settings partySettingTypeId="ZaloSecretKey" settingValue=""/>
+        <settings partySettingTypeId="ZaloRefreshToken" settingValue=""/>
+        <settings partySettingTypeId="ZaloAccessToken" settingValue=""/>
+    </mantle.party.Party>
+    <mantle.party.Organization partyId="ORG_COMPANY_CORP" organizationName="The Company Name"/>
+    <mantle.party.PartyRole partyId="ORG_COMPANY_CORP" roleTypeId="OrgInternal"/>
+    <mantle.party.PartyContent partyContentId="COMPANY_LOGO" partyId="ORG_COMPANY_CORP" partyContentTypeEnumId="PcntLogoImage"
+            contentLocation="component://SimpleScreens/screen/ssstatic/images/Return.png"/>
+</entity-facade-xml>
