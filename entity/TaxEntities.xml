@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This software is in the public domain under CC0 1.0 Universal plus a
+Grant of Patent License.
+
+To the extent possible under law, the author(s) have dedicated all
+copyright and related and neighboring rights to this software to the
+public domain worldwide. This software is distributed without any
+warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication
+along with this software (see the LICENSE.md file). If not, see
+<http://creativecommons.org/publicdomain/zero/1.0/>.
+-->
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.1.xsd">
+
+    <!-- ========================================================= -->
+    <!-- gsources tax -->
+    <!-- ========================================================= -->
+
+    <entity entity-name="TaxAuthorityRate" package="moquivi.other.tax">
+        <field name="taxAuthorityRateSeqId" type="id" is-pk="true"></field>
+        <field name="taxAuthGeoId" type="id"></field>
+        <field name="taxAuthPartyId" type="id"></field>
+        <field name="taxAuthorityRateTypeId" type="id"></field>
+        <field name="productStoreId" type="id"></field>
+        <field name="productCategoryId" type="id"></field>
+        <field name="titleTransferEnumId" type="id"></field>
+        <field name="minItemPrice" type="currency-amount"></field>
+        <field name="minPurchase" type="currency-amount"></field>
+        <field name="taxShipping" type="text-indicator"></field>
+        <field name="taxPercentage" type="number-decimal"></field>
+        <field name="taxPromotions" type="text-indicator"></field>
+        <field name="fromDate" type="date-time"></field>
+        <field name="thruDate" type="date-time"></field>
+        <field name="description" type="text-long"></field>
+
+        <relationship type="one" fk-name="TAXAUTHRTEP_TXA" related="mantle.other.tax.TaxAuthority">
+            <key-map field-name="taxAuthGeoId"/>
+        </relationship>
+        <relationship type="one" fk-name="TAXAUTHRTEP_RTTP" related="moqui.basic.Enumeration">
+            <key-map field-name="taxAuthorityRateTypeId" related="enumId"/>
+        </relationship>
+        <relationship type="one" fk-name="TAXAUTHRTEP_PSTR" related="mantle.product.store.ProductStore">
+            <key-map field-name="productStoreId"/>
+        </relationship>
+        <relationship type="one" fk-name="TAXAUTHRTEP_PCAT" related="mantle.product.category.ProductCategory">
+            <key-map field-name="productCategoryId"/>
+        </relationship>
+    </entity>
+</entities>

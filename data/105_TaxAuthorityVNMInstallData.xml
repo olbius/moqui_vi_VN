@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This software is in the public domain under CC0 1.0 Universal plus a
+Grant of Patent License.
+
+To the extent possible under law, the author(s) have dedicated all
+copyright and related and neighboring rights to this software to the
+public domain worldwide. This software is distributed without any
+warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication
+along with this software (see the LICENSE.md file). If not, see
+<http://creativecommons.org/publicdomain/zero/1.0/>.
+-->
+<entity-facade-xml type="install">
+    <moqui.basic.EnumerationType description="Tax Authority Rate Type" enumTypeId="TaxAuthorityRateType"/>
+    <moqui.basic.Enumeration enumId="ExportTax" enumTypeId="TaxAuthorityRateType" description="Export Tax" />
+    <moqui.basic.Enumeration enumId="ImportTax" enumTypeId="TaxAuthorityRateType" description="Import Tax" />
+    <moqui.basic.Enumeration enumId="IncomeTax" enumTypeId="TaxAuthorityRateType" description="Income Tax" />
+    <moqui.basic.Enumeration enumId="IndividualIncomeTax" enumTypeId="TaxAuthorityRateType" description="Individual Income Tax" />
+    <moqui.basic.Enumeration enumId="SalesTax" enumTypeId="TaxAuthorityRateType" description="Sales Tax" />
+    <moqui.basic.Enumeration enumId="UseTax" enumTypeId="TaxAuthorityRateType" description="Use Tax" />
+    <moqui.basic.Enumeration enumId="VatTax" enumTypeId="TaxAuthorityRateType" description="VAT Tax" />
+
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ExportTax" locale="vi_VN" localized="Thuế xuất khẩu"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ImportTax" locale="vi_VN" localized="Thuế nhập khẩu"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="IncomeTax" locale="vi_VN" localized="Thuế thu nhập"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="IndividualIncomeTax" locale="vi_VN" localized="Thuế thu nhập cá nhân"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="SalesTax" locale="vi_VN" localized="Thuế doanh thu"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="UseTax" locale="vi_VN" localized="Thuế sử dụng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="VatTax" locale="vi_VN" localized="Thuế VAT"/>
+
+    <mantle.party.Party partyId="VNM_TAX" pseudoId="VNM_TAX" partyTypeEnumId="PtyOrganization" ownerPartyId="_NA_"/>
+    <mantle.party.Organization partyId="VNM_TAX" organizationName="VIET NAM TAX"/>
+    <mantle.party.PartyRole partyId="VNM_TAX" roleTypeId="OrgTaxAuthority"/>
+
+    <mantle.other.tax.TaxAuthority taxAuthorityId="VNM" description="VNM TAX" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX" taxAuthorityTypeEnumId="TatFederal" requireTaxIdForExemption="Y" includeTaxInPrice="N"/>
+
+    <mantle.other.tax.TaxGatewayConfig taxGatewayConfigId="VNMTAX"
+                                       taxGatewayTypeEnumId="TaxGtwyLocal" description="VNM gateway for sales tax calc"
+                                       calculateServiceName="moquivi.commons.TaxServices.calculate#OrderSalesTax"/>
+
+    <!-- Tax Category -->
+    <mantle.product.category.ProductCategory productCategoryId="TAX_VAT_0" pseudo_id="TAX_VAT_0" productCategoryTypeEnumId="PctTax"
+                                             ownerPartyId="_NA_" categoryName="Thuế GTGT 0%"/>
+    <mantle.product.category.ProductCategory productCategoryId="TAX_VAT_5" pseudo_id="TAX_VAT_5" productCategoryTypeEnumId="PctTax"
+                                             ownerPartyId="_NA_" categoryName="Thuế GTGT 5%"/>
+    <mantle.product.category.ProductCategory productCategoryId="TAX_VAT_8" pseudo_id="TAX_VAT_8" productCategoryTypeEnumId="PctTax"
+                                             ownerPartyId="_NA_" categoryName="Thuế GTGT 8%"/>
+    <mantle.product.category.ProductCategory productCategoryId="TAX_VAT_10" pseudo_id="TAX_VAT_10" productCategoryTypeEnumId="PctTax"
+                                             ownerPartyId="_NA_" categoryName="Thuế GTGT 10%"/>
+    <mantle.product.category.ProductCategory productCategoryId="TAX_VAT_KCT" pseudo_id="TAX_VAT_KCT" productCategoryTypeEnumId="PctTax"
+                                             ownerPartyId="_NA_" categoryName="Không chịu thuế GTGT"/>
+    <mantle.product.category.ProductCategory productCategoryId="TAX_VAT_KPTH" pseudo_id="TAX_VAT_KPTH" productCategoryTypeEnumId="PctTax"
+                                             ownerPartyId="_NA_" categoryName="Không phải tổng hợp thuế GTGT"/>
+
+    <!-- Product Tax-->
+    <mantle.product.Product productId="PRD_TAX_0" pseudoId="PRD_TAX_0" productTypeEnumId="PtAsset"
+                            productName="Sản phẩm - hàng hóa thuế xuất 0%" originGeoId="VNM" ownerPartyId="VNM_TAX"/>
+    <mantle.product.Product productId="PRD_TAX_5" pseudoId="PRD_TAX_5" productTypeEnumId="PtAsset"
+                            productName="Sản phẩm - hàng hóa thuế xuất 5%" originGeoId="VNM" ownerPartyId="VNM_TAX"/>
+    <mantle.product.Product productId="PRD_TAX_8" pseudoId="PRD_TAX_8" productTypeEnumId="PtAsset"
+                            productName="Sản phẩm - hàng hóa thuế xuất 8%" originGeoId="VNM" ownerPartyId="VNM_TAX"/>
+    <mantle.product.Product productId="PRD_TAX_10" pseudoId="PRD_TAX_10" productTypeEnumId="PtAsset"
+                            productName="Sản phẩm - hàng hóa thuế xuất 10%" originGeoId="VNM" ownerPartyId="VNM_TAX"/>
+    <mantle.product.Product productId="PRD_TAX_KCT" pseudoId="PRD_TAX_KCT" productTypeEnumId="PtAsset"
+                            productName="Sản phẩm - hàng hóa không chịu thuế" originGeoId="VNM" ownerPartyId="VNM_TAX"/>
+
+    <mantle.product.category.ProductCategoryMember productCategoryId="TAX_VAT_0" productId="PRD_TAX_0"
+                                                   fromDate="1265184000000"/>
+    <mantle.product.category.ProductCategoryMember productCategoryId="TAX_VAT_5" productId="PRD_TAX_5"
+                                                   fromDate="1265184000000"/>
+    <mantle.product.category.ProductCategoryMember productCategoryId="TAX_VAT_8" productId="PRD_TAX_8"
+                                                   fromDate="1265184000000"/>
+    <mantle.product.category.ProductCategoryMember productCategoryId="TAX_VAT_10" productId="PRD_TAX_10"
+                                                   fromDate="1265184000000"/>
+    <mantle.product.category.ProductCategoryMember productCategoryId="TAX_VAT_KCT" productId="PRD_TAX_KCT"
+                                                   fromDate="1265184000000"/>
+
+
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9000" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+                                   taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_0" taxPercentage="0"
+                                   fromDate="1265184000000"/>
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9001" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+                                   taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_5" taxPercentage="5"
+                                   fromDate="1265184000000"/>
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9002" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+                                   taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_8" taxPercentage="8"
+                                   fromDate="1265184000000"/>
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9003" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+                                   taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_10" taxPercentage="10"
+                                   fromDate="1265184000000"/>
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9004" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+                                   taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_KCT" taxPercentage="0"
+                                   fromDate="1265184000000"/>
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9005" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+                                   taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_KPTH" taxPercentage="0"
+                                   fromDate="1265184000000"/>
+</entity-facade-xml>
