@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!--
+        This software is in the public domain under CC0 1.0 Universal plus a
+        Grant of Patent License.
+
+        To the extent possible under law, the author(s) have dedicated all
+        copyright and related and neighboring rights to this software to the
+        public domain worldwide. This software is distributed without any
+        warranty.
+
+        You should have received a copy of the CC0 Public Domain Dedication
+        along with this software (see the LICENSE.md file). If not, see
+        <http://creativecommons.org/publicdomain/zero/1.0/>.
+        -->
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.1.xsd">
+
+    <view-entity entity-name="ProductAndCate" package="moquivi.product">
+        <member-entity entity-alias="PCM" entity-name="mantle.product.category.ProductCategoryMember"/>
+
+        <member-entity entity-alias="P" entity-name="mantle.product.Product" join-from-alias="PCM">
+            <key-map field-name="productId" />
+        </member-entity>
+
+        <member-entity entity-alias="PC" entity-name="mantle.product.category.ProductCategory" join-from-alias="PCM">
+            <key-map field-name="productCategoryId" />
+        </member-entity>
+
+        <alias-all entity-alias="PCM" />
+        <alias-all entity-alias="P">
+            <exclude field="comments"/>
+        </alias-all>
+        <alias-all entity-alias="PC">
+            <exclude field="pseudoId"/>
+            <exclude field="description"/>
+            <exclude field="ownerPartyId"/>
+        </alias-all>
+    </view-entity>
+</entities>
