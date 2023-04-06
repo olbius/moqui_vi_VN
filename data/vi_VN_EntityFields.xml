@@ -275,4 +275,19 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttFinancialWithdrawal" locale="vi_VN" localized="Rút từ tài khoản tài chính"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttFinancialAdjustment" locale="vi_VN" localized="Điều chỉnh tài khoản tài chính"/>
 
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderBeingChanged" locale="vi_VN" localized="Đang được thay đổi"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderOpen" locale="vi_VN" localized="Mới tạo"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderRequested" locale="vi_VN" localized="Báo giá theo yêu cầu của khách hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderProposed" locale="vi_VN" localized="Báo giá do nhà cung cấp đề xuất"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderPlaced" locale="vi_VN" localized="Đặt bởi khách hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderHold" locale="vi_VN" localized="Đã giữ"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderProcessing" locale="vi_VN" localized="Đang xử lý"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderApproved" locale="vi_VN" localized="Đã duyệt"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderSent" locale="vi_VN" localized="Đã gửi"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderCompleted" locale="vi_VN" localized="Đã hoàn thành"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderRejected" locale="vi_VN" localized="Bị từ chối bởi nhà cung cấp"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderCancelled" locale="vi_VN" localized="Huỷ bởi khách hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderWishList" locale="vi_VN" localized="danh sách mong muốn"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderGiftRegistry" locale="vi_VN" localized="Đăng ký quà tặng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderAutoReorder" locale="vi_VN" localized="Tự động đặt lại"/>
 </entity-facade-xml>
