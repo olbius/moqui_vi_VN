@@ -54,30 +54,6 @@ along with this software (see the LICENSE.md file). If not, see
     <mantle.product.category.ProductCategory productCategoryId="TAX_VAT_KPTH" pseudo_id="TAX_VAT_KPTH" productCategoryTypeEnumId="PctTax"
                                              ownerPartyId="_NA_" categoryName="Không phải tổng hợp thuế GTGT"/>
 
-    <!-- Product Tax-->
-    <mantle.product.Product productId="PRD_TAX_0" pseudoId="PRD_TAX_0" productTypeEnumId="PtAsset"
-                            productName="Sản phẩm - hàng hóa thuế xuất 0%" originGeoId="VNM" ownerPartyId="VNM_TAX"/>
-    <mantle.product.Product productId="PRD_TAX_5" pseudoId="PRD_TAX_5" productTypeEnumId="PtAsset"
-                            productName="Sản phẩm - hàng hóa thuế xuất 5%" originGeoId="VNM" ownerPartyId="VNM_TAX"/>
-    <mantle.product.Product productId="PRD_TAX_8" pseudoId="PRD_TAX_8" productTypeEnumId="PtAsset"
-                            productName="Sản phẩm - hàng hóa thuế xuất 8%" originGeoId="VNM" ownerPartyId="VNM_TAX"/>
-    <mantle.product.Product productId="PRD_TAX_10" pseudoId="PRD_TAX_10" productTypeEnumId="PtAsset"
-                            productName="Sản phẩm - hàng hóa thuế xuất 10%" originGeoId="VNM" ownerPartyId="VNM_TAX"/>
-    <mantle.product.Product productId="PRD_TAX_KCT" pseudoId="PRD_TAX_KCT" productTypeEnumId="PtAsset"
-                            productName="Sản phẩm - hàng hóa không chịu thuế" originGeoId="VNM" ownerPartyId="VNM_TAX"/>
-
-    <mantle.product.category.ProductCategoryMember productCategoryId="TAX_VAT_0" productId="PRD_TAX_0"
-                                                   fromDate="1265184000000"/>
-    <mantle.product.category.ProductCategoryMember productCategoryId="TAX_VAT_5" productId="PRD_TAX_5"
-                                                   fromDate="1265184000000"/>
-    <mantle.product.category.ProductCategoryMember productCategoryId="TAX_VAT_8" productId="PRD_TAX_8"
-                                                   fromDate="1265184000000"/>
-    <mantle.product.category.ProductCategoryMember productCategoryId="TAX_VAT_10" productId="PRD_TAX_10"
-                                                   fromDate="1265184000000"/>
-    <mantle.product.category.ProductCategoryMember productCategoryId="TAX_VAT_KCT" productId="PRD_TAX_KCT"
-                                                   fromDate="1265184000000"/>
-
-
     <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9000" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
                                    taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_0" taxPercentage="0"
                                    fromDate="1265184000000"/>
