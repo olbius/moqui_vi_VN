@@ -83,22 +83,22 @@ along with this software (see the LICENSE.md file). If not, see
                                                    fromDate="1265184000000"/>
 
 
-    <gsources.tax.TaxAuthorityRate taxAuthorityRateSeqId="9000" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9000" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
                                    taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_0" taxPercentage="0"
                                    fromDate="1265184000000"/>
-    <gsources.tax.TaxAuthorityRate taxAuthorityRateSeqId="9001" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9001" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
                                    taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_5" taxPercentage="5"
                                    fromDate="1265184000000"/>
-    <gsources.tax.TaxAuthorityRate taxAuthorityRateSeqId="9002" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9002" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
                                    taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_8" taxPercentage="8"
                                    fromDate="1265184000000"/>
-    <gsources.tax.TaxAuthorityRate taxAuthorityRateSeqId="9003" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9003" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
                                    taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_10" taxPercentage="10"
                                    fromDate="1265184000000"/>
-    <gsources.tax.TaxAuthorityRate taxAuthorityRateSeqId="9004" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9004" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
                                    taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_KCT" taxPercentage="0"
                                    fromDate="1265184000000"/>
-    <gsources.tax.TaxAuthorityRate taxAuthorityRateSeqId="9005" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
+    <moquivi.other.tax.TaxAuthorityRate taxAuthorityRateSeqId="9005" taxAuthGeoId="VNM" taxAuthPartyId="VNM_TAX"
                                    taxAuthorityRateTypeId="VatTax" productCategoryId="TAX_VAT_KPTH" taxPercentage="0"
                                    fromDate="1265184000000"/>
 </entity-facade-xml>
