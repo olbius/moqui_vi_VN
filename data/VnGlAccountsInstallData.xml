@@ -1301,7 +1301,9 @@
 
     <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="112" organizationPartyId="TT200Settings" paymentInstrumentEnumId="PiCreditCard" isPayable="E"/>
     <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="112" organizationPartyId="TT200Settings" paymentInstrumentEnumId="PiDebitCard" isPayable="E"/>
+<!--
     <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="112" organizationPartyId="TT200Settings" paymentInstrumentEnumId="PiBankTransfer" isPayable="E"/>
+-->
     <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="6418" organizationPartyId="TT200Settings" paymentInstrumentEnumId="PiGiftCard" isPayable="E"/>
     <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="6418" organizationPartyId="TT200Settings" paymentInstrumentEnumId="PiGiftCertificate" isPayable="E"/>
     <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="111" organizationPartyId="TT200Settings" paymentInstrumentEnumId="PiCash" isPayable="E"/>
