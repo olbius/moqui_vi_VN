@@ -206,61 +206,82 @@
 
     <!--Chart of account Thông tư 200, Việt Nam -->
     <mantle.ledger.account.GlAccount glAccountId="1" accountName="LOẠI TÀI KHOẢN TÀI SẢN" parentGlAccountId="" glResourceTypeEnumId="GlrtMoney"   glAccountTypeEnumId="GatCurrentAsset" glAccountClassEnumId="ASSET"/>
+
     <mantle.ledger.account.GlAccount glAccountId="111" accountName="Tiền mặt" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="1111" accountName="Tiền Việt Nam" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="111"/>
     <mantle.ledger.account.GlAccount glAccountId="1112" accountName="Ngoại tệ" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="111"/>
     <mantle.ledger.account.GlAccount glAccountId="1113" accountName="Vàng tiền tệ" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="111"/>
+
     <mantle.ledger.account.GlAccount glAccountId="112" accountName="Tiền gửi Ngân hàng" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="1121" accountName="Tiền Việt Nam" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="112"/>
     <mantle.ledger.account.GlAccount glAccountId="1122" accountName="Ngoại tệ" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="112"/>
     <mantle.ledger.account.GlAccount glAccountId="1123" accountName="Vàng tiền tệ" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="112"/>
+
     <mantle.ledger.account.GlAccount glAccountId="113" accountName="Tiền đang chuyển" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="1131" accountName="Tiền Việt Nam" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="113"/>
     <mantle.ledger.account.GlAccount glAccountId="1132" accountName="Ngoại tệ" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="113"/>
+
     <mantle.ledger.account.GlAccount glAccountId="121" accountName="Chứng khoán kinh doanh" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="1211" accountName="Cổ phiếu" glAccountClassEnumId="CURRENT_ASSET" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="121"/>
     <mantle.ledger.account.GlAccount glAccountId="1212" accountName="Trái phiếu" glAccountClassEnumId="CURRENT_ASSET" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="121"/>
     <mantle.ledger.account.GlAccount glAccountId="1218" accountName="Chứng khoán và công cụ tài chính khác" glAccountClassEnumId="CURRENT_ASSET" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="121"/>
+
     <mantle.ledger.account.GlAccount glAccountId="128" accountName="Đầu tư nắm giữ đến ngày đáo hạn" glAccountClassEnumId="CURRENT_ASSET" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="1281" accountName="Tiền gửi có kỳ hạn" glAccountClassEnumId="CURRENT_ASSET" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="128"/>
     <mantle.ledger.account.GlAccount glAccountId="1282" accountName="Trái phiếu" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="128"/>
     <mantle.ledger.account.GlAccount glAccountId="1283" accountName="Cho vay" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="128"/>
     <mantle.ledger.account.GlAccount glAccountId="1288" accountName="Các khoản đầu tư khác nắm giữ đến ngày đáo hạn" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="128"/>
+
     <mantle.ledger.account.GlAccount glAccountId="131" accountName="Phải thu của khách hàng" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1" isDuality="Y"/>
+
     <mantle.ledger.account.GlAccount glAccountId="133" accountName="Thuế GTGT được khấu trừ" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="1331" accountName="Thuế GTGT được khấu trừ của hàng hóa, dịch vụ" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="133"/>
     <mantle.ledger.account.GlAccount glAccountId="1332" accountName="Thuế GTGT được khấu trừ của TSCĐ" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="133"/>
+
     <mantle.ledger.account.GlAccount glAccountId="136" accountName="Phải thu nội bộ" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="1361" accountName="Vốn kinh doanh ở các đơn vị trực thuộc" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="136"/>
     <mantle.ledger.account.GlAccount glAccountId="1362" accountName="Phải thu nội bộ về chênh lệch tỷ giá" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="136"/>
     <mantle.ledger.account.GlAccount glAccountId="1363" accountName="Phải thu nội bộ về chi phí đi vay đủ điều kiện được vốn hóa" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="136"/>
     <mantle.ledger.account.GlAccount glAccountId="1368" accountName="Phải thu nội bộ khác" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="136"/>
+
     <mantle.ledger.account.GlAccount glAccountId="138" accountName="Phải thu khác" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="1381" accountName="Tài sản thiếu chờ xử lý" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="138" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="1385" accountName="Phải thu về cổ phần hóa" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="138" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="1388" accountName="Phải thu khác" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="138" isDuality="Y"/>
+
     <mantle.ledger.account.GlAccount glAccountId="141" accountName="Tạm ứng" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="151" accountName="Hàng mua đang đi đường" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="152" accountName="Nguyên liệu, vật liệu" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="153" accountName="Công cụ, dụng cụ" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="1531" accountName="Công cụ, dụng cụ" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="153"/>
     <mantle.ledger.account.GlAccount glAccountId="1532" accountName="Bao bì luân chuyển" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="153"/>
     <mantle.ledger.account.GlAccount glAccountId="1533" accountName="Đồ dùng cho thuê" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="153"/>
     <mantle.ledger.account.GlAccount glAccountId="1534" accountName="Thiết bị, phụ tùng thay thế" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="153"/>
+
     <mantle.ledger.account.GlAccount glAccountId="154" accountName="Chi phí sản xuất, kinh doanh dở dang" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="155" accountName="Thành phẩm" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="1551" accountName="Thành phẩm nhập kho" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="155"/>
     <mantle.ledger.account.GlAccount glAccountId="1557" accountName="Thành phẩm bất động sản" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="155"/>
+
     <mantle.ledger.account.GlAccount glAccountId="156" accountName="Hàng hóa" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="1561" accountName="Giá mua hàng hóa" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="156"/>
     <mantle.ledger.account.GlAccount glAccountId="1562" accountName="Chi phí thu mua hàng hóa" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="156"/>
     <mantle.ledger.account.GlAccount glAccountId="1567" accountName="Hàng hóa bất động sản" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="156"/>
+
     <mantle.ledger.account.GlAccount glAccountId="157" accountName="Hàng gửi đi bán" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="158" accountName="Hàng hóa kho bảo thuế" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="161" accountName="Chi sự nghiệp" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="1611" accountName="Chi sự nghiệp năm trước" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="161"/>
     <mantle.ledger.account.GlAccount glAccountId="1612" accountName="Chi sự nghiệp năm nay" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="161"/>
+
     <mantle.ledger.account.GlAccount glAccountId="171" accountName="Giao dịch mua bán lại trái phiếu chính phủ" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="211" accountName="Tài sản cố định hữu hình" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="2111" accountName="Nhà cửa, vật kiến trúc" glAccountClassEnumId="LAND_BUILDING" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="211"/>
     <mantle.ledger.account.GlAccount glAccountId="2112" accountName="Máy móc, thiết bị" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="211"/>
@@ -268,9 +289,11 @@
     <mantle.ledger.account.GlAccount glAccountId="2114" accountName="Thiết bị, dụng cụ quản lý" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="211"/>
     <mantle.ledger.account.GlAccount glAccountId="2115" accountName="Cây lâu năm, súc vật làm việc và cho sản phẩm" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="211"/>
     <mantle.ledger.account.GlAccount glAccountId="2118" accountName="TSCĐ khác" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="211"/>
+
     <mantle.ledger.account.GlAccount glAccountId="212" accountName="Tài sản cố định thuê tài chính" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="2121" accountName="TSCĐ hữu hình thuê tài chính" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="212"/>
     <mantle.ledger.account.GlAccount glAccountId="2122" accountName="TSCĐ vô hình thuê tài chính" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="212"/>
+
     <mantle.ledger.account.GlAccount glAccountId="213" accountName="Tài sản cố định vô hình" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="2131" accountName="Quyền sử dụng đất" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="213"/>
     <mantle.ledger.account.GlAccount glAccountId="2132" accountName="Quyền phát hành" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="213"/>
@@ -279,32 +302,44 @@
     <mantle.ledger.account.GlAccount glAccountId="2135" accountName="Chương trình phần mềm" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="213"/>
     <mantle.ledger.account.GlAccount glAccountId="2136" accountName="Giấy phép và giấy phép nhượng quyền" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="213"/>
     <mantle.ledger.account.GlAccount glAccountId="2138" accountName="TSCĐ vô hình khác" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="213"/>
+
     <mantle.ledger.account.GlAccount glAccountId="214" accountName="Hao mòn tài sản cố định" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="2141" accountName="Hao mòn TSCĐ hữu hình" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
     <mantle.ledger.account.GlAccount glAccountId="2142" accountName="Hao mòn TSCĐ thuê tài chính" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
     <mantle.ledger.account.GlAccount glAccountId="2143" accountName="Hao mòn TSCĐ vô hình" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
     <mantle.ledger.account.GlAccount glAccountId="2147" accountName="Hao mòn bất động sản đầu tư" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
+
     <mantle.ledger.account.GlAccount glAccountId="217" accountName="Bất động sản đầu tư" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="221" accountName="Đầu tư vào công ty con" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="222" accountName="Đầu tư vào công ty liên doanh, liên kết" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="228" accountName="Đầu tư khác" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="2281" accountName="Đầu tư góp vốn vào đơn vị khác" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="228"/>
     <mantle.ledger.account.GlAccount glAccountId="2288" accountName="Đầu tư khác" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="228"/>
+
     <mantle.ledger.account.GlAccount glAccountId="229" accountName="Dự phòng tổn thất tài sản" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="2291" accountName="Dự phòng giảm giá chứng khoán kinh doanh" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="229"/>
     <mantle.ledger.account.GlAccount glAccountId="2292" accountName="Dự phòng tổn thất đầu tư vào đơn vị khác" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="229"/>
     <mantle.ledger.account.GlAccount glAccountId="2293" accountName="Dự phòng phải thu khó đòi" glAccountClassEnumId="ALLOWANCE_BAD_DEBT" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="229"/>
     <mantle.ledger.account.GlAccount glAccountId="2294" accountName="Dự phòng giảm giá hàng tồn kho" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="229"/>
+
     <mantle.ledger.account.GlAccount glAccountId="241" accountName="Xây dựng cơ bản dở dang" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
     <mantle.ledger.account.GlAccount glAccountId="2411" accountName="Mua sắm TSCĐ" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="241"/>
     <mantle.ledger.account.GlAccount glAccountId="2412" accountName="Xây dựng cơ bản" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="241"/>
     <mantle.ledger.account.GlAccount glAccountId="2413" accountName="Sửa chữa lớn TSCĐ" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="241"/>
+
     <mantle.ledger.account.GlAccount glAccountId="242" accountName="Chi phí trả trước" glAccountClassEnumId="EXPENSE" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="243" accountName="Tài sản thuế thu nhập hoãn lại" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+
     <mantle.ledger.account.GlAccount glAccountId="244" accountName="Cầm cố, thế chấp, ký quỹ, ký cược" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
 
     <mantle.ledger.account.GlAccount glAccountId="3" accountName="LOẠI TÀI KHOẢN NỢ PHẢI TRẢ" parentGlAccountId="" glResourceTypeEnumId="GlrtMoney"   glAccountTypeEnumId="GatLiability" glAccountClassEnumId="LIABILITY"/>
+
     <mantle.ledger.account.GlAccount glAccountId="331" accountName="Phải trả cho người bán" glAccountClassEnumId="ACCOUNTS_PAYABLE" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3" isDuality="Y"/>
+
     <mantle.ledger.account.GlAccount glAccountId="333" accountName="Thuế và các khoản phải nộp Nhà nước" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="3331" accountName="Thuế giá trị gia tăng phải nộp" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="333" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="33311" accountName="Thuế GTGT đầu ra" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3331" isDuality="Y"/>
@@ -319,16 +354,21 @@
     <mantle.ledger.account.GlAccount glAccountId="33381" accountName="Thuế bảo vệ môi trường" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3338" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="33382" accountName="Các loại thuế khác" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3338" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="3339" accountName="Phí, lệ phí và các khoản phải nộp khác" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="333" isDuality="Y"/>
+
     <mantle.ledger.account.GlAccount glAccountId="334" accountName="Phải trả người lao động" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="3341" accountName="Phải trả công nhân viên" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="334" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="3348" accountName="Phải trả người lao động khác" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="334" isDuality="Y"/>
+
     <mantle.ledger.account.GlAccount glAccountId="335" accountName="Chi phí phải trả" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3"/>
+
     <mantle.ledger.account.GlAccount glAccountId="336" accountName="Phải trả nội bộ" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3"/>
     <mantle.ledger.account.GlAccount glAccountId="3361" accountName="Phải trả nội bộ về vốn kinh doanh" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="336"/>
     <mantle.ledger.account.GlAccount glAccountId="3362" accountName="Phải trả nội bộ về chênh lệch tỷ giá" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="336"/>
     <mantle.ledger.account.GlAccount glAccountId="3363" accountName="Phải trả nội bộ về chi phí đi vay đủ điều kiện được vốn hóa" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="336"/>
     <mantle.ledger.account.GlAccount glAccountId="3368" accountName="Phải trả nội bộ khác" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="336"/>
+
     <mantle.ledger.account.GlAccount glAccountId="337" accountName="Thanh toán theo tiến độ kế hoạch hợp đồng xây dựng" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3"/>
+
     <mantle.ledger.account.GlAccount glAccountId="338" accountName="Phải trả, phải nộp khác" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="3381" accountName="Tài sản thừa chờ giải quyết" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="338" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="3382" accountName="Kinh phí công đoàn" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="338" isDuality="Y"/>
@@ -338,31 +378,39 @@
     <mantle.ledger.account.GlAccount glAccountId="3386" accountName="Bảo hiểm thất nghiệp" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="338" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="3387" accountName="Doanh thu chưa thực hiện" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="338" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="3388" accountName="Phải trả, phải nộp khác" glAccountClassEnumId="CURRENT_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="338" isDuality="Y"/>
+
     <mantle.ledger.account.GlAccount glAccountId="341" accountName="Vay và nợ thuê tài chính" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatCurrentLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3"/>
     <mantle.ledger.account.GlAccount glAccountId="3411" accountName="Các khoản đi vay" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="341"/>
     <mantle.ledger.account.GlAccount glAccountId="3412" accountName="Nợ thuê tài chính" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="341"/>
+
     <mantle.ledger.account.GlAccount glAccountId="343" accountName="Trái phiếu phát hành" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3"/>
     <mantle.ledger.account.GlAccount glAccountId="3431" accountName="Trái phiếu thường" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="343"/>
     <mantle.ledger.account.GlAccount glAccountId="34311" accountName="Mệnh giá trái phiếu" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3431"/>
     <mantle.ledger.account.GlAccount glAccountId="34312" accountName="Chiết khấu trái phiếu" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3431"/>
     <mantle.ledger.account.GlAccount glAccountId="34313" accountName="Phụ trội trái phiếu" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3431"/>
     <mantle.ledger.account.GlAccount glAccountId="3432" accountName="Trái phiếu chuyển đổi" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="343"/>
+
     <mantle.ledger.account.GlAccount glAccountId="344" accountName="Nhận ký quỹ, ký cược" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3"/>
+
     <mantle.ledger.account.GlAccount glAccountId="347" accountName="Thuế thu nhập hoãn lại phải trả" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3"/>
+
     <mantle.ledger.account.GlAccount glAccountId="352" accountName="Dự phòng phải trả" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3"/>
     <mantle.ledger.account.GlAccount glAccountId="3521" accountName="Dự phòng bảo hành sản phẩm hàng hóa" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="352"/>
     <mantle.ledger.account.GlAccount glAccountId="3522" accountName="Dự phòng bảo hành công trình xây dựng" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="352"/>
     <mantle.ledger.account.GlAccount glAccountId="3523" accountName="Dự phòng tái cơ cấu doanh nghiệp" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="352"/>
     <mantle.ledger.account.GlAccount glAccountId="3524" accountName="Dự phòng phải trả khác" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="352"/>
+
     <mantle.ledger.account.GlAccount glAccountId="353" accountName="Quỹ khen thưởng phúc lợi" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3"/>
     <mantle.ledger.account.GlAccount glAccountId="3531" accountName="Quỹ khen thưởng" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="353"/>
     <mantle.ledger.account.GlAccount glAccountId="3532" accountName="Quỹ phúc lợi" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="353"/>
     <mantle.ledger.account.GlAccount glAccountId="3533" accountName="Quỹ phúc lợi đã hình thành TSCĐ" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="353"/>
     <mantle.ledger.account.GlAccount glAccountId="3534" accountName="Quỹ thưởng ban quản lý điều hành công ty" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="353"/>
+
     <mantle.ledger.account.GlAccount glAccountId="356" accountName="Quỹ phát triển khoa học và công nghệ" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3"/>
     <mantle.ledger.account.GlAccount glAccountId="3561" accountName="Quỹ phát triển khoa học và công nghệ" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="356"/>
     <mantle.ledger.account.GlAccount glAccountId="3562" accountName="Quỹ phát triển khoa học và công nghệ đã hình thành TSCĐ" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="356"/>
-    <mantle.ledger.account.GlAccount glAccountId="357" accountName="Quỹ bình ổn giá" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="100000000"/>
+
+    <mantle.ledger.account.GlAccount glAccountId="357" accountName="Quỹ bình ổn giá" glAccountClassEnumId="LONG_TERM_LIABILITY" glAccountTypeEnumId="GatLongTermLiability" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="3"/>
 
     <mantle.ledger.account.GlAccount glAccountId="4" accountCode="4"  accountName="LOẠI TÀI KHOẢN VỐN CHỦ SỞ HỮU" parentGlAccountId="" glResourceTypeEnumId="GlrtMoney"   glAccountTypeEnumId="GatOwnersEquity" glAccountClassEnumId="EQUITY"/>
     <mantle.ledger.account.GlAccount glAccountId="411" accountName="Vốn đầu tư của chủ sở hữu" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="4"/>
@@ -372,24 +420,34 @@
     <mantle.ledger.account.GlAccount glAccountId="4112" accountName="Thặng dư vốn cổ phần" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="411"/>
     <mantle.ledger.account.GlAccount glAccountId="4113" accountName="Quyền chọn chuyển đổi trái phiếu" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="411"/>
     <mantle.ledger.account.GlAccount glAccountId="4118" accountName="Vốn khác" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="411"/>
+
     <mantle.ledger.account.GlAccount glAccountId="412" accountName="Chênh lệch đánh giá lại tài sản" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="4"/>
     <mantle.ledger.account.GlAccount glAccountId="413" accountName="Chênh lệch tỷ giá hối đoái" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="4"/>
     <mantle.ledger.account.GlAccount glAccountId="4131" accountName="Chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="413"/>
     <mantle.ledger.account.GlAccount glAccountId="4132" accountName="Chênh lệch tỷ giá hối đoái trong giai đoạn trước hoạt động" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="413"/>
+
     <mantle.ledger.account.GlAccount glAccountId="414" accountName="Quỹ đầu tư phát triển" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="4"/>
+
     <mantle.ledger.account.GlAccount glAccountId="417" accountName="Quỹ hỗ trợ sắp xếp doanh nghiệp" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="4"/>
+
     <mantle.ledger.account.GlAccount glAccountId="418" accountName="Các quỹ khác thuộc vốn chủ sở hữu" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="4"/>
+
     <mantle.ledger.account.GlAccount glAccountId="419" accountName="Cổ phiếu quỹ" glAccountClassEnumId="TREASURY_STOCK" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="4"/>
+
     <mantle.ledger.account.GlAccount glAccountId="421" accountName="Lợi nhuận sau thuế chưa phân phối" glAccountClassEnumId="RETAINED_EARNINGS" glAccountTypeEnumId="GatRetainedEarnings" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="4" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="4211" accountName="Lợi nhuận sau thuế chưa phân phối năm trước" glAccountClassEnumId="RETAINED_EARNINGS" glAccountTypeEnumId="GatRetainedEarnings" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="421" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="4212" accountName="Lợi nhuận sau thuế chưa phân phối năm nay" glAccountClassEnumId="RETAINED_EARNINGS" glAccountTypeEnumId="GatRetainedEarnings" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="421" isDuality="Y"/>
+
     <mantle.ledger.account.GlAccount glAccountId="441" accountName="Nguồn vốn đầu tư xây dựng cơ bản" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="4"/>
+
     <mantle.ledger.account.GlAccount glAccountId="461" accountName="Nguồn kinh phí sự nghiệp" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="4"/>
     <mantle.ledger.account.GlAccount glAccountId="4611" accountName="Nguồn kinh phí sự nghiệp năm trước" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="461"/>
     <mantle.ledger.account.GlAccount glAccountId="4612" accountName="Nguồn kinh phí sự nghiệp năm nay" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="461"/>
+
     <mantle.ledger.account.GlAccount glAccountId="466" accountName="Nguồn kinh phí hình thành TSCĐ" glAccountClassEnumId="OWNERS_EQUITY" glAccountTypeEnumId="GatOwnersEquity" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="4"/>
 
     <mantle.ledger.account.GlAccount glAccountId="5" accountName="LOẠI TÀI KHOẢN DOANH THU" parentGlAccountId="" glResourceTypeEnumId="GlrtMoney"   glAccountTypeEnumId="GatAccruedRevenue" glAccountClassEnumId="REVENUE"/>
+
     <mantle.ledger.account.GlAccount glAccountId="511" accountName="Doanh thu bán hàng và cung cấp dịch vụ" glAccountClassEnumId="GOODS_REVENUE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="5"/>
     <mantle.ledger.account.GlAccount glAccountId="5111" accountName="Doanh thu bán hàng hóa" glAccountClassEnumId="GOODS_REVENUE" glAccountTypeEnumId="GatGoodsRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="511"/>
     <mantle.ledger.account.GlAccount glAccountId="5112" accountName="Doanh thu bán các thành phẩm" glAccountClassEnumId="GOODS_REVENUE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="511"/>
@@ -397,20 +455,27 @@
     <mantle.ledger.account.GlAccount glAccountId="5114" accountName="Doanh thu trợ cấp, trợ giá" glAccountClassEnumId="GOODS_REVENUE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="511"/>
     <mantle.ledger.account.GlAccount glAccountId="5117" accountName="Doanh thu kinh doanh bất động sản đầu tư" glAccountClassEnumId="GOODS_REVENUE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="511"/>
     <mantle.ledger.account.GlAccount glAccountId="5118" accountName="Doanh thu khác" glAccountClassEnumId="OTHER_REVENUE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="511"/>
+
     <mantle.ledger.account.GlAccount glAccountId="515" accountName="Doanh thu hoạt động tài chính" glAccountClassEnumId="GOODS_REVENUE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="5"/>
-    <mantle.ledger.account.GlAccount glAccountId="5151" accountName="Lãi tiền gửi" glAccountClassEnumId="GOODS_REVENUE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="515"/>
+    <!--
+	<mantle.ledger.account.GlAccount glAccountId="5151" accountName="Lãi tiền gửi" glAccountClassEnumId="GOODS_REVENUE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="515"/>
     <mantle.ledger.account.GlAccount glAccountId="5158" accountName="Chiết khấu thanh toán" glAccountClassEnumId="GOODS_REVENUE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="515"/>
+    -->
     <mantle.ledger.account.GlAccount glAccountId="521" accountName="Các khoản giảm trừ doanh thu" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="5"/>
     <mantle.ledger.account.GlAccount glAccountId="5211" accountName="Chiết khấu thương mại" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="521"/>
-    <mantle.ledger.account.GlAccount glAccountId="5212" accountName="Giảm giá hàng bán" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="521"/>
-    <mantle.ledger.account.GlAccount glAccountId="5213" accountName="Hàng bán bị trả lại" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="521"/>
+    <mantle.ledger.account.GlAccount glAccountId="5212" accountName="Hàng bán bị trả lại" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="521"/>
+    <mantle.ledger.account.GlAccount glAccountId="5213" accountName="Giảm giá hàng bán" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatAccruedRevenue" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="521"/>
 
     <mantle.ledger.account.GlAccount glAccountId="6" accountName="LOẠI TÀI KHOẢN CHI PHÍ SẢN XUẤT, KINH DOANH" parentGlAccountId="" glResourceTypeEnumId="GlrtMoney"   glAccountTypeEnumId="GatExpense" glAccountClassEnumId="EXPENSE"/>
+
     <mantle.ledger.account.GlAccount glAccountId="611" accountName="Mua hàng" glAccountClassEnumId="ACCOUNTS_PAYABLE" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="6"/>
     <mantle.ledger.account.GlAccount glAccountId="6111" accountName="Mua nguyên liệu, vật liệu" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="611"/>
     <mantle.ledger.account.GlAccount glAccountId="6112" accountName="Mua hàng hóa" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="611"/>
+
     <mantle.ledger.account.GlAccount glAccountId="621" accountName="Chi phí nguyên liệu, vật liệu trực tiếp" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="6"/>
+
     <mantle.ledger.account.GlAccount glAccountId="622" accountName="Chi phí nhân công trực tiếp" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="6"/>
+
     <mantle.ledger.account.GlAccount glAccountId="623" accountName="Chi phí sử dụng máy thi công" glAccountClassEnumId="VEHICLE_EXPENSE" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="6"/>
     <mantle.ledger.account.GlAccount glAccountId="6231" accountName="Chi phí nhân công" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="623"/>
     <mantle.ledger.account.GlAccount glAccountId="6232" accountName="Chi phí nguyên, vật liệu" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="623"/>
@@ -418,6 +483,7 @@
     <mantle.ledger.account.GlAccount glAccountId="6234" accountName="Chi phí khấu hao máy thi công" glAccountClassEnumId="DEPRECIATION" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="623"/>
     <mantle.ledger.account.GlAccount glAccountId="6237" accountName="Chi phí dịch vụ mua ngoài" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="623"/>
     <mantle.ledger.account.GlAccount glAccountId="6238" accountName="Chi phí bằng tiền khác" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="623"/>
+
     <mantle.ledger.account.GlAccount glAccountId="627" accountName="Chi phí sản xuất chung" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="6"/>
     <mantle.ledger.account.GlAccount glAccountId="6271" accountName="Chi phí nhân viên phân xưởng" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="627"/>
     <mantle.ledger.account.GlAccount glAccountId="6272" accountName="Chi phí nguyên, vật liệu" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="627"/>
@@ -425,9 +491,13 @@
     <mantle.ledger.account.GlAccount glAccountId="6274" accountName="Chi phí khấu hao TSCĐ" glAccountClassEnumId="DEPRECIATION" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="627"/>
     <mantle.ledger.account.GlAccount glAccountId="6277" accountName="Chi phí dịch vụ mua ngoài" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="627"/>
     <mantle.ledger.account.GlAccount glAccountId="6278" accountName="Chi phí bằng tiền khác" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="627"/>
+
     <mantle.ledger.account.GlAccount glAccountId="631" accountName="Giá thành sản xuất" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="6"/>
+
     <mantle.ledger.account.GlAccount glAccountId="632" accountName="Giá vốn hàng bán" glAccountClassEnumId="COST_OF_SALES" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="6"/>
+
     <mantle.ledger.account.GlAccount glAccountId="635" accountName="Chi phí tài chính" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="6"/>
+
     <mantle.ledger.account.GlAccount glAccountId="641" accountName="Chi phí bán hàng" glAccountClassEnumId="SALES_EXPENSE" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="6"/>
     <mantle.ledger.account.GlAccount glAccountId="6411" accountName="Chi phí nhân viên" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="641"/>
     <mantle.ledger.account.GlAccount glAccountId="6412" accountName="Chi phí nguyên vật liệu, bao bì" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="641"/>
@@ -436,6 +506,7 @@
     <mantle.ledger.account.GlAccount glAccountId="6415" accountName="Chi phí bảo hành" glAccountClassEnumId="INSURANCE_EXPENSE" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="641"/>
     <mantle.ledger.account.GlAccount glAccountId="6417" accountName="Chi phí dịch vụ mua ngoài" glAccountClassEnumId="MISC_EXPENSE" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="641"/>
     <mantle.ledger.account.GlAccount glAccountId="6418" accountName="Chi phí bằng tiền khác" glAccountClassEnumId="MISC_EXPENSE" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="641"/>
+
     <mantle.ledger.account.GlAccount glAccountId="642" accountName="Chi phí quản lý doanh nghiệp" glAccountClassEnumId="GEN_ADMIN_EXPENSE" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="6"/>
     <mantle.ledger.account.GlAccount glAccountId="6421" accountName="Chi phí nhân viên quản lý" glAccountClassEnumId="EXPENSE" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="642"/>
     <mantle.ledger.account.GlAccount glAccountId="6422" accountName="Chi phí vật liệu quản lý" glAccountClassEnumId="OFFICE_EXPENSE" glAccountTypeEnumId="GatExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="642"/>
@@ -449,12 +520,12 @@
     <mantle.ledger.account.GlAccount glAccountId="711" accountName="Thu nhập khác" glAccountClassEnumId="OTHER_REVENUE" glAccountTypeEnumId="GatOtherIncome" glResourceTypeEnumId="GlrtMoney" parentGlAccountId=""/>
 
     <mantle.ledger.account.GlAccount glAccountId="811" accountName="Chi phí khác" glAccountClassEnumId="MISC_EXPENSE" glAccountTypeEnumId="GatOtherExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId=""/>
-    <mantle.ledger.account.GlAccount glAccountId="821" accountName="Chi phí thuế thu nhập doanh nghiệp" glAccountClassEnumId="EXPENSE" glAccountTypeEnumId="GatOtherExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="100000000"/>
+
+    <mantle.ledger.account.GlAccount glAccountId="821" accountName="Chi phí thuế thu nhập doanh nghiệp" glAccountClassEnumId="EXPENSE" glAccountTypeEnumId="GatOtherExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId=""/>
     <mantle.ledger.account.GlAccount glAccountId="8211" accountName="Chi phí thuế TNDN hiện hành" glAccountClassEnumId="EXPENSE" glAccountTypeEnumId="GatOtherExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="821"/>
     <mantle.ledger.account.GlAccount glAccountId="8212" accountName="Chi phí thuế TNDN hoãn lại" glAccountClassEnumId="EXPENSE" glAccountTypeEnumId="GatOtherExpense" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="821"/>
 
     <mantle.ledger.account.GlAccount glAccountId="911" accountName="Xác định kết quả kinh doanh" glAccountClassEnumId="NON_POSTING" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId=""/>
-
 
 
     <mantle.party.Party partyId="TT200Settings" partyTypeEnumId="PtyOrganization"/>
@@ -659,7 +730,7 @@
     <mantle.ledger.account.GlAccountOrganization glAccountId="5117" organizationPartyId="TT200Settings"/>
     <mantle.ledger.account.GlAccountOrganization glAccountId="5118" organizationPartyId="TT200Settings"/>
     <mantle.ledger.account.GlAccountOrganization glAccountId="515" organizationPartyId="TT200Settings"/>
-    <mantle.ledger.account.GlAccountOrganization glAccountId="5158" organizationPartyId="TT200Settings"/>
+    <!--<mantle.ledger.account.GlAccountOrganization glAccountId="5158" organizationPartyId="TT200Settings"/>-->
     <mantle.ledger.account.GlAccountOrganization glAccountId="521" organizationPartyId="TT200Settings"/>
     <mantle.ledger.account.GlAccountOrganization glAccountId="5211" organizationPartyId="TT200Settings"/>
     <mantle.ledger.account.GlAccountOrganization glAccountId="5212" organizationPartyId="TT200Settings"/>
@@ -1040,7 +1111,7 @@
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PINVOICE_ITM_ADJ" glAccountId="" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="CRETURN_ADJ" glAccountId="" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="SRETURN_ADJ" glAccountId="" direction="E" organizationPartyId="TT200Settings"/>
-    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_CASHDISC_ADJ" glAccountId="5158" direction="I" organizationPartyId="TT200Settings"/>
+<!--    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_CASHDISC_ADJ" glAccountId="5158" direction="I" organizationPartyId="TT200Settings"/>-->
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_GRANDOPEN_COST" glAccountId="6418" direction="I" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_GIFTPAPER_COST" glAccountId="632" direction="I" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_RENT_ADDRESS" glAccountId="244" direction="I" organizationPartyId="TT200Settings"/>
@@ -1074,7 +1145,9 @@
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ITM_SCRAP_ITEM" glAccountId="5118" direction="O" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ITM_PROOTHER_ITEM" glAccountId="5118" direction="O" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ITM_FINACT_ITEM" glAccountId="515" direction="O" organizationPartyId="TT200Settings"/>
+<!--
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ITM_INTEREST_ITEM" glAccountId="5151" direction="O" organizationPartyId="TT200Settings"/>
+-->
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ITM_INVDOWN_ADJ" glAccountId="5111" direction="O" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ITM_INVUP_ADJ" glAccountId="5111" direction="O" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_RDD_ADJ" glAccountId="156" direction="I" organizationPartyId="TT200Settings"/>
@@ -1310,21 +1383,21 @@
     <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="111" organizationPartyId="TT200Settings" paymentInstrumentEnumId="PiCod" isPayable="E"/>
 
     <!-- mappings for payments -->
-    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtCustomerRefund"/>
+    <!--<mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtCustomerRefund"/>
 
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtVendorPayment"/>
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtVendorPrepaidPayment"/>
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtCommissionPayment"/>
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtGiftCertificateWithdrawal"/>
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3334" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtSalesTaxPayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3331" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtIncomeTaxPayment"/>-->
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="334" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtPayrollPayment"/>
-    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3335" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtPayrollTaxPayment"/>
-    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3331" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtIncomeTaxPayment"/>
+    <!--<mantle.ledger.config.PaymentTypeGlAccount glAccountId="3335" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtPayrollTaxPayment"/>
 
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="N" organizationPartyId="TT200Settings" paymentTypeEnumId="PtCustomerPayment"/>
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="N" organizationPartyId="TT200Settings" paymentTypeEnumId="PtCustomerDeposit"/>
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="515" isApplied="N" isPayable="N" organizationPartyId="TT200Settings" paymentTypeEnumId="PtInterestReceipt"/>
-    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="N" organizationPartyId="TT200Settings" paymentTypeEnumId="PtGiftCertificateDeposit"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="N" organizationPartyId="TT200Settings" paymentTypeEnumId="PtGiftCertificateDeposit"/>-->
 
 
 <!--    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="1388" isApplied="E" isPayable="N" organizationPartyId="ORG_COMPANY_CORP" paymentTypeEnumId="PtPromotionPrepaidPayment"/>-->
