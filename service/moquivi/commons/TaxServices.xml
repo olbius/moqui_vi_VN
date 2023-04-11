@@ -120,5 +120,210 @@ along with this software (see the LICENSE.md file). If not, see
             </if>
         </actions>
     </service>
+
+
+    <!--For Purchase-->
+    <service verb="calculate" noun="PurchaseTax" type="interface">
+        <!-- Interface for services to implement: mantle.other.TaxServices.calculate#SalesTax -->
+        <in-parameters>
+            <parameter name="referenceId"><description>This is the orderId:orderPartSeqId or invoiceId, if available.</description></parameter>
+            <parameter name="saveResults" type="Boolean"><description>If the tax service supports saving calculated
+                taxes for reporting and filing with authorities set this flag when you want the results saved (this is
+                usually done for invoices but not orders).</description></parameter>
+            <parameter name="taxGatewayConfigId"/>
+            <parameter name="customerPartyId"/>
+            <parameter name="vendorPartyId"/>
+            <parameter name="organizationPartyId"/>
+            <parameter name="originAddressContactMechId"/>
+            <parameter name="destinationAddressContactMechId"/>
+            <parameter name="items" type="List"><parameter name="itemEntry" type="Map">
+                <parameter name="itemId"/>
+                <parameter name="itemTypeEnumId"/>
+                <parameter name="quantity" type="BigDecimal"/>
+                <parameter name="unitAmount" type="BigDecimal"/>
+                <parameter name="unitAmountLessDiscounts" type="BigDecimal"/>
+                <parameter name="itemTotal" type="BigDecimal"/>
+                <parameter name="discountTotal" type="BigDecimal"/>
+                <parameter name="productId"/>
+                <parameter name="taxCode"/>
+                <!-- discounts will be another item of type ItemDiscount, so don't do this for now:
+                <parameter name="discounts" type="List"><parameter name="discountEntry" type="Map">
+                    <parameter name="discountAmount" type="BigDecimal"/>
+                    <parameter name="discountCode"/>
+                </parameter></parameter>
+                -->
+            </parameter></parameter>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="taxResults" type="List"><parameter name="taxResult" type="Map">
+                <parameter name="itemId"/>
+                <parameter name="taxQuantity" type="BigDecimal">
+                    <description>Quantity to apply tax to, defaults to OrderItem.quantity</description></parameter>
+                <parameter name="taxAmount" type="BigDecimal">
+                    <description>Tax amount per quantity, typically derived from unitAmountLessDiscounts or unitAmount</description></parameter>
+                <parameter name="taxRate" type="BigDecimal"/>
+                <parameter name="taxAuthorityId"/>
+                <parameter name="taxName"/>
+            </parameter></parameter>
+        </out-parameters>
+    </service>
+
+    <!-- ======================== -->
+    <!-- Tax Calculation Services -->
+    <!-- ======================== -->
+
+    <service verb="calculate" noun="OrderPurchaseTax">
+        <in-parameters>
+            <parameter name="orderId" required="true"/>
+            <parameter name="orderPartSeqId"/>
+        </in-parameters>
+        <actions>
+            <entity-find-one entity-name="mantle.order.OrderHeader" value-field="orderHeader"/>
+            <entity-find-one entity-name="mantle.party.PartyRole" value-field="customerOrgRole">
+                <field-map field-name="partyId" from="customerPartyId"/>
+                <field-map field-name="roleTypeId" value="OrgInternal"/>
+            </entity-find-one>
+            <if condition="customerOrgRole == null"><return/></if>
+            <!-- if order part has tax (PITM_SALES_TAX) items clear them out first -->
+            <!--TODO: change delete item type PITM_SALES_TAX by condition parent item is product type -->
+            <entity-delete-by-condition entity-name="mantle.order.OrderItem">
+                <econdition field-name="orderId"/>
+                <econdition field-name="orderPartSeqId" ignore-if-empty="true"/>
+                <econdition field-name="itemTypeEnumId" operator="in" value="PITM_SALES_TAX,ItemSalesTax,ItemVatTax"/>
+            </entity-delete-by-condition>
+
+            <!-- build the parameters for the calculate#PurchaseTax interface -->
+            <set field="saveResults" from="false"/><!-- don't save result for order, only for invoice -->
+
+            <!-- loop through the OrderParts, or only single OrderPart if orderPartSeqId is specified -->
+            <entity-find entity-name="mantle.order.OrderPart" list="orderPartList">
+                <econdition field-name="orderId"/><econdition field-name="orderPartSeqId" ignore-if-empty="true"/>
+            </entity-find>
+
+            <iterate list="orderPartList" entry="orderPart">
+                <entity-find entity-name="mantle.facility.FacilityContactMech" list="fromFcmList" cache="true">
+                    <date-filter/>
+                    <econdition field-name="facilityId" from="orderPart.facilityId"/>
+                    <econdition field-name="contactMechPurposeId" value="PostalShippingOrigin"/>
+                </entity-find>
+                <set field="fromFcm" from="fromFcmList?.first"/>
+
+                <set field="referenceId" value="${orderId}:${orderPart.orderPartSeqId}"/>
+                <set field="customerPartyId" from="orderPart.customerPartyId"/>
+                <set field="vendorPartyId" from="orderPart.vendorPartyId"/>
+                <set field="organizationPartyId" from="ec.user.context?.activeOrgId"/>
+                <set field="originAddressContactMechId" from="fromFcm?.contactMechId"/>
+                <set field="destinationAddressContactMechId" from="orderPart.postalContactMechId"/>
+
+                <entity-find entity-name="mantle.order.OrderItem" list="orderItemList">
+                    <econdition field-name="orderId"/><econdition field-name="orderPartSeqId" from="orderPart.orderPartSeqId"/>
+                </entity-find>
+                <set field="items" from="[]"/>
+                <iterate list="orderItemList" entry="orderItem">
+                    <set field="combinedQuantity" from="(orderItem.quantity != null ? orderItem.quantity : 1.0) * (orderItem.selectedAmount ?: 1.0)"/>
+                    <if condition="combinedQuantity == 0.0"><continue/></if>
+
+                    <set field="product" from="orderItem.'mantle.product.Product'"/>
+                    <if condition="!product?.taxable || product?.taxable == 'Y'">
+                        <!-- NOTE: CurrencyRoundingMarker scale here may vary by currency, make configurable -->
+                        <set field="itemTotal" from="(combinedQuantity * (orderItem.unitAmount ?: 0.0)).setScale(2, BigDecimal.ROUND_HALF_UP)"/>
+
+                        <set field="discountTotal" from="0.0"/>
+                        <iterate list="orderItemList" entry="discountItem">
+                            <if condition="discountItem.itemTypeEnumId == 'ItemDiscount' &amp;&amp;
+                                    discountItem.parentItemSeqId == orderItem.orderItemSeqId &amp;&amp; discountItem.unitAmount">
+                                <set field="discountTotal" from="discountTotal + ((discountItem.quantity != null ? discountItem.quantity : 1.0) * discountItem.unitAmount)"/>
+                            </if>
+                        </iterate>
+
+                        <set field="unitAmountLessDiscounts" from="((itemTotal + discountTotal) as BigDecimal).divide(combinedQuantity as BigDecimal, 3, BigDecimal.ROUND_HALF_UP)"/>
+                        <script>items.add([itemId:orderItem.orderItemSeqId, itemTypeEnumId:orderItem.itemTypeEnumId,
+                            quantity:orderItem.quantity, unitAmount:orderItem.unitAmount, unitAmountLessDiscounts:unitAmountLessDiscounts,
+                            itemTotal:itemTotal, discountTotal:discountTotal,
+                            productId:orderItem.productId, taxCode:product?.taxCode])</script>
+                    </if>
+                </iterate>
+
+                <!-- call gateway (could be local) service to calculate shipping charges -->
+                <!--<service-call name="${taxGatewayConfig.calculateServiceName}" in-map="context" out-map="context"/>-->
+                <service-call name="moquivi.commons.TaxServices.calculate#OrderPurchaseTaxLocal" in-map="context" out-map="context"/>
+
+                <!-- add tax child OrderItems to db -->
+                <iterate list="taxResults" entry="taxResult">
+                    <if condition="taxResult.taxAmount == null">
+                        <log level="warn" message="In calculate#OrderPurchaseTax: taxAmount is null, skipping"/>
+                        <continue/>
+                    </if>
+                    <set field="orderItem" from="orderItemList.find({ it.orderItemSeqId == taxResult.itemId })"/>
+                    <if condition="orderItem == null">
+                        <log level="warn" message="In calculate#OrderPurchaseTax got back entry with invalid orderItemSeqId ${taxResult.itemId} for order ${orderId}, skipping"/>
+                        <continue/>
+                    </if>
+                    <set field="taxAmount" from="(taxResult.taxAmount as BigDecimal).setScale(3, BigDecimal.ROUND_HALF_UP)"/>
+                    <entity-find-one entity-name="mantle.other.tax.TaxAuthority" value-field="taxAuthority" cache="true">
+                        <field-map field-name="taxAuthorityId" from="taxResult.taxAuthorityId"/></entity-find-one>
+                    <set field="itemDescription" value="${taxAuthority?.description ? taxAuthority.description + ' ' : ''}${taxResult.taxName?:''}"/>
+                    <service-call name="create#mantle.order.OrderItem" out-map="context"
+                                  in-map="[orderId:orderId, orderPartSeqId:orderPart.orderPartSeqId, parentItemSeqId:taxResult.itemId,
+                                itemTypeEnumId:'PITM_SALES_TAX', quantity:(taxResult.taxQuantity ?: orderItem.quantity),
+                                unitAmount:taxAmount, sourcePercentage:(taxResult.taxRate*100.0),
+                                taxAuthorityId:taxResult.taxAuthorityId, itemDescription:itemDescription]"/>
+                </iterate>
+            </iterate>
+        </actions>
+    </service>
+
+    <!-- ======================= -->
+    <!-- VNM Purchase Tax Gateway -->
+    <!-- ======================= -->
+
+    <service verb="calculate" noun="OrderPurchaseTaxLocal">
+        <implements service="moquivi.commons.TaxServices.calculate#PurchaseTax"/>
+        <in-parameters>
+            <parameter name="orderId" required="true"/>
+            <parameter name="orderPartSeqId"/>
+        </in-parameters>
+        <actions>
+            <entity-find-one entity-name="mantle.party.contact.PostalAddress" value-field="destinationAddress">
+                <field-map field-name="contactMechId" from="destinationAddressContactMechId"/></entity-find-one>
+            <if condition="destinationAddress == null">
+                <log level="warn" message="Destination address of part ${orderPartSeqId} in order ${orderId} is null, use default VNM TAX"/>
+                <!-- <return message="Destination address of part ${orderPartSeqId} in order ${orderId} is null" error="true"/>-->
+            </if>
+            <set field="taxAuthorityId" value="VNM"/>
+            <set field="taxResults" from="[]"/>
+            <iterate list="items" entry="item">
+                <if condition="item.itemTypeEnumId != 'ItemInventory'"><continue/></if>
+                <if condition="item.unitAmount == null"><continue/></if>
+
+                <entity-find entity-name="moquivi.product.ProductAndCate" list="categories">
+                    <date-filter />
+                    <econdition field-name="productId" from="item.productId" />
+                    <econdition field-name="productCategoryTypeEnumId" value="PctTax" />
+                    <order-by field-name="-fromDate"/>
+                </entity-find>
+
+                <if condition="categories.size() > 0">
+                    <set field="taxRate" from="0.0"/>
+                    <set field="category" from="categories.first"/>
+
+                    <entity-find entity-name="moquivi.other.tax.TaxAuthorityRate" list="taxAuthorityRates">
+                        <econdition field-name="productCategoryId" from="category.productCategoryId" />
+                        <date-filter />
+                    </entity-find>
+
+                    <if condition="taxAuthorityRates.size() > 0">
+                        <set field="taxAuthorityRate" from="taxAuthorityRates.first"/>
+                        <set field="taxRate" from="taxAuthorityRate.taxPercentage / 100" />
+                    </if>
+
+                    <set field="taxAmount" from="item.unitAmount.multiply(taxRate).setScale(2, BigDecimal.ROUND_HALF_UP)"/>
+
+                    <script>taxResults.add([itemId:item.itemId, taxAmount:taxAmount, taxRate:taxRate,
+                        taxAuthorityId:taxAuthorityId, taxName:'(' + category.categoryName + ')'])</script>
+                </if>
+            </iterate>
+        </actions>
+    </service>
 </services>
 
