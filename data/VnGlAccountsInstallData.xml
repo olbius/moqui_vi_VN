@@ -850,7 +850,6 @@
     <!--Mapping Invoice Item types and account ids -->
     <moqui.basic.EnumerationType description="Item Type (Order, Return, Invoice)" enumTypeId="ItemType"/>
 
-
     <moqui.basic.Enumeration description="Điều chỉnh hóa đơn" enumId="INVOICE_ADJ" parentEnumId="" enumTypeId="ItemType" />
     <moqui.basic.Enumeration description="Điều chỉnh tiêu đề hóa đơn" enumId="INVOICE_HEAD_ADJ" parentEnumId="INVOICE_ADJ" enumTypeId="ItemType" />
     <moqui.basic.Enumeration description="Điều chỉnh thành phần hóa đơn" enumId="INVOICE_ITM_ADJ" parentEnumId="INVOICE_ADJ" enumTypeId="ItemType" />
@@ -1075,7 +1074,7 @@
     <moqui.basic.Enumeration description="Bảo hiểm thất nghiệp" enumId="PAYROL_DD_MD_WITHOL" parentEnumId="PAYROL_DD_FROM_GROSS"  enumTypeId="ItemType"/>
     <moqui.basic.Enumeration description="Kinh phí công đoàn" enumId="PAYROL_DD_TUN_FEE" parentEnumId="PAYROL_DD_FROM_GROSS"  enumTypeId="ItemType"/>
     <moqui.basic.Enumeration description="Thuế TNCN" enumId="PAYROL_TAX_FEDERAL" parentEnumId="PAYROL_TAXES"  enumTypeId="ItemType"/>
-    <moqui.basic.Enumeration description="Chi phí nhiên liệu ( xang, gas, dầu..)" enumId="PITM_FUEL_COST" parentEnumId="PINVOICE_ITM_ADJ"  enumTypeId="ItemType"/>
+    <moqui.basic.Enumeration description="Chi phí nhiên liệu ( xăng, gas, dầu..)" enumId="PITM_FUEL_COST" parentEnumId="PINVOICE_ITM_ADJ"  enumTypeId="ItemType"/>
     <moqui.basic.Enumeration description="Giá vốn điều chỉnh nhập hàng" enumId="PINV_ADJIMPPO_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
     <moqui.basic.Enumeration description="Thu nhập khác ( bao bì, phế liệu...)" enumId="DIFF_TURNOVER_SALE" parentEnumId="SINVOICE_ITM_ADJ"  enumTypeId="ItemType"/>
     <moqui.basic.Enumeration description="Thu từ hỗ trợ của liên hiệp" enumId="711" parentEnumId="DIFF_TURNOVER_SALE" enumTypeId="ItemType" />
@@ -1098,9 +1097,8 @@
 
     <moqui.basic.Enumeration description="Chi hộ khuyến mại" enumId="PROMOTION_PREPAID" parentEnumId="" enumTypeId="ItemType" />
 
-
     <!-- Mapping Invoice Item Type with glAccountId -->
-    <mantle.ledger.config.ItemTypeGlAccount glAccountId="641" direction="O" itemTypeEnumId="ItemDiscount" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount glAccountId="6418" direction="O" itemTypeEnumId="ItemDiscount" organizationPartyId="TT200Settings"/><!--changed account from 641 to 6418-->
     <mantle.ledger.config.ItemTypeGlAccount glAccountId="711" direction="I" itemTypeEnumId="ItemDiscount" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="INVOICE_ADJ" glAccountId="" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="INVOICE_HEAD_ADJ" glAccountId="" direction="E" organizationPartyId="TT200Settings"/>
@@ -1111,7 +1109,7 @@
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PINVOICE_ITM_ADJ" glAccountId="" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="CRETURN_ADJ" glAccountId="" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="SRETURN_ADJ" glAccountId="" direction="E" organizationPartyId="TT200Settings"/>
-<!--    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_CASHDISC_ADJ" glAccountId="5158" direction="I" organizationPartyId="TT200Settings"/>-->
+    <!--<mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_CASHDISC_ADJ" glAccountId="5158" direction="I" organizationPartyId="TT200Settings"/>-->
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_GRANDOPEN_COST" glAccountId="6418" direction="I" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_GIFTPAPER_COST" glAccountId="632" direction="I" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_RENT_ADDRESS" glAccountId="244" direction="I" organizationPartyId="TT200Settings"/>
@@ -1163,7 +1161,7 @@
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PINV_FXBUILARCH_ITEM" glAccountId="2111" direction="I" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PINV_FXEQIMACH_ITEM" glAccountId="2112" direction="I" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PINV_FXTRANSINS_ITEM" glAccountId="2113" direction="I" organizationPartyId="TT200Settings"/>
-    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL" glAccountId="" direction="E" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL" glAccountId="334" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="INV_CASHDISC_ADJ" glAccountId="635" direction="O" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="INV_FPRODEXT_ITEM" glAccountId="5111" direction="O" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ITM_SALES_SERV_TAX" glAccountId="33311" direction="O" organizationPartyId="TT200Settings"/>
@@ -1320,10 +1318,10 @@
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL_MDSURAN_SALE" glAccountId="6411" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL_UNIFORM_SALE" glAccountId="6411" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL_ADV_PAY" glAccountId="141" direction="E" organizationPartyId="TT200Settings"/>
-    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL_DD_SOC_EMPL" glAccountId="3383" direction="E" organizationPartyId="TT200Settings"/>
+    <!--<mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL_DD_SOC_EMPL" glAccountId="3383" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL_DD_MED_EMPL" glAccountId="3384" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL_DD_MD_WITHOL" glAccountId="3386" direction="E" organizationPartyId="TT200Settings"/>
-    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL_DD_TUN_FEE" glAccountId="3382" direction="E" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL_DD_TUN_FEE" glAccountId="3382" direction="E" organizationPartyId="TT200Settings"/>-->
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PAYROL_TAX_FEDERAL" glAccountId="3335" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_FUEL_COST" glAccountId="6417" direction="I" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PINV_ADJIMPPO_ITEM" glAccountId="632" direction="I" organizationPartyId="TT200Settings"/>
@@ -1342,21 +1340,33 @@
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_STOREUSERBB_COST" glAccountId="6412" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_SUPROCESS_COST" glAccountId="632" direction="E" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_QUIPMPROCESS_COST" glAccountId="632" direction="E" organizationPartyId="TT200Settings"/>
-    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ItemInventory" glAccountId="151" direction="I" organizationPartyId="TT200Settings"/>
+    <!--<mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ItemSalary" glAccountId="334" direction="I" organizationPartyId="TT200Settings"/>-->
+    <!--<mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ItemInventory" glAccountId="151" direction="I" organizationPartyId="TT200Settings"/>-->
 
+    <!--
     <mantle.ledger.config.ItemTypeGlAccount glAccountId="3331" direction="O" itemTypeEnumId="ItemSalesTax" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount glAccountId="1331" direction="I" itemTypeEnumId="ItemSalesTax" organizationPartyId="TT200Settings"/>
+    -->
+    <mantle.ledger.config.ItemTypeGlAccount glAccountId="151" direction="I" itemTypeEnumId="ItemInventory" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount glAccountId="156" direction="O" itemTypeEnumId="ItemInventory" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount glAccountId="5212" direction="I" itemTypeEnumId="ItemProduct" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount glAccountId="5111" direction="O" itemTypeEnumId="ItemProduct" organizationPartyId="TT200Settings"/>
+
+    <mantle.ledger.config.ItemTypeGlAccount glAccountId="3331" direction="E" itemTypeEnumId="ItemSalesTax" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount glAccountId="1331" direction="E" itemTypeEnumId="PITM_SALES_TAX" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount glAccountId="151" direction="I" itemTypeEnumId="ItemShipping" organizationPartyId="TT200Settings"/><!--519100000-->
 
     <!--Chi hộ khuyến mại-->
     <mantle.ledger.config.ItemTypeGlAccount glAccountId="1388" direction="E" itemTypeEnumId="PROMOTION_PREPAID" organizationPartyId="TT200Settings"/>
 
 
-
     <!-- Default mapping between payment types and account ids -->
 
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="111" isApplied="E" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtDisbursement"/><!-- Retained Earnings -->
-    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="113" isApplied="N" isPayable="N" organizationPartyId="TT200Settings" paymentTypeEnumId="PtRefund"/><!-- AR Unapplied -->
-    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="113" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtRefund"/><!-- AP Unapplied -->
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="Y" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtRefund"/><!--  AP (applied)  -->
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtRefund"/><!-- AP Unapplied -->
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="Y" isPayable="N" organizationPartyId="TT200Settings" paymentTypeEnumId="PtRefund"/><!-- AR (applied) -->
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="N" organizationPartyId="TT200Settings" paymentTypeEnumId="PtRefund"/><!-- AR Unapplied -->
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="Y" isPayable="N" organizationPartyId="TT200Settings" paymentTypeEnumId="PtInvoicePayment"/><!-- AR (applied) -->
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="N" organizationPartyId="TT200Settings" paymentTypeEnumId="PtInvoicePayment"/><!-- AR Unapplied -->
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="Y" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtInvoicePayment"/><!-- AP (applied) -->
@@ -1391,7 +1401,7 @@
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtGiftCertificateWithdrawal"/>
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3334" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtSalesTaxPayment"/>
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3331" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtIncomeTaxPayment"/>-->
-    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="334" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtPayrollPayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3341" isApplied="E" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtPayrollPayment"/>
     <!--<mantle.ledger.config.PaymentTypeGlAccount glAccountId="3335" isApplied="N" isPayable="Y" organizationPartyId="TT200Settings" paymentTypeEnumId="PtPayrollTaxPayment"/>
 
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="N" organizationPartyId="TT200Settings" paymentTypeEnumId="PtCustomerPayment"/>
