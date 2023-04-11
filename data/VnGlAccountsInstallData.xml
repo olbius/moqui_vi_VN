@@ -797,7 +797,8 @@
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatCustomerDeposits" glAccountId="331" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatEmployeePayable" glAccountId="334" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatInterestIncomeRec" glAccountId="131" organizationPartyId="TT200Settings"/>
-    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatInventory" glAccountId="1561" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatInventory" glAccountId="156" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatUnreceivedInventory" glAccountId="151" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatRawMatInventory" glAccountId="152" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatPayInventoryTranIn" glAccountId="154" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatRecInventoryTranOut" glAccountId="154" organizationPartyId="TT200Settings"/>
@@ -844,7 +845,6 @@
 
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatCommissionPayable" glAccountId="331" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatIncomeTax" glAccountId="821" organizationPartyId="TT200Settings"/>
-
 
 
     <!--Mapping Invoice Item types and account ids -->
