@@ -179,11 +179,6 @@ along with this software (see the LICENSE.md file). If not, see
         </in-parameters>
         <actions>
             <entity-find-one entity-name="mantle.order.OrderHeader" value-field="orderHeader"/>
-            <entity-find-one entity-name="mantle.party.PartyRole" value-field="customerOrgRole">
-                <field-map field-name="partyId" from="customerPartyId"/>
-                <field-map field-name="roleTypeId" value="OrgInternal"/>
-            </entity-find-one>
-            <if condition="customerOrgRole == null"><return/></if>
             <!-- if order part has tax (PITM_SALES_TAX) items clear them out first -->
             <!--TODO: change delete item type PITM_SALES_TAX by condition parent item is product type -->
             <entity-delete-by-condition entity-name="mantle.order.OrderItem">
@@ -201,6 +196,12 @@ along with this software (see the LICENSE.md file). If not, see
             </entity-find>
 
             <iterate list="orderPartList" entry="orderPart">
+                <entity-find-one entity-name="mantle.party.PartyRole" value-field="customerOrgRole">
+                    <field-map field-name="partyId" from="orderPart?.customerPartyId"/>
+                    <field-map field-name="roleTypeId" value="OrgInternal"/>
+                </entity-find-one>
+                <if condition="customerOrgRole == null"><return/></if>
+
                 <entity-find entity-name="mantle.facility.FacilityContactMech" list="fromFcmList" cache="true">
                     <date-filter/>
                     <econdition field-name="facilityId" from="orderPart.facilityId"/>
@@ -211,7 +212,7 @@ along with this software (see the LICENSE.md file). If not, see
                 <set field="referenceId" value="${orderId}:${orderPart.orderPartSeqId}"/>
                 <set field="customerPartyId" from="orderPart.customerPartyId"/>
                 <set field="vendorPartyId" from="orderPart.vendorPartyId"/>
-                <set field="organizationPartyId" from="ec.user.context?.activeOrgId"/>
+                <set field="organizationPartyId" from="ec.user.context?.activeOrgId ? ec.user.context?.activeOrgId : 'ORG_COMPANY_CORP'"/>
                 <set field="originAddressContactMechId" from="fromFcm?.contactMechId"/>
                 <set field="destinationAddressContactMechId" from="orderPart.postalContactMechId"/>
 

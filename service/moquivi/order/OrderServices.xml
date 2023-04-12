@@ -33,8 +33,9 @@ along with this software (see the LICENSE.md file). If not, see
             <parameter name="eecaOperation"/>
         </in-parameters>
         <actions>
+            <entity-find-one entity-name="mantle.order.OrderPart" value-field="orderPart"/>
             <entity-find-one entity-name="mantle.party.PartyRole" value-field="customerOrgRole">
-                <field-map field-name="partyId" from="customerPartyId"/>
+                <field-map field-name="partyId" from="orderPart?.customerPartyId"/>
                 <field-map field-name="roleTypeId" value="OrgInternal"/>
             </entity-find-one>
             <if condition="customerOrgRole == null"><return/></if>
@@ -115,8 +116,9 @@ along with this software (see the LICENSE.md file). If not, see
             <parameter name="orderHeader" type="EntityValue"/>
         </in-parameters>
         <actions>
+            <entity-find-one entity-name="mantle.order.OrderPart" value-field="orderPart" for-update="true"/>
             <entity-find-one entity-name="mantle.party.PartyRole" value-field="customerOrgRole">
-                <field-map field-name="partyId" from="customerPartyId"/>
+                <field-map field-name="partyId" from="orderPart?.customerPartyId"/>
                 <field-map field-name="roleTypeId" value="OrgInternal"/>
             </entity-find-one>
             <if condition="customerOrgRole == null"><return/></if>
@@ -127,7 +129,6 @@ along with this software (see the LICENSE.md file). If not, see
 
             <if condition="orderHeader == null"><entity-find-one entity-name="mantle.order.OrderHeader" value-field="orderHeader" for-update="true"/></if>
             <!--<if condition="orderHeader.productStoreId">-->
-                <entity-find-one entity-name="mantle.order.OrderPart" value-field="orderPart" for-update="true"/>
                 <set field="noRecalcStatuses" from="['OrderApproved', 'OrderSent', 'OrderCompleted', 'OrderRejected', 'OrderCancelled']"/>
                 <if condition="orderHeader.statusId in noRecalcStatuses">
                     <return type="warning" message="Not updating promotions, shipping, or tax for order ${orderId} in status ${orderHeader.status?.description}"/></if>
