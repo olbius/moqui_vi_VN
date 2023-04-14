@@ -30,7 +30,7 @@ along with this software (see the LICENSE.md file). If not, see
 
     <mantle.other.tax.TaxGatewayConfig taxGatewayConfigId="VNMTAX"
                                        taxGatewayTypeEnumId="TaxGtwyLocal" description="VNM gateway for sales tax calc"
-                                       calculateServiceName="gsources.commons.OrderServices.calculate#OrderSalesTax"/>
+                                       calculateServiceName="moquivi.commons.TaxServices.calculate#OrderSalesTax"/>
 
     <!-- Tax Category -->
     <mantle.product.category.ProductCategory productCategoryId="TAX_VAT_0" pseudo_id="TAX_VAT_0" productCategoryTypeEnumId="PctTax"
