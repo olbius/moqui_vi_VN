@@ -109,4 +109,5 @@
 
     <moqui.basic.LocalizedMessage locale="vi_VN" original="PayrollPayeeInvoiceItemDescription" localized="${payeeAdjustment.description} cho ${partyDetail.lastName?:''} ${partyDetail.?:'firstName'}${partyDetail.organizationName?:''} SSN ${partySsn?.idValue ?: 'N/A '} Tham chiếu ${payeeAdjustment.payeeReference ?: 'N/A'}"/>
 
+    <moqui.basic.LocalizedMessage locale="vi_VN" original="StatusTransitionNameTemplate" localized="${statusTransition.transitionName}${statusTransition.description == statusTransition.transitionName ? '' : ' (' + statusTransition.description + ')'}"/>
 </entity-facade-xml>

@@ -247,6 +247,7 @@
     <mantle.ledger.account.GlAccount glAccountId="138" accountName="Phải thu khác" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="1381" accountName="Tài sản thiếu chờ xử lý" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="138" isDuality="Y"/>
     <mantle.ledger.account.GlAccount glAccountId="1385" accountName="Phải thu về cổ phần hóa" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="138" isDuality="Y"/>
+    <mantle.ledger.account.GlAccount glAccountId="1386" accountName="Cầm cố, thế chấp, ký quỹ, ký cược" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="138" isDuality="Y"/><!--TT133-->
     <mantle.ledger.account.GlAccount glAccountId="1388" accountName="Phải thu khác" glAccountClassEnumId="ACCOUNTS_RECEIVABLE" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="138" isDuality="Y"/>
 
     <mantle.ledger.account.GlAccount glAccountId="141" accountName="Tạm ứng" glAccountClassEnumId="CASH_EQUIVALENT" glAccountTypeEnumId="GatCurrentAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
@@ -303,11 +304,11 @@
     <mantle.ledger.account.GlAccount glAccountId="2136" accountName="Giấy phép và giấy phép nhượng quyền" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="213"/>
     <mantle.ledger.account.GlAccount glAccountId="2138" accountName="TSCĐ vô hình khác" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="213"/>
 
-    <mantle.ledger.account.GlAccount glAccountId="214" accountName="Hao mòn tài sản cố định" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
-    <mantle.ledger.account.GlAccount glAccountId="2141" accountName="Hao mòn TSCĐ hữu hình" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
-    <mantle.ledger.account.GlAccount glAccountId="2142" accountName="Hao mòn TSCĐ thuê tài chính" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
-    <mantle.ledger.account.GlAccount glAccountId="2143" accountName="Hao mòn TSCĐ vô hình" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
-    <mantle.ledger.account.GlAccount glAccountId="2147" accountName="Hao mòn bất động sản đầu tư" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
+    <mantle.ledger.account.GlAccount glAccountId="214" accountName="Hao mòn tài sản cố định" glAccountClassEnumId="ACCUM_DEPRECIATION" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
+    <mantle.ledger.account.GlAccount glAccountId="2141" accountName="Hao mòn TSCĐ hữu hình" glAccountClassEnumId="ACCUM_DEPRECIATION" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
+    <mantle.ledger.account.GlAccount glAccountId="2142" accountName="Hao mòn TSCĐ thuê tài chính" glAccountClassEnumId="ACCUM_DEPRECIATION" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
+    <mantle.ledger.account.GlAccount glAccountId="2143" accountName="Hao mòn TSCĐ vô hình" glAccountClassEnumId="ACCUM_DEPRECIATION" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
+    <mantle.ledger.account.GlAccount glAccountId="2147" accountName="Hao mòn bất động sản đầu tư" glAccountClassEnumId="ACCUM_DEPRECIATION" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="214"/>
 
     <mantle.ledger.account.GlAccount glAccountId="217" accountName="Bất động sản đầu tư" glAccountClassEnumId="LONG_TERM_ASSET" glAccountTypeEnumId="GatFixedAsset" glResourceTypeEnumId="GlrtMoney" parentGlAccountId="1"/>
 
@@ -534,7 +535,7 @@
     <mantle.ledger.transaction.GlJournal glJournalId="TT200SettingsError" glJournalName="TT200 Settings Error Journal"
                                          organizationPartyId="TT200Settings" glJournalTypeEnumId="GLJRNL_ERROR" isPosted="N"/>
     <mantle.ledger.config.PartyAcctgPreference organizationPartyId="TT200Settings" baseCurrencyUomId="VND"
-                                               cogsMethodEnumId="CogsAverageCost" errorGlJournalId="TT200SettingsError"
+                                               cogsMethodEnumId="CogsActualCost" errorGlJournalId="TT200SettingsError"
                                                invoiceIdPrefix="" invoiceSequenceEnumId="InvSqStandard" orderIdPrefix="" orderSequenceEnumId="OrdSqStandard"
                                                fiscalYearStartMonth="1" fiscalYearStartDay="1" hourlyTimePeriodTypeId="PayrollWeek" salaryTimePeriodTypeId="PayrollBiWeek"
                                                taxClassificationEnumId="TxcCCorp" taxFormEnumId="TxfUsIrs1120"
@@ -1460,4 +1461,149 @@
     <!--Chi hộ khuyến mại-->
 <!--    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoicePrepaid" organizationPartyId="ORG_COMPANY_CORP" isPayable="Y" acctgTransTypeEnumId="AttPrepaidInvoice" glAccountId="331"/>-->
 <!--    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoicePrepaid" organizationPartyId="ORG_COMPANY_CORP" isPayable="N" acctgTransTypeEnumId="AttPrepaidInvoice" glAccountId="131"/>-->
+
+    <!--=================================================================================================================================================================-->
+    <!--====================-->
+    <!--====Thông tư 133====-->
+    <!--====================-->
+    <mantle.party.Party partyId="TT133Settings" partyTypeEnumId="PtyOrganization"/>
+    <mantle.party.Organization organizationName="Thông Tư 133 Accounting Settings" partyId="TT133Settings"/>
+
+    <mantle.ledger.transaction.GlJournal glJournalId="TT133SettingsError" glJournalName="TT133 Settings Error Journal"
+                                         organizationPartyId="TT133Settings" glJournalTypeEnumId="GLJRNL_ERROR" isPosted="N"/>
+    <mantle.ledger.config.PartyAcctgPreference organizationPartyId="TT133Settings" baseCurrencyUomId="VND"
+                                               cogsMethodEnumId="CogsActualCost" errorGlJournalId="TT133SettingsError"
+                                               invoiceIdPrefix="" invoiceSequenceEnumId="InvSqStandard" orderIdPrefix="" orderSequenceEnumId="OrdSqStandard"
+                                               fiscalYearStartMonth="1" fiscalYearStartDay="1" hourlyTimePeriodTypeId="PayrollWeek" salaryTimePeriodTypeId="PayrollBiWeek"
+                                               taxClassificationEnumId="TxcCCorp" taxFormEnumId="TxfUsIrs1120"
+                                               employerClassEnumId="EmclsUsIrsRegularOther" payrollTaxFormEnumId="PtxfUsIrs941" settlementTermId="NetLastNext"/>
+
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="111" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1111" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1112" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="112" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1121" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1122" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="121" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="128" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1281" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1288" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="131" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="133" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1331" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1332" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="136" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1361" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1368" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="138" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1381" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1386" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="1388" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="141" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="151" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="152" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="153" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="154" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="155" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="156" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="157" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="211" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2111" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2112" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2113" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="214" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2141" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2142" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2143" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2147" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="217" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="228" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2281" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2288" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="229" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2291" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2292" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2293" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2294" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="241" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2411" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2412" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="2413" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="242" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="331" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="333" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3331" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="33311" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="33312" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3332" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3333" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3334" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3335" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3336" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3337" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3338" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="33381" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="33382" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3339" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="334" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="335" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="336" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3361" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3368" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="338" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3381" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3382" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3383" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3384" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3385" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3386" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3387" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3388" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="341" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3411" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3412" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="352" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3521" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3522" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3524" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="353" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3531" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3532" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3533" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3534" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="356" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3561" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="3562" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="4" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="411" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="4111" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="4112" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="4118" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="413" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="418" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="419" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="421" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="4211" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="4212" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="5" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="511" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="5111" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="5112" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="5113" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="5118" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="515" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="6" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="611" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="631" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="632" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="635" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="642" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="6421" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="6422" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="711" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="811" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="821" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.account.GlAccountOrganization glAccountId="911" organizationPartyId="TT133Settings"/>
 </entity-facade-xml>
