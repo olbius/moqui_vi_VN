@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This software is in the public domain under CC0 1.0 Universal plus a 
+Grant of Patent License.
+
+To the extent possible under law, the author(s) have dedicated all
+copyright and related and neighboring rights to this software to the
+public domain worldwide. This software is distributed without any
+warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication
+along with this software (see the LICENSE.md file). If not, see
+<http://creativecommons.org/publicdomain/zero/1.0/>.
+-->
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+    <!-- ========== Overrides service at mantle-usl/service/mantle/ledger/AssetAutoPostServices.xml ========== -->
+    <!-- ========== Asset Receipt Posting Services ========== -->
+
+    <service verb="post" noun="AssetReceipt">
+        <description>This is for posting Inventory/COGS transaction and runs when assetTypeEnumId == AstTpInventory only.</description>
+        <in-parameters><parameter name="assetReceiptId" required="true"/></in-parameters>
+        <out-parameters><parameter name="acctgTransId"/></out-parameters>
+        <actions>
+            <entity-find-one entity-name="mantle.product.receipt.AssetReceipt" value-field="assetReceipt" for-update="true"/>
+            <if condition="assetReceipt == null"><return error="true" message="Not posting inventory transaction, could not find Asset Receipt with ID ${assetReceiptId}"/></if>
+            <if condition="!assetReceipt.quantityAccepted"><return message="No quantity accepted on receipt, not posting inventory transaction to GL for receipt ${assetReceiptId}"/></if>
+            <set field="asset" from="assetReceipt.'mantle.product.asset.Asset'"/>
+            <set field="organizationPartyId" from="asset.ownerPartyId"/>
+
+            <service-call name="mantle.ledger.LedgerServices.find#PartyAcctgPreference" out-map="papOut"
+                    in-map="[organizationPartyId:organizationPartyId]"/>
+            <set field="partyAcctgPreference" from="papOut.partyAcctgPreference"/>
+            <!-- if no preference we shouldn't post anything -->
+            <if condition="!partyAcctgPreference">
+                <log level="trace" message="Not posting Asset Receipt ${assetReceiptId}, could not find PartyAcctgPreference for Owner Party ${organizationPartyId}"/>
+                <set field="assetReceipt.acctgTransResultEnumId" value="AtrNoAcctgPreference"/>
+                <entity-update value-field="assetReceipt"/>
+                <return/>
+            </if>
+
+            <if condition="asset.acquireCost == null">
+                <log level="warn" message="Not posting Asset Receipt ${assetReceiptId}, Asset ${asset.assetId} has no Acquire Cost"/>
+                <set field="assetReceipt.acctgTransResultEnumId" value="AtrNoAcquireCost"/>
+                <entity-update value-field="assetReceipt"/>
+                <return message="Not posting Asset Receipt ${assetReceiptId}, Asset ${asset.assetId} has no Acquire Cost"/>
+            </if>
+
+            <!-- make sure there is no existing transaction -->
+            <entity-find entity-name="mantle.ledger.transaction.AcctgTrans" list="existingTransList">
+                <econdition field-name="assetReceiptId"/>
+                <econdition field-name="acctgTransTypeEnumId" operator="in" from="['AttInventoryReceipt', 'AttAssetReceipt']"/>
+                <!-- best to leave reversed/reverse tx in place; on a side note to delete them must to reverse before reversed -->
+                <econdition field-name="reversedByAcctgTransId" from="null"/>
+                <econdition field-name="reverseOfAcctgTransId" from="null"/>
+            </entity-find>
+            <if condition="existingTransList">
+                <return message="Asset Receipt ${assetReceiptId} has already been posted in accounting transaction ${existingTransList*.acctgTransId}"/></if>
+
+            <!-- get assetTypeGlAccount -->
+            <service-call name="mantle.ledger.AssetAutoPostServices.get#AssetTypeGlAccount" out-map="context"
+                    in-map="[organizationPartyId:organizationPartyId, assetTypeEnumId:asset.assetTypeEnumId,
+                        classEnumId:asset.classEnumId, assetId:asset.assetId]"/>
+            <!--
+            <log message="======= receipt asset=${asset}"/>
+            <log message="======= receipt assetTypeGlAccount=${assetTypeGlAccount}"/>
+            -->
+
+            <!-- determine the acctgTransTypeEnumId, etc based on assetTypeEnumId; only used if values not set on AssetTypeGlAccount -->
+            <if condition="asset.assetTypeEnumId == 'AstTpInventory'">
+                <then>
+                    <set field="acctgTransTypeEnumId" from="assetTypeGlAccount?.receiptTransTypeEnumId ?: 'AttInventoryReceipt'"/>
+                    <!-- handle WorkEffort (Asset.ownerPartyId (should always) = WorkEffort.ownerPartyId for receipt from run, use WIP account) -->
+                    <set field="receiptGlAccountTypeEnumId" from="assetReceipt.workEffortId ? 'GatWipInventory' : 'GatUnreceivedInventory'"/>
+                    <set field="assetGlAccountTypeEnumId" value="GatInventory"/>
+                </then>
+                <!-- TODO: handle supplies receipt -->
+                <else>
+                    <set field="acctgTransTypeEnumId" from="assetTypeGlAccount?.receiptTransTypeEnumId ?: 'AttAssetReceipt'"/>
+                    <set field="receiptGlAccountTypeEnumId" value="GatUnreceivedFixedAsset"/>
+                    <set field="assetGlAccountTypeEnumId" value="GatFixedAsset"/>
+                    <!-- don't need to do this, is the default anyway:
+                    <entity-find-one entity-name="moqui.basic.Enumeration" value-field="assetTypeEnum">
+                        <field-map field-name="enumId" from="asset.assetTypeEnumId"/></entity-find-one>
+                    <if condition="assetTypeEnum.enumId == 'AstTpFixed' || assetTypeEnum.parentEnumId == 'AstTpFixed'">
+                    </if>
+                    -->
+                </else>
+            </if>
+
+            <!-- determine receiptGlAccountId (credit) -->
+            <set field="receiptGlAccountId" from="assetReceipt.workEffortId ?
+                    assetTypeGlAccount?.wipAssetGlAccountId : assetTypeGlAccount?.receiptGlAccountId"/>
+
+            <!-- special handling for transfer shipments, use transferGlAccountId instead of receiptGlAccountId -->
+            <!--comment by moquivi-->
+            <!--<if condition="assetReceipt.shipmentId &amp;&amp; assetTypeGlAccount?.transferGlAccountId">
+                <entity-find-one entity-name="mantle.shipment.Shipment" value-field="shipment">
+                    <field-map field-name="shipmentId" from="assetReceipt.shipmentId"/></entity-find-one>
+                <if condition="shipment?.shipmentTypeEnumId == 'ShpTpTransfer'">
+                    <set field="receiptGlAccountId" from="assetTypeGlAccount.transferGlAccountId"/></if>
+            </if>-->
+            <!--add by moquivi: special handling-->
+            <if condition="assetReceipt.shipmentId">
+                <entity-find-one entity-name="mantle.shipment.Shipment" value-field="shipment">
+                    <field-map field-name="shipmentId" from="assetReceipt.shipmentId"/></entity-find-one>
+
+                <if condition="['ShpTpTransfer'].contains(shipment?.shipmentTypeEnumId) &amp;&amp; assetTypeGlAccount?.transferGlAccountId">
+                    <then>
+                        <!-- for transfer shipments, use transferGlAccountId instead of receiptGlAccountId -->
+                        <set field="receiptGlAccountId" from="assetTypeGlAccount.transferGlAccountId"/>
+                    </then>
+                    <else-if condition="shipment?.shipmentTypeEnumId == 'ShpTpSalesReturn'">
+                        <!-- for sales return shipments, use issuanceGlAccountId instead of receiptGlAccountId
+                        <set field="receiptGlAccountId" from="assetTypeGlAccount.issuanceGlAccountId"/>-->
+                        <!--Use GlAccountTypeEnumId has value GatCogs instead GatUnreceivedInventory because ShpTpSalesReturn will be the opposite ShpTpSales-->
+                        <set field="receiptGlAccountTypeEnumId" value="GatCogs"/>
+                    </else-if>
+                </if>
+            </if>
+
+            <!-- if not specifically configured look for a default account -->
+            <if condition="!receiptGlAccountId">
+                <service-call name="mantle.ledger.LedgerServices.get#DefaultGlAccountByType" out-map="creditGlAccountOut"
+                        in-map="[glAccountTypeEnumId:receiptGlAccountTypeEnumId, acctgTransTypeEnumId:acctgTransTypeEnumId,
+                            organizationPartyId:organizationPartyId, otherPartyId:null]"/>
+                <set field="receiptGlAccountId" from="creditGlAccountOut.glAccountId"/>
+            </if>
+            <if condition="receiptGlAccountId">
+                <entity-find-one entity-name="mantle.ledger.account.GlAccount" value-field="receiptGlAccount" cache="true">
+                    <field-map field-name="glAccountId" from="receiptGlAccountId"/></entity-find-one>
+                <set field="receiptGlAccountTypeEnumId" from="receiptGlAccount?.glAccountTypeEnumId"/>
+            </if>
+
+            <!-- determine assetGlAccountId (debit) -->
+            <set field="assetGlAccountId" from="assetTypeGlAccount?.assetGlAccountId"/>
+            <if condition="!assetGlAccountId">
+                <service-call name="mantle.ledger.LedgerServices.get#DefaultGlAccountByType" out-map="assetGlAccountOut"
+                        in-map="[glAccountTypeEnumId:assetGlAccountTypeEnumId, acctgTransTypeEnumId:acctgTransTypeEnumId,
+                            organizationPartyId:organizationPartyId, otherPartyId:null]"/>
+                <set field="assetGlAccountId" from="assetGlAccountOut.glAccountId"/>
+            </if>
+            <if condition="assetGlAccountId">
+                <entity-find-one entity-name="mantle.ledger.account.GlAccount" value-field="assetGlAccount" cache="true">
+                    <field-map field-name="glAccountId" from="assetGlAccountId"/></entity-find-one>
+                <set field="assetGlAccountTypeEnumId" from="assetGlAccount?.glAccountTypeEnumId"/>
+            </if>
+
+            <!-- set the amount -->
+            <set field="amount" from="assetReceipt.quantityAccepted * asset.acquireCost"/>
+
+            <!-- create the AcctgTrans -->
+            <set field="useErrorJournal" from="false"/>
+            <set field="otherPartyId" from="null"/>
+            <if condition="assetReceipt.shipmentId">
+                <entity-find-one entity-name="mantle.shipment.Shipment" value-field="shipment">
+                    <field-map field-name="shipmentId" from="assetReceipt.shipmentId"/></entity-find-one>
+                <set field="otherPartyId" from="shipment?.fromPartyId"/>
+            </if>
+            <service-call name="mantle.ledger.LedgerServices.create#AcctgTrans" out-map="context"
+                    in-map="[acctgTransTypeEnumId:acctgTransTypeEnumId, organizationPartyId:organizationPartyId,
+                        otherPartyId:otherPartyId, amountUomId:asset.acquireCostUomId, assetReceiptId:assetReceiptId,
+                        assetId:asset.assetId, shipmentId:assetReceipt.shipmentId, transactionDate:assetReceipt.receivedDate]"/>
+            <!-- note: could populate invoiceId, etc... but should we? for now no -->
+
+            <!-- Credit to GatUnreceivedInventory or GatUnreceivedFixedAsset (look for assetTypeEnumId=AstTpFixed or parentEnumId=AstTpFixed) -->
+            <if condition="!receiptGlAccountId"><set field="useErrorJournal" from="true"/></if>
+            <service-call name="mantle.ledger.LedgerServices.create#AcctgTransEntry"
+                    in-map="[acctgTransId:acctgTransId, debitCreditFlag:'C', glAccountTypeEnumId:receiptGlAccountTypeEnumId,
+                        glAccountId:receiptGlAccountId, amount:amount, productId:asset.productId, assetId:asset.assetId]"/>
+
+            <!-- Debit to GatInventory or GatFixedAsset -->
+            <if condition="!assetGlAccountId"><set field="useErrorJournal" from="true"/></if>
+            <service-call name="mantle.ledger.LedgerServices.create#AcctgTransEntry"
+                    in-map="[acctgTransId:acctgTransId, debitCreditFlag:'D', glAccountTypeEnumId:assetGlAccountTypeEnumId,
+                        glAccountId:assetGlAccountId, amount:amount, productId:asset.productId, assetId:asset.assetId]"/>
+
+            <if condition="useErrorJournal"><then>
+                <!-- put in the error journal for the org -->
+                <if condition="partyAcctgPreference?.errorGlJournalId">
+                    <service-call name="update#mantle.ledger.transaction.AcctgTrans"
+                            in-map="[acctgTransId:acctgTransId, glJournalId:partyAcctgPreference.errorGlJournalId]"/>
+                </if>
+            </then><else>
+                <!-- call the post service -->
+                <service-call name="mantle.ledger.LedgerServices.post#AcctgTrans" in-map="[acctgTransId:acctgTransId]"/>
+            </else></if>
+
+            <!-- set acctg trans result to Success -->
+            <set field="assetReceipt.acctgTransResultEnumId" value="AtrSuccess"/>
+            <entity-update value-field="assetReceipt"/>
+        </actions>
+    </service>
+
+    <!-- ========== Asset Issuance and Issuance Posting Services ========== -->
+
+    <service verb="post" noun="AssetIssuance">
+        <in-parameters><parameter name="assetIssuanceId" required="true"/></in-parameters>
+        <out-parameters><parameter name="acctgTransId"/></out-parameters>
+        <actions>
+            <entity-find-one entity-name="mantle.product.issuance.AssetIssuance" value-field="assetIssuance" for-update="true"/>
+            <if condition="assetIssuance == null"><return error="true" message="Not posting inventory transaction, could not find Asset Issuance with ID ${assetIssuanceId}"/></if>
+            <if condition="!assetIssuance.quantity"><return message="No quantity issued, not posting inventory transaction to GL for issuance ${assetIssuanceId}"/></if>
+
+            <set field="asset" from="assetIssuance.'mantle.product.asset.Asset'"/>
+            <set field="organizationPartyId" from="asset.ownerPartyId"/>
+
+            <service-call name="mantle.ledger.LedgerServices.find#PartyAcctgPreference" out-map="papOut"
+                    in-map="[organizationPartyId:organizationPartyId]"/>
+            <set field="partyAcctgPreference" from="papOut.partyAcctgPreference"/>
+            <!-- if no preference we shouldn't post anything -->
+            <if condition="!partyAcctgPreference">
+                <log level="trace" message="Not posting Asset Issuance ${assetIssuanceId}, could not find PartyAcctgPreference for Owner Party ${organizationPartyId}"/>
+                <set field="assetIssuance.acctgTransResultEnumId" value="AtrNoAcctgPreference"/>
+                <entity-update value-field="assetIssuance"/>
+                <return/>
+            </if>
+            <!-- check acquireCost -->
+            <if condition="asset.acquireCost == null || asset.acquireCost == 0.0">
+                <set field="assetIssuance.acctgTransResultEnumId" value="AtrNoAcquireCost"/>
+                <entity-update value-field="assetIssuance"/>
+                <return message="Not posting Asset Issuance ${assetIssuanceId}, Asset ${asset.assetId} has no Acquire Cost"/>
+            </if>
+
+            <!-- make sure there is no existing transaction -->
+            <entity-find entity-name="mantle.ledger.transaction.AcctgTrans" list="existingTransList">
+                <econdition field-name="assetIssuanceId"/>
+                <econdition field-name="acctgTransTypeEnumId" operator="in" from="['AttInventoryIssuance', 'AttAssetIssuance']"/>
+                <!-- best to leave reversed/reverse tx in place; on a side note to delete them must to reverse before reversed -->
+                <econdition field-name="reversedByAcctgTransId" from="null"/>
+                <econdition field-name="reverseOfAcctgTransId" from="null"/>
+            </entity-find>
+            <if condition="existingTransList">
+                <return message="Asset Issuance ${assetIssuanceId} has already been posted in accounting transaction ${existingTransList*.acctgTransId}"/></if>
+
+            <!-- get assetTypeGlAccount -->
+            <service-call name="mantle.ledger.AssetAutoPostServices.get#AssetTypeGlAccount" out-map="context"
+                    in-map="[organizationPartyId:organizationPartyId, assetTypeEnumId:asset.assetTypeEnumId,
+                        classEnumId:asset.classEnumId, assetId:asset.assetId]"/>
+            <!--
+            <log message="======= issuance asset=${asset}"/>
+            <log message="======= issuance assetTypeGlAccount=${assetTypeGlAccount}"/>
+            -->
+
+            <if condition="assetIssuance.workEffortId">
+                <entity-find-one entity-name="mantle.work.effort.WorkEffort" value-field="workEffort">
+                    <field-map field-name="workEffortId" from="assetIssuance.workEffortId"/></entity-find-one>
+            </if>
+
+            <!-- determine the acctgTransTypeEnumId, etc based on assetTypeEnumId; only used if values not set on AssetTypeGlAccount -->
+            <if condition="asset.assetTypeEnumId == 'AstTpInventory'">
+                <then>
+                    <set field="acctgTransTypeEnumId" from="assetTypeGlAccount?.issuanceTransTypeEnumId ?: 'AttInventoryIssuance'"/>
+                    <!-- handle WorkEffort with Asset.ownerPartyId = WorkEffort.ownerPartyId use WIP account, different parties treat as COGS -->
+                    <set field="issuanceGlAccountTypeEnumId" from="workEffort?.ownerPartyId == asset.ownerPartyId ? 'GatWipInventory' : 'GatCogs'"/>
+                    <set field="assetGlAccountTypeEnumId" value="GatInventory"/>
+                </then>
+                <!-- TODO: handle supplies issuance -->
+                <else>
+                    <set field="acctgTransTypeEnumId" from="assetTypeGlAccount?.issuanceTransTypeEnumId ?: 'AttAssetIssuance'"/>
+                    <set field="issuanceGlAccountTypeEnumId" value="GatUnissuedFixedAsset"/>
+                    <set field="assetGlAccountTypeEnumId" value="GatFixedAsset"/>
+                    <!-- don't need to do this, is the default anyway:
+                    <entity-find-one entity-name="moqui.basic.Enumeration" value-field="assetTypeEnum">
+                        <field-map field-name="enumId" from="asset.assetTypeEnumId"/></entity-find-one>
+                    <if condition="assetTypeEnum.enumId == 'AstTpFixed' || assetTypeEnum.parentEnumId == 'AstTpFixed'">
+                    </if>
+                    -->
+                </else>
+            </if>
+
+            <!-- determine assetGlAccountId (credit) -->
+            <set field="assetGlAccountId" from="assetTypeGlAccount?.assetGlAccountId"/>
+            <if condition="!assetGlAccountId">
+                <service-call name="mantle.ledger.LedgerServices.get#DefaultGlAccountByType" out-map="assetGlAccountOut"
+                        in-map="[glAccountTypeEnumId:assetGlAccountTypeEnumId, acctgTransTypeEnumId:acctgTransTypeEnumId,
+                            organizationPartyId:organizationPartyId, otherPartyId:null]"/>
+                <set field="assetGlAccountId" from="assetGlAccountOut.glAccountId"/>
+            </if>
+            <if condition="assetGlAccountId">
+                <entity-find-one entity-name="mantle.ledger.account.GlAccount" value-field="assetGlAccount" cache="true">
+                    <field-map field-name="glAccountId" from="assetGlAccountId"/></entity-find-one>
+                <set field="assetGlAccountTypeEnumId" from="assetGlAccount?.glAccountTypeEnumId"/>
+            </if>
+
+            <!-- determine issuanceGlAccountId (debit) -->
+            <set field="issuanceGlAccountId" from="workEffort?.ownerPartyId == asset.ownerPartyId ?
+                    assetTypeGlAccount?.wipAssetGlAccountId : assetTypeGlAccount?.issuanceGlAccountId"/>
+
+            <!-- special handling for transfer shipments, use transferGlAccountId instead of issuanceGlAccountId -->
+            <!--comment by moquivi-->
+            <!--<if condition="assetIssuance.shipmentId &amp;&amp; assetTypeGlAccount?.transferGlAccountId">
+                <entity-find-one entity-name="mantle.shipment.Shipment" value-field="shipment">
+                    <field-map field-name="shipmentId" from="assetIssuance.shipmentId"/></entity-find-one>
+                <if condition="shipment?.shipmentTypeEnumId == 'ShpTpTransfer'">
+                    <set field="issuanceGlAccountId" from="assetTypeGlAccount.transferGlAccountId"/></if>
+            </if>-->
+
+            <!--add by moquivi: special handling-->
+            <if condition="assetIssuance.shipmentId">
+                <entity-find-one entity-name="mantle.shipment.Shipment" value-field="shipment">
+                    <field-map field-name="shipmentId" from="assetIssuance.shipmentId"/></entity-find-one>
+
+                <if condition="['ShpTpTransfer'].contains(shipment?.shipmentTypeEnumId) &amp;&amp; assetTypeGlAccount?.transferGlAccountId">
+                    <then>
+                        <!-- for transfer shipments, use transferGlAccountId instead of issuanceGlAccountId -->
+                        <set field="issuanceGlAccountId" from="assetTypeGlAccount.transferGlAccountId"/>
+                    </then>
+                    <else-if condition="shipment?.shipmentTypeEnumId == 'ShpTpPurchaseReturn'">
+                        <log message="In purchase return: Not posting Asset Issuance ${assetIssuanceId}"/>
+                        <return message="In purchase return: Not posting Asset Issuance ${assetIssuanceId}"/>
+                        <!-- for purchase return shipments, use receiptGlAccountId instead of issuanceGlAccountId
+                        <set field="issuanceGlAccountId" from="assetTypeGlAccount.receiptGlAccountId"/> -->
+                        <!--Use GlAccountTypeEnumId has value GatUnreceivedInventory instead GatCogs because ShpTpPurchaseReturn will be the opposite ShpTpPurchase-->
+                        <!--<set field="issuanceGlAccountTypeEnumId" value="GatUnreceivedInventory"/>-->
+                    </else-if>
+                </if>
+            </if>
+
+            <!-- if not specifically configured look for a default account -->
+            <if condition="!issuanceGlAccountId">
+                <service-call name="mantle.ledger.LedgerServices.get#DefaultGlAccountByType" out-map="issuanceGlAccountOut"
+                        in-map="[glAccountTypeEnumId:issuanceGlAccountTypeEnumId, acctgTransTypeEnumId:acctgTransTypeEnumId,
+                            organizationPartyId:organizationPartyId, otherPartyId:null]"/>
+                <set field="issuanceGlAccountId" from="issuanceGlAccountOut.glAccountId"/>
+            </if>
+            <if condition="issuanceGlAccountId">
+                <entity-find-one entity-name="mantle.ledger.account.GlAccount" value-field="issuanceGlAccount" cache="true">
+                    <field-map field-name="glAccountId" from="issuanceGlAccountId"/></entity-find-one>
+                <set field="issuanceGlAccountTypeEnumId" from="issuanceGlAccount?.glAccountTypeEnumId"/>
+            </if>
+
+            <!-- set the amount -->
+            <set field="amount" from="assetIssuance.quantity * asset.acquireCost"/>
+
+            <!-- create the AcctgTrans -->
+            <service-call name="mantle.ledger.LedgerServices.create#AcctgTrans" out-map="context"
+                    in-map="[acctgTransTypeEnumId:acctgTransTypeEnumId, organizationPartyId:organizationPartyId,
+                        otherPartyId:null, amountUomId:asset.acquireCostUomId, assetIssuanceId:assetIssuanceId,
+                        assetId:asset.assetId, shipmentId:assetIssuance.shipmentId, transactionDate:assetIssuance.issuedDate]"/>
+            <!-- note: could populate invoiceId, etc... but should we? for now no -->
+
+            <set field="useErrorJournal" from="false"/>
+            <!-- Credit to assetGlAccountId (GatInventory, GatFixedAsset, etc) -->
+            <if condition="!assetGlAccountId"><set field="useErrorJournal" from="true"/></if>
+            <service-call name="mantle.ledger.LedgerServices.create#AcctgTransEntry"
+                    in-map="[acctgTransId:acctgTransId, debitCreditFlag:'C', glAccountTypeEnumId:assetGlAccountTypeEnumId,
+                        glAccountId:assetGlAccountId, amount:amount, productId:asset.productId, assetId:asset.assetId]"/>
+            <!-- Debit to issuanceGlAccountId (GatCogs, GatUnissuedFixedAsset, etc) -->
+            <if condition="!issuanceGlAccountId"><set field="useErrorJournal" from="true"/></if>
+            <service-call name="mantle.ledger.LedgerServices.create#AcctgTransEntry"
+                    in-map="[acctgTransId:acctgTransId, debitCreditFlag:'D', glAccountTypeEnumId:issuanceGlAccountTypeEnumId,
+                        glAccountId:issuanceGlAccountId, amount:amount, productId:asset.productId, assetId:asset.assetId]"/>
+
+            <if condition="useErrorJournal"><then>
+                <!-- put in the error journal for the org -->
+                <if condition="partyAcctgPreference?.errorGlJournalId">
+                    <service-call name="update#mantle.ledger.transaction.AcctgTrans"
+                            in-map="[acctgTransId:acctgTransId, glJournalId:partyAcctgPreference.errorGlJournalId]"/>
+                </if>
+            </then><else>
+                <!-- call the post service -->
+                <service-call name="mantle.ledger.LedgerServices.post#AcctgTrans" in-map="[acctgTransId:acctgTransId]"/>
+            </else></if>
+
+            <!-- set acctg trans result to Success -->
+            <set field="assetIssuance.acctgTransResultEnumId" value="AtrSuccess"/>
+            <entity-update value-field="assetIssuance"/>
+        </actions>
+    </service>
+</services>
