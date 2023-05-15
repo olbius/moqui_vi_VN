@@ -61,4 +61,16 @@
     <mantle.party.PartyRole partyId="ORG_COMPANY_CORP" roleTypeId="OrgInternal"/>
     <mantle.party.PartyContent partyContentId="COMPANY_LOGO" partyId="ORG_COMPANY_CORP" partyContentTypeEnumId="PcntLogoImage"
             contentLocation="component://SimpleScreens/screen/ssstatic/images/Return.png"/>
+
+    <!-- Admin -->
+    <mantle.party.Party partyId="admin" pseudoId="admin" partyTypeEnumId="PtyPerson" ownerPartyId="_NA_">
+        <person firstName="Admin" lastName="Admin"/>
+    </mantle.party.Party>
+    <!--  password : admin@123  -->
+    <moqui.security.UserAccount userId="admin" username="admin" userFullName="Admin Admin" currentPassword="2aaec8ea966b76e7cce726f16a7276367cc58921165b9c5779054db3d634e9e4"
+                                passwordSalt="2NAlvS59" passwordHashType="SHA-256" passwordBase64="N" disabled="N" requirePasswordChange="N"
+                                currencyUomId="VND" emailAddress="admin@olbius.com" partyId="admin"/>
+
+    <moqui.security.UserGroupMember userGroupId="ADMIN" userId="admin" fromDate="1265184000000"/>
+    <moqui.security.UserGroupMember userGroupId="ADMIN_ADV" userId="admin" fromDate="1265184000000"/>
 </entity-facade-xml>
