@@ -100,6 +100,13 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceCreditMemo" locale="vi_VN" localized="Hóa đơn ghi nhớ tín dụng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceTemplate" locale="vi_VN" localized="Hóa đơn mẫu"/>
 
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoicePayrollTax" locale="vi_VN" localized="Hóa đơn thuế TNCN"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceIncomeTax" locale="vi_VN" localized="Hóa đơn thuế TNDN"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceOtherTax" locale="vi_VN" localized="Hóa đơn các loại thuế khác"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceLaborUnionFee" locale="vi_VN" localized="Hóa đơn KPCĐ"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceSocialInsurance" locale="vi_VN" localized="Hóa đơn BHXH"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceHealthInsurance" locale="vi_VN" localized="Hóa đơn BHYT"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceUnemploymentInsurance" locale="vi_VN" localized="Hóa đơn BHTN"/>
 
     <!-- ========== Invoice Status ========== -->
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusType" fieldName="description" pkValue="Invoice" locale="vi_VN" localized="Trạng thái hóa đơn"/>

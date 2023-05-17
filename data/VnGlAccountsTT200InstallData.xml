@@ -1273,4 +1273,6 @@
             <!--Chi hộ khuyến mại-->
             <!--    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoicePrepaid" organizationPartyId="ORG_COMPANY_CORP" isPayable="Y" acctgTransTypeEnumId="AttPrepaidInvoice" glAccountId="331"/>-->
             <!--    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoicePrepaid" organizationPartyId="ORG_COMPANY_CORP" isPayable="N" acctgTransTypeEnumId="AttPrepaidInvoice" glAccountId="131"/>-->
+    <mantle.ledger.LedgerServices.initPartyAccountingConfiguration sourcePartyId="TT200Settings"
+                                                                   organizationPartyId="ORG_COMPANY_CORP" realTimeGlSummary="Y"/>
 </entity-facade-xml>
