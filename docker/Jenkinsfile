@@ -34,7 +34,6 @@ pipeline {
           dir('moqui') {
             withDockerContainer("openjdk:11-jdk") {
                 sh "./gradlew clean build"
-                sh "./gradlew load -Ptypes=seed,seed-initial,seed-initial-200,install"
             }
           }
 
