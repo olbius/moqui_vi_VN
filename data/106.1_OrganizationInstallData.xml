@@ -68,7 +68,7 @@
     </mantle.party.Party>
     <!--  password : admin@123  -->
     <moqui.security.UserAccount userId="admin" username="admin" userFullName="Admin Admin" currentPassword="2aaec8ea966b76e7cce726f16a7276367cc58921165b9c5779054db3d634e9e4"
-                                passwordSalt="2NAlvS59" passwordHashType="SHA-256" passwordBase64="N" disabled="N" requirePasswordChange="N"
+                                passwordSalt="2NAlvS59" passwordHashType="SHA-256" passwordBase64="N" disabled="N" requirePasswordChange="N" locale="vi_VN"
                                 currencyUomId="VND" emailAddress="admin@olbius.com" partyId="admin"/>
 
     <moqui.security.UserGroupMember userGroupId="ADMIN" userId="admin" fromDate="1265184000000"/>
