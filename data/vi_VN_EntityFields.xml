@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-facade-xml type="seed">
-
+    <moqui.basic.LocalizedEntityField entityName="moqui.security.UserGroup" fieldName="description" pkValue="POP_COMMERCE_ADMIN" locale="vi_VN" localized="POPC Quản trị viên ERP"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.security.UserGroup" fieldName="description" pkValue="PopcAdminAccounting" locale="vi_VN" localized="POPC Kế toán"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.security.UserGroup" fieldName="description" pkValue="PopcAdminCatalogContent" locale="vi_VN" localized="POPC Danh mục và nội dung"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.security.UserGroup" fieldName="description" pkValue="PopcAdminPurchasing" locale="vi_VN" localized="POPC Mua hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.security.UserGroup" fieldName="description" pkValue="PopcAdminPurchasingSup" locale="vi_VN" localized="POPC Giám sát mua hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.security.UserGroup" fieldName="description" pkValue="PopcAdminSales" locale="vi_VN" localized="POPC Bán hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.security.UserGroup" fieldName="description" pkValue="PopcAdminSalesSup" locale="vi_VN" localized="POPC Giám sát bán hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.security.UserGroup" fieldName="description" pkValue="PopcAdminWarehouse" locale="vi_VN" localized="POPC Kho"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.security.UserGroup" fieldName="description" pkValue="PopcWhClericalLtd" locale="vi_VN" localized="POPC Nhân viên kho - Org Ltd"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.security.UserGroup" fieldName="description" pkValue="PopcWhGeneralLtd" locale="vi_VN" localized="POPC Tổng kho - Org Ltd"/>
 
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="MarsSingle" locale="vi_VN" localized="Độc thân"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="MarsMarried" locale="vi_VN" localized="Đã kết hôn"/>

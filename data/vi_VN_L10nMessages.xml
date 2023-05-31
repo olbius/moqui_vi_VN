@@ -1,5 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-facade-xml type="seed">
+    <moqui.basic.LocalizedMessage original="Add Product" localized="Thêm sản phẩm" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Minimum Stock" localized="Tồn kho tối thiếu" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Reorder Quantity" localized="Số lượng tái nhập hàng" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Days To Ship" localized="Thời gian chuẩn bị đơn hàng" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="New Location" localized="Vị trí mới" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Aisle" localized="Lối đi" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Section" localized="Phần" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Level" localized="Cấp độ" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Position" localized="Vị trí" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Capacity" localized="Thể tích" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Locations" localized="Vị trí" locale="vi_VN"/>
+
+    <moqui.basic.LocalizedMessage original="User Account" localized="Tài khoản" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Account Detail" localized="Chi tiết tài khoản" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Disable Account" localized="Vô hiệu hoá tài khoản" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Terminate Date" localized="Ngày hết hạn" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Require Password Change" localized="Yêu cầu thay đổi mật khẩu" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Disabled" localized="Vô hiệu hoá" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Update User" localized="Cập nhật" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Security Groups" localized="Nhóm bảo mật" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Add to Group" localized="Thêm vào nhóm" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Internal Organization Relationships" localized="Quan hệ nội bộ" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Add to Organization" localized="Thêm mới" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Rel. Type" localized="Kiểu quan hệ" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Other Identification" localized="Định danh khác" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Generate Url Slug" localized="Tạo Url Slug" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Add Other Identification" localized="Thêm định danh" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Product Store ID" localized="Mã kênh bán hàng" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Market Segment ID" localized="Mã phân khúc thị trường" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Apply New Feature" localized="Áp dụng tính năng mới" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Seq #" localized="Thứ tự #" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Appl. Type" localized="Kiểu" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Amount Included" localized="Số tiền bao gồm" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Sales Intro" localized="Ngày giới thiệu sản phẩm" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Sales Discontinue" localized="Ngày ngừng bán" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Ship Insure Reqd" localized="Yêu cầu bảo hiểm vận chuyển" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Country of Origin" localized="Xuất xứ" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="UOM Dimensions" localized="Kích thước UOM" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Add UOM Dimension" localized="Thêm kích thước UOM" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Find Assets" localized="Tìm tài sản" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Content List" localized="Danh sách nội dung" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Upload Content" localized="Tải nội dung lên" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="New by Location" localized="Thêm mới bởi địa điểm" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="New HTML Content" localized="Thêm mới bằng HTML" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Seq" localized="Thứ tự" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Add to Category" localized="Thêm vào danh mục" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Add Assoc" localized="Thêm kết hợp" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Assoc. Type" localized="Kiểu kết hợp" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Associated From" localized="Kết hợp từ" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Selectable Features" localized="Tính năng có thể lựa chọn" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Create Variants" localized="Tạo biến thể" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Feature Group" localized="Nhóm tính năng" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Variant Type" localized="Loại biến thể" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Feature Group(s)" localized="(Các) nhóm tính năng" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Create All Variants" localized="Tạo tất cả biến thể" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="New Price" localized="Thêm giá mới" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Min Quantity" localized="SL tối thiểu" locale="vi_VN"/>
+
     <moqui.basic.LocalizedMessage localized="Ứng dụng" original="Application" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage localized="Ứng dụng" original="Applications" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage localized="Tùy chọn tìm kiếm" original="Find Options" locale="vi_VN"/>
@@ -1564,6 +1622,7 @@
     <moqui.basic.LocalizedMessage original="Subject" localized="Chủ thể" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Submit" localized="Lưu" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Submit successful" localized="Gửi thành công" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Background login successful" localized="Đăng nhập thành công" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Submitted" localized="Đã gửi" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Success" localized="Thành công" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Summary" localized="Bản tóm tắt" locale="vi_VN"/>
