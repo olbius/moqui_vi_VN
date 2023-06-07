@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This software is in the public domain under CC0 1.0 Universal plus a
+Grant of Patent License.
+
+To the extent possible under law, the author(s) have dedicated all
+copyright and related and neighboring rights to this software to the
+public domain worldwide. This software is distributed without any
+warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication
+along with this software (see the LICENSE.md file). If not, see
+<http://creativecommons.org/publicdomain/zero/1.0/>.
+-->
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.1.xsd">
+    <service verb="evaluate" noun="GlAccountOrgTimePeriod">
+        <in-parameters>
+            <parameter name="function" required="true"/>
+            <parameter name="timePeriodId" required="true"/>
+            <parameter name="organizationPartyId" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="glAccountValueMap" type="Map"><description>key: glAccountId, value: number(BigDecimal)</description></parameter>
+        </out-parameters>
+        <actions>
+            <set field="glAccountValueMap" from="[:]"/>
+            <set field="function" from="function.trim()"/>
+            <!--
+            // 1. DuNo
+		    // 2. DuCo
+		    -->
+            <set field="strAccountCode" from="function.substring(function.indexOf('(') + 1, function.length() - 1)"/>
+            <entity-find-one entity-name="mantle.ledger.account.GlAccount" value-field="glAccount">
+                <field-map field-name="accountCode" from="strAccountCode"/>
+            </entity-find-one>
+            <if condition="!glAccount"><return/></if>
+            <set field="glAccountId" from="glAccount.glAccountId"/>
+            <set field="glAccountIdChildList" from="[]"/>
+
+            <service-call name="gsources.accounting.AccountingServices.get#GlAccountIdChildList"
+                          in-map="[glAccountId:glAccountId]" out-map="listChild" out-map-add-to-existing="false"/>
+            <script>glAccountIdChildList.addAll(listChild?.glAccountIdChildList ?: [])</script>
+
+            <entity-find entity-name="mantle.ledger.account.GlAccountOrgTimePeriod" list="glAccountOrgTimePeriodList">
+                <econdition field-name="glAccountId" operator="in" from="glAccountIdChildList"/>
+                <econdition field-name="timePeriodId"/>
+                <econdition field-name="organizationPartyId"/>
+                <order-by field-name="glAccountId"/>
+            </entity-find>
+            <!--// 1. DuNo-->
+            <if condition="function.startsWith('DuNo(')">
+                <then>
+                    <iterate list="glAccountOrgTimePeriodList" entry="glAccountOrgTimePeriod">
+                        <set field="value" from="(glAccountOrgTimePeriod.postedDebitsNoClosing ?: 0.0).subtract(glAccountOrgTimePeriod.postedCreditsNoClosing ?: 0.0)"/>
+                        <script>glAccountValueMap.put(glAccountOrgTimePeriod.glAccountId, value)</script>
+                    </iterate>
+                </then>
+                <!--// 2. DuCo-->
+                <else-if condition="function.startsWith('DuCo(')">
+                    <iterate list="glAccountOrgTimePeriodList" entry="glAccountOrgTimePeriod">
+                        <set field="value" from="(glAccountOrgTimePeriod.postedCreditsNoClosing ?: 0.0).subtract(glAccountOrgTimePeriod.postedDebitsNoClosing ?: 0.0)"/>
+                        <script>glAccountValueMap.put(glAccountOrgTimePeriod.glAccountId, value)</script>
+                    </iterate>
+                </else-if>
+            </if>
+            <log message="function: ${function}, glAccountValueMap: ${glAccountValueMap}" level="debug"/>
+        </actions>
+    </service>
+</services>

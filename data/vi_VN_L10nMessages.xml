@@ -1802,6 +1802,8 @@
     <moqui.basic.LocalizedMessage original="Operating Expense" localized="Chi phí hoạt động" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Unbooked Net Income" localized="Lợi nhuận ròng chưa đăng ký" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Liability + Equity + Unbooked Net Income" localized="Nợ phải trả + Vốn chủ sở hữu + Lợi nhuận ròng chưa đăng ký" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Total Equity + Distribution" localized="Tổng vốn chủ sở hữu + phân phối" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Grand Total Liability + Equity" localized="TTổng nợ phải trả + Vốn chủ sở hữu" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Total " localized="Tổng cộng " locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="All Periods Posted" localized="Tất cả các kỳ đã ghi sổ" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="% of Assets" localized="% Tài sản" locale="vi_VN"/>
@@ -2391,4 +2393,8 @@
     <moqui.basic.LocalizedMessage original="View a status flow transition diagram by selecting a Type, Flow, or both" localized="Xem sơ đồ chuyển tiếp dòng trạng thái bằng cách chọn loại, luồng hoặc cả hai" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Void" localized="Vô hiệu" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Write Off" localized="Loại bỏ" locale="vi_VN"/>
+
+
+    <moqui.basic.LocalizedMessage original="${accClosingEntry.name} for Period ${timePeriod.periodName}" locale="vi_VN" localized="${accClosingEntry.name} - Kỳ kế toán ${timePeriod.periodName}"/>
+    <moqui.basic.LocalizedMessage original="${accClosingEntry.name} - Closing for Period ${timePeriod.periodName}" locale="vi_VN" localized="${accClosingEntry.name} - Đóng kỳ kế toán ${timePeriod.periodName}"/>
 </entity-facade-xml>

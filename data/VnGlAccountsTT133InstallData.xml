@@ -3,6 +3,258 @@
     <!--====================-->
     <!--====Thông tư 133====-->
     <!--====================-->
+    <!--Mapping Invoice Item types and account ids -->
+    <moqui.basic.EnumerationType description="Item Type (Order, Return, Invoice)" enumTypeId="ItemType"/>
+
+    <moqui.basic.Enumeration description="Điều chỉnh hóa đơn" enumId="INVOICE_ADJ" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh tiêu đề hóa đơn" enumId="INVOICE_HEAD_ADJ" parentEnumId="INVOICE_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh thành phần hóa đơn" enumId="INVOICE_ITM_ADJ" parentEnumId="INVOICE_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh tiêu đề hóa đơn bán hàng" enumId="SINVOICE_HEAD_ADJ" parentEnumId="INVOICE_HEAD_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh thành phần hóa đơn bán hàng" enumId="SINVOICE_ITM_ADJ" parentEnumId="INVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh tiêu đề hóa đơn mua hàng" enumId="PINVOICE_ADJ" parentEnumId="INVOICE_HEAD_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh thành phần hóa đơn mua hàng" enumId="PINVOICE_ITM_ADJ" parentEnumId="INVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh hóa đơn khách hàng trả lại" enumId="CRETURN_ADJ" parentEnumId="INVOICE_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh hóa đơn trả lại nhà cung cấp" enumId="SRETURN_ADJ" parentEnumId="INVOICE_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chiết khấu thanh toán mua hàng" enumId="PITM_CASHDISC_ADJ" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí khai trương" enumId="PITM_GRANDOPEN_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Mua giấy gói quà" enumId="PITM_GIFTPAPER_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Đặt cọc thuê mặt bằng" enumId="PITM_RENT_ADDRESS" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí thi công sửa chữa" enumId="PITM_PREPAIR_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Bán phiếu mua hàng (PMH)" enumId="INV_FPRCOUPON_ITEM" parentEnumId="INV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Nhập phiếu mua hàng từ Liên hiệp (mua hàng)" enumId="PINV_COUPON_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thiết bị, dụng cụ quản lý (mua hàng)" enumId="PINV_FXINSTOOL_ITEM" parentEnumId="PINV_FXASTPRD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Hàng bán bị trả lại" enumId="5213" parentEnumId="ITM_DEVALUE_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Công tác phí" enumId="PITM_EXPEN_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí in mực, tem, bill" enumId="PITM_INKSTAMP_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Các khoản giảm trừ doanh thu (bán hàng)" enumId="ITM_RDD_ADJ" parentEnumId="SINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí văn phòng phẩm" enumId="PITM_STATIONERY_COST" parentEnumId="PITM_TOOL_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Khách hàng trả lại hàng hóa" enumId="CRT_PROD_ITEM" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Hạng mục trả lại NCC hàng hóa" enumId="SRT_PROD_ITEM" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thu nhập và giờ" enumId="PAYROL_EARN_HOURS" parentEnumId="PAYROL" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí vật liệu quản lý" enumId="PITM_TOOL_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí đồ dùng văn phòng" enumId="PITM_OFFSTATION_COST" parentEnumId="PITM_TOOL_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế GTGT được khấu trừ của hàng hóa (mua hàng)" enumId="PITM_GOODSALES_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế GTGT được khấu trừ của hàng hóa (mua hàng)" enumId="PITM_SERVSALES_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế GTGT được khấu trừ của TSCĐ" enumId="PITM_SALESFA_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí lãi vay" enumId="PINV_EBIT_ITEM" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chiết khấu thanh toán cho người mua" enumId="PINV_DISPAY_ITEM" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế GTGT hàng nhập khẩu" enumId="PITM_SALES_IMP_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="TSCĐ khác" enumId="PINV_FXLONGWORK_ITEM" parentEnumId="PINV_FXASTPRD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Hạng mục hàng hóa (mua hàng)" enumId="PINV_PROD_ITEM" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Hàng hóa (mua hàng)" enumId="PINV_FPROD_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Dịch vụ (mua hàng)" enumId="PINV_SPROD_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu điện nước" enumId="ITM_ELEC_WATER_ITEM" parentEnumId="INV_SPROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu nhượng quyền" enumId="ITM_FRANCHISE_ITEM" parentEnumId="INV_SPROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu dịch vụ khác" enumId="ITM_OTHERSERV_ITEM" parentEnumId="INV_SPROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu bán vật liệu, phế liệu" enumId="ITM_SCRAP_ITEM" parentEnumId="INV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu khác" enumId="ITM_PROOTHER_ITEM" parentEnumId="INV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu hoạt động tài chính" enumId="ITM_FINACT_ITEM" parentEnumId="INV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Lãi tiền gửi" enumId="ITM_INTEREST_ITEM" parentEnumId="INV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh hóa đơn giảm (bán hàng)" enumId="ITM_INVDOWN_ADJ" parentEnumId="SINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh hóa đơn tăng (bán hàng)" enumId="ITM_INVUP_ADJ" parentEnumId="SINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Các khoản giảm trừ (mua hàng)" enumId="PITM_RDD_ADJ" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thu hỗ trợ của ncc" enumId="711" parentEnumId="DIFF_TURNOVER_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thu từ thanh lý, mua bán tscd" enumId="711" parentEnumId="DIFF_TURNOVER_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí đồng phục nhân viên" enumId="PITM_UNIFORM_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Mua thẻ cào, nỏ, giỏ gói..." enumId="PINV_CARDPHONE_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chiết khấu thương mại (mua hàng)" enumId="PITM_DISCOUNT_ADJ" parentEnumId="PITM_RDD_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Giảm giá hàng bán (mua hàng)" enumId="PITM_DEVALUE_ADJ" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí khuyến mại, quảng cáo (mua hàng)" enumId="PITM_PROMOTION_ADJ" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thay thế hàng hóa (mua hàng)" enumId="PITM_REPLACE_ADJ" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế GTGT được khấu trừ của hàng hóa dịch vụ (mua hàng)" enumId="PITM_SALES_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí bao bì Co.op Smile" enumId="PITM_PACKCOOPSMILE_ITEM" parentEnumId="PINV_INSTOOL_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí khấu hao Cây lâu năm, súc vật làm việc và cho sản phẩm" enumId="PITM_FIXASSDEP_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Nhà cửa, vật kiến trúc (mua hàng)" enumId="PINV_FXBUILARCH_ITEM" parentEnumId="PINV_FXASTPRD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Máy móc, thiết bị (mua hàng)" enumId="PINV_FXEQIMACH_ITEM" parentEnumId="PINV_FXASTPRD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Phương tiện vận tải, truyền dẫn (mua hàng)" enumId="PINV_FXTRANSINS_ITEM" parentEnumId="PINV_FXASTPRD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Lương và thưởng" enumId="PAYROL" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chiết khấu thanh toán" enumId="INV_CASHDISC_ADJ" parentEnumId="SINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu bán hàng của các cửa hàng" enumId="INV_FPRODEXT_ITEM" parentEnumId="INV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế GTGT dịch vụ" enumId="ITM_SALES_SERV_TAX" parentEnumId="SINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế GTGT hàng hóa" enumId="ITM_SALES_TAX" parentEnumId="SINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế GTGT TSCĐ" enumId="ITM_SALES_FA_TAX" parentEnumId="SINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Các khoản khấu trừ" enumId="PAYROL_DD_FROM_GROSS" parentEnumId="PAYROL" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế" enumId="PAYROL_TAXES" parentEnumId="PAYROL" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chiết khấu thương mại (bán hàng)" enumId="ITM_DISCOUNT_ADJ" parentEnumId="ITM_RDD_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Giảm giá hàng bán (bán hàng)" enumId="ITM_DEVALUE_ADJ" parentEnumId="SINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu bán hàng và cung cấp dịch vụ" enumId="INV_PROD_ITEM" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu bán hàng số lượng lớn" enumId="INV_FPRODINT_ITEM" parentEnumId="INV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu bán các thành phẩm" enumId="INV_FINPROD_ITEM" parentEnumId="INV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu cung cấp dịch vụ" enumId="INV_SPROD_ITEM" parentEnumId="INV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu cho thuê mặt bằng" enumId="ITM_OFF_LEASE_ITEM" parentEnumId="INV_SPROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu cho thuê quầy kệ, ụ" enumId="ITM_STALL_ITEM" parentEnumId="INV_SPROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu vị trí" enumId="ITM_POSS_ITEM" parentEnumId="INV_SPROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu cho thuê quảng cáo" enumId="ITM_ADVERT_ITEM" parentEnumId="INV_SPROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế tiêu thụ đặc biệt" enumId="PITM_SPEC_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế xuất, nhập khẩu" enumId="PITM_IMEX_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế thu nhập doanh nghiệp" enumId="PITM_PROFIT_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế thu nhập cá nhân" enumId="PITM_PERSON_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế tài nguyên" enumId="PITM_RESOURCE_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế nhà đất, tiền thuê đất" enumId="PITM_LAND_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế bảo vệ môi trường" enumId="PITM_ENVI_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Các loại thuế khác" enumId="PITM_OTHER_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Phí, lệ phí và các khoản phải nộp khác" enumId="PITM_FEE_OTHER_TAX" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Tài khoản trung gian (mua hàng)" enumId="PINV_FPRODMEDI_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Doanh thu bãi xe" enumId="ITM_PARKING_ITEM" parentEnumId="INV_SPROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Giá mua hàng hóa (mua hàng)" enumId="PINV_FPRODPRICE_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí thu mua hàng hóa (mua hàng)" enumId="PINV_FPRODCOST_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí nhập hàng (mua hàng)" enumId="PINV_IMPCOST_ITEM" parentEnumId="PINV_FPRODCOST_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí kiểm dịch, kiểm nghiệm (mua hàng)" enumId="PINV_QACOST_ITEM" parentEnumId="PINV_FPRODCOST_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí CC kiểm nghiệm, kiểm dịch (mua hàng)" enumId="PINV_CCQACOST_ITEM" parentEnumId="PINV_QACOST_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Phí kiểm dịch, kiểm nghiệm (mua hàng)" enumId="PINV_FEEQACOST_ITEM" parentEnumId="PINV_QACOST_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí in tem phụ (mua hàng)" enumId="PINV_STAMP_ITEM" parentEnumId="PINV_FPRODCOST_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Nguyên liệu, vật liệu (mua hàng)" enumId="PINV_RAWMATER_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Công cụ, dụng cụ (mua hàng)" enumId="PINV_INSTOOL_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Bao bì luân chuyển" enumId="PINV_PACKING_ITEM" parentEnumId="PINV_INSTOOL_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Mua công cụ dụng cụ" enumId="PINV_INSATOOL_ITEM" parentEnumId="PINV_INSTOOL_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Đồ dùng cho thuê" enumId="PINV_TOOLRETAIN_ITEM" parentEnumId="PINV_INSTOOL_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thiết bị, phụ tùng thay thế" enumId="PINV_EQUITMENT_ITEM" parentEnumId="PINV_INSTOOL_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí sản xuất, kinh doanh dở dang" enumId="PINV_WORKINPROC_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí khấu hao nhà cửa, vật kiến trúc" enumId="PITM_HOMEDEP_COST" parentEnumId="PITM_FIXASSDEP_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí khấu hao Máy móc, thiết bị" enumId="PITM_MERCHINEDEP_COST" parentEnumId="PITM_FIXASSDEP_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí khấu hao Phương tiện vận tải, truyền dẫn" enumId="PITM_TRANSDEP_COST" parentEnumId="PITM_FIXASSDEP_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí khấu hao Thiết bị, dụng cụ quản lý" enumId="PITM_TOOLDEP_COST" parentEnumId="PITM_FIXASSDEP_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí khấu hao TSCĐ khác" enumId="PITM_OTHERFADEP_COST" parentEnumId="PITM_FIXASSDEP_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Tài sản cố định (mua hàng)" enumId="PINV_FXASTPRD_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí dịch vụ mua ngoài" enumId="PITM_OUTPURSER_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí ngân hàng" enumId="PITM_BANK_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí thuê ngoài khác" enumId="PITM_LEASEOTHER_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí kiểm soát côn trùng" enumId="PITM_INSECT_COST" parentEnumId="PITM_LEASEOTHER_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí giám đinh, kiểm định" enumId="PITM_APPRASE_COST" parentEnumId="PITM_LEASEOTHER_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí vận chuyển" enumId="PITM_LOG_COST" parentEnumId="PITM_LEASEOTHER_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí marketing" enumId="PITM_MARKETING_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí bằng tiền khác" enumId="PITM_MONEYOTHER_ITEM" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí dự phòng" enumId="PITM_PROVISION_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí dịch vụ mua ngoài" enumId="PITM_OUTPURGEN_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí phúc lợi" enumId="PITM_WELFARE_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Kho sản phẩm" enumId="PINV_INVPRD_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí hạng mục sản phẩm NCC" enumId="PINV_SUPLPRD_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Khách hàng trả lại hàng hóa" enumId="CRT_FPROD_ITEM" parentEnumId="CRT_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Khách hàng trả lại thành phẩm" enumId="CRT_FINPROD_ITEM" parentEnumId="CRT_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Khách hàng trả lại dịch vụ" enumId="CRT_SPROD_ITEM" parentEnumId="CRT_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Khách hàng trả lại thuế GTGT phải nộp" enumId="CRT_SALES_TAX_ADJ" parentEnumId="CRETURN_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Khách hàng trả lại chiết khấu thương mại" enumId="CRT_DISCOUNT_ADJ" parentEnumId="CRETURN_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh khách hàng trả lại" enumId="CRT_MAN_ADJ" parentEnumId="CRETURN_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC hàng hóa" enumId="SRT_FPROD_ITEM" parentEnumId="SRT_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC dịch vụ" enumId="SRT_SPROD_ITEM" parentEnumId="SRT_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí PCCC" enumId="PITM_PCCC_COST" parentEnumId="PITM_LEASEOTHER_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC nguyên liệu, vật liệu" enumId="SRT_RAWMATER_ITEM" parentEnumId="SRT_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC công cụ, dụng cụ" enumId="SRT_INSTOOL_ITEM" parentEnumId="SRT_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC công cụ, dụng cụ" enumId="SRT_INSATOOL_ITEM" parentEnumId="SRT_INSTOOL_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Khách hàng trả lại giảm giá hàng bán" enumId="CRT_DEVALUE_ADJ" parentEnumId="CRETURN_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Phí công chứng, phí đkkd" enumId="PITM_FEE_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí coupon sinh nhật" enumId="PITM_CUSTMARKET_COST" parentEnumId="PITM_MARKETING_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí mar cty thực hiện" enumId="PITM_COMPMARKET_COST" parentEnumId="PITM_MARKETING_COST" enumTypeId="ItemType" />
+    <!--
+        <moqui.basic.Enumeration description="Chi phí mar phải trả sgc" enumId="PITM_OTHERMARKET_COST" parentEnumId="PITM_MARKETING_COST" enumTypeId="ItemType" />
+    -->
+    <moqui.basic.Enumeration description="Chi phí mar khác" enumId="PITM_SGCMARKET_COST" parentEnumId="PITM_MARKETING_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí thuê mặt bằng" enumId="PITM_OFF_LEASE_COST" parentEnumId="PITM_OUTPURSER_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí thuê kho" enumId="PITM_LOG_LEASE_COST" parentEnumId="PITM_OUTPURSER_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí điện" enumId="PITM_ELECTRIC_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí nước" enumId="PITM_WATER_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí bưu điện, viễn thông, internet" enumId="PITM_TECHPORT_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí khám sức khỏe" enumId="PITM_MEDICAL_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí in ấn" enumId="PITM_PRINT_COST" parentEnumId="PITM_LEASEOTHER_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí nvl, bao bì" enumId="PITM_MATPACK_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP sửa chữa nhỏ, bảo trì" enumId="PITM_REP_MAIN_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP ngân hàng thanh toán" enumId="PITM_BANKPAY_COST" parentEnumId="PITM_BANK_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP chuyển khoản" enumId="PITM_BANKTRANS_COST" parentEnumId="PITM_BANK_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP ngân hàng khác" enumId="PITM_BANKOTHER_COST" parentEnumId="PITM_BANK_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP bảo hiểm cháy nổ" enumId="PITM_INSUEXP_COST" parentEnumId="PITM_OUTPURGEN_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP bảo hiểm tai nạn" enumId="PITM_INSUACCID_COST" parentEnumId="PITM_OUTPURGEN_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP điện toán" enumId="PITM_COMPUTING_COST" parentEnumId="PITM_OUTPURGEN_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP kiểm toán" enumId="PITM_AUDIT_COST" parentEnumId="PITM_OUTPURGEN_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP vệ sinh" enumId="PITM_HYGIEN_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP tiếp khách" enumId="PITM_CUST_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP nghỉ mát" enumId="PITM_VACATION_COST" parentEnumId="PITM_WELFARE_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP sinh nhat, ma chay, cuoi" enumId="PITM_BIRDMAR_COST" parentEnumId="PITM_WELFARE_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP ốm đau" enumId="PITM_SICK_COST" parentEnumId="PITM_WELFARE_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP 8.3, 20.10, 1,6, trung thu" enumId="PITM_HOLIDAY_COST" parentEnumId="PITM_WELFARE_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="CP khen thuong, danh hieu" enumId="PITM_AWARD_COST" parentEnumId="PITM_WELFARE_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC bao bì luân chuyển" enumId="SRT_PACKING_ITEM" parentEnumId="SRT_INSTOOL_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC đồ dùng cho thuê" enumId="SRT_TOOLRETAIN_ITEM" parentEnumId="SRT_INSTOOL_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC thiết bị, phụ tùng thay thế" enumId="SRT_EQUITMENT_ITEM" parentEnumId="SRT_INSTOOL_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC chi phí sản xuất, kinh doanh dở dang" enumId="SRT_WORKINPROC_ITEM" parentEnumId="SRT_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC tài sản cố định" enumId="SRT_FXASTPRD_ITEM" parentEnumId="SRT_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC thuế GTGT" enumId="SRT_SALES_TAX_ADJ" parentEnumId="SRT_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC giảm giá hàng bán" enumId="SRT_DEVALUE_ADJ" parentEnumId="SRETURN_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC Thuế GTGT được khấu trừ của hàng hóa dịch vụ" enumId="SRT_SALES_TAX" parentEnumId="SRETURN_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC Thuế GTGT được khấu trừ của hàng hóa" enumId="SRT_GOODSALES_TAX" parentEnumId="SRT_SALES_TAX" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC Thuế GTGT được khấu trừ của dịch vụ" enumId="SRT_SERVSALES_TAX" parentEnumId="SRT_SALES_TAX" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC Thuế GTGT được khấu trừ của TSCĐ" enumId="SRT_SALESFA_TAX" parentEnumId="SRETURN_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Điều chỉnh hoa hồng hóa đơn" enumId="COMM_INV_ITEM" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Hạng mục hoa hồng hóa đơn" enumId="COMM_INV_ADJ" parentEnumId="INVOICE_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí nhân viên" enumId="PAYROL_HRSALE_RATE" parentEnumId="PAYROL_EARN_HOURS" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí lương nhân viên" enumId="PAYROL_SALARY_SALE" parentEnumId="PAYROL_HRSALE_RATE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Lương chính" enumId="PAYROL_MAINSALARY_SALE" parentEnumId="PAYROL_SALARY_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Lương năng suất chức danh" enumId="PAYROL_POSSALARY_SALE" parentEnumId="PAYROL_SALARY_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Lương thuê lao động thời vụ" enumId="PAYROL_LARBOSALARY_SALE" parentEnumId="PAYROL_SALARY_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Lương bổ sung tháng" enumId="PAYROL_ADDSALARY_SALE" parentEnumId="PAYROL_SALARY_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Tiền ăn giữa ca" enumId="PAYROL_EAT_SALE" parentEnumId="PAYROL_SALARY_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Lương kiểm kê" enumId="PAYROL_INVSALARY_SALE" parentEnumId="PAYROL_SALARY_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Lương khác (tháng 13, thâm niên, đãi ngộ)" enumId="PAYROL_OTHERSALARY_SALE" parentEnumId="PAYROL_SALARY_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Phụ cấp, trợ cấp" enumId="PAYROL_ALLOWAN_SALE" parentEnumId="PAYROL_SALARY_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Phụ cấp thuế thu nhập cá nhân" enumId="PAYROL_ALLOWTAXFED_SALE" parentEnumId="PAYROL_ALLOWAN_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Phụ cấp, trợ cấp khác" enumId="PAYROL_OTHERALLOWAN_SALE" parentEnumId="PAYROL_ALLOWAN_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí thưởng nhân viên" enumId="PAYROL_BONUS_SALE" parentEnumId="PAYROL_SALARY_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thưởng năng suất tháng" enumId="PAYROL_MONTHBONUS_SALE" parentEnumId="PAYROL_BONUS_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thưởng năng suất CBQL" enumId="PAYROL_GENBONUS_SALE" parentEnumId="PAYROL_BONUS_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thưởng vượt năng suất" enumId="PAYROL_UPBONUS_SALE" parentEnumId="PAYROL_BONUS_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thưởng khuyến khích" enumId="PAYROL_ENCOUBONUS_SALE" parentEnumId="PAYROL_BONUS_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thưởng hoàn thành kế hoạch" enumId="PAYROL_COMPLBONUS_SALE" parentEnumId="PAYROL_BONUS_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thưởng danh hiệu (hoa tận tậm, NV xuất sắc)" enumId="PAYROL_AWARDBONUS_SALE" parentEnumId="PAYROL_BONUS_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí khác trong quá trình bán hàng" enumId="DIFF_EXPENSES_SALE" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Bán bìa các tông" enumId="SALE_CARBOARD" parentEnumId="DIFF_TURNOVER_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Bán giấy vụn" enumId="SALE_SCRAP_PAPER" parentEnumId="DIFF_TURNOVER_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thanh lý tài sản cố định" enumId="SALE_FIXED_ASSET" parentEnumId="DIFF_TURNOVER_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Mua thức ăn chó mèo" enumId="BUY_ANIMAL_FOOD" parentEnumId="DIFF_EXPENSES_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC các khoản giảm trừ" enumId="SRT_RDD_ADJ" parentEnumId="SRETURN_ADJ"  enumTypeId="ItemType"/>
+    <moqui.basic.Enumeration description="Trả lại NCC chiết khấu thương mại" enumId="SRT_DISCOUNT_ADJ" parentEnumId="SRETURN_ADJ"  enumTypeId="ItemType"/>
+    <moqui.basic.Enumeration description="Trả lại NCC chi phí khuyến mại, quảng cáo" enumId="SRT_PROMOTION_ADJ" parentEnumId="SRETURN_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Đóng tiền mạng" enumId="PAY_NET_BILL" parentEnumId="DIFF_EXPENSES_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Đóng tiền điện" enumId="PAY_ELECT_BILL" parentEnumId="DIFF_EXPENSES_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Đóng tiền nước" enumId="PAY_WATER_BILL" parentEnumId="DIFF_EXPENSES_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Ký quỹ" enumId="PITM_GUARANTEE_ACC" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC chi phí vận chuyển và phân phối" enumId="CRT_SHIPPING_ADJ" parentEnumId="SRETURN_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Trả lại NCC chi phí phụ thu khác" enumId="CRT_SURCHARGE_ADJ" parentEnumId="SRETURN_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thưởng sự kiện" enumId="PAYROL_EVENTBONUS_SALE" parentEnumId="PAYROL_BONUS_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thưởng năng suất khác" enumId="PAYROL_OTHERUPBONUS_SALE" parentEnumId="PAYROL_BONUS_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Bảo hiểm bắt buộc" enumId="PAYROL_INSURAN_SALE" parentEnumId="PAYROL_SALARY_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Kinh phí công đoàn" enumId="PAYROL_TUNSURAN_SALE" parentEnumId="PAYROL_INSURAN_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Bảo hiểm xã hội" enumId="PAYROL_SOCSURAN_SALE" parentEnumId="PAYROL_INSURAN_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Bảo hiểm y tế" enumId="PAYROL_MEDSURAN_SALE" parentEnumId="PAYROL_INSURAN_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Bảo hiểm thất nghiệp" enumId="PAYROL_MDSURAN_SALE" parentEnumId="PAYROL_INSURAN_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Đồng phục nhân viên" enumId="PAYROL_UNIFORM_SALE" parentEnumId="PAYROL_SALARY_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Lương tạm ứng" enumId="PAYROL_ADV_PAY" parentEnumId="PAYROL_EARN_HOURS"  enumTypeId="ItemType"/>
+    <moqui.basic.Enumeration description="Bảo hiểm xã hội" enumId="PAYROL_DD_SOC_EMPL" parentEnumId="PAYROL_DD_FROM_GROSS"  enumTypeId="ItemType"/>
+    <moqui.basic.Enumeration description="Bảo hiểm y tế" enumId="PAYROL_DD_MED_EMPL" parentEnumId="PAYROL_DD_FROM_GROSS"  enumTypeId="ItemType"/>
+    <moqui.basic.Enumeration description="Bảo hiểm thất nghiệp" enumId="PAYROL_DD_MD_WITHOL" parentEnumId="PAYROL_DD_FROM_GROSS"  enumTypeId="ItemType"/>
+    <moqui.basic.Enumeration description="Kinh phí công đoàn" enumId="PAYROL_DD_TUN_FEE" parentEnumId="PAYROL_DD_FROM_GROSS"  enumTypeId="ItemType"/>
+    <moqui.basic.Enumeration description="Thuế TNCN" enumId="PAYROL_TAX_FEDERAL" parentEnumId="PAYROL_TAXES"  enumTypeId="ItemType"/>
+    <moqui.basic.Enumeration description="Chi phí nhiên liệu ( xăng, gas, dầu..)" enumId="PITM_FUEL_COST" parentEnumId="PINVOICE_ITM_ADJ"  enumTypeId="ItemType"/>
+    <moqui.basic.Enumeration description="Giá vốn điều chỉnh nhập hàng" enumId="PINV_ADJIMPPO_ITEM" parentEnumId="PINV_PROD_ITEM" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thu nhập khác ( bao bì, phế liệu...)" enumId="DIFF_TURNOVER_SALE" parentEnumId="SINVOICE_ITM_ADJ"  enumTypeId="ItemType"/>
+    <moqui.basic.Enumeration description="Thu từ hỗ trợ của liên hiệp" enumId="711" parentEnumId="DIFF_TURNOVER_SALE" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí kiểm kê" enumId="PITM_INVENTORY_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí van phong khac" enumId="6428" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí dịch vụ thuê ngoài khác" enumId="PITM_OUTPUROTHER_COST" parentEnumId="PITM_OUTPURSER_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí ban hang bang tien khac" enumId="PITM_STAFF_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí thi công sửa chữa lớn" enumId="PITM_TOOLCOST_COST" parentEnumId="PINVOICE_ITM_ADJ" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí sử dụng chương trình marketing" enumId="PITM_STOREUSERMKT_COST" parentEnumId="PITM_TOOLCOST_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí sử dụng su hành chánh" enumId="PITM_STOREUSERHC_COST" parentEnumId="PITM_TOOLCOST_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Chi phí sử dụng hủy hàng" enumId="PITM_STOREUSERCANGOOD_COST" parentEnumId="PITM_TOOLCOST_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Giá vốn không qua kho" enumId="63213" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Tiền thiếu thu ngân" enumId="RPT_REFUND_EMPLOYEE" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thuế môn bài" enumId="PITM_TAX_COST" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thi công mạng vi tính" enumId="PITM_PREPAIR_COMPUTER" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thi công layout cửa hàng" enumId="PITM_PREPAIR_LAYOUT" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Thi phí bao bì Co.opsmile" enumId="PITM_STOREUSERBB_COST" parentEnumId="" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Giá vốn xuất chế biến" enumId="PITM_SUPROCESS_COST" parentEnumId="PITM_TOOLCOST_COST" enumTypeId="ItemType" />
+    <moqui.basic.Enumeration description="Giá vốn xuất ccdc chế biến" enumId="PITM_QUIPMPROCESS_COST" parentEnumId="PITM_TOOLCOST_COST" enumTypeId="ItemType" />
+
+    <moqui.basic.Enumeration description="Chi hộ khuyến mại" enumId="PROMOTION_PREPAID" parentEnumId="" enumTypeId="ItemType" />
+
     <!--Chart of account Thông tư 133, Việt Nam -->
     <mantle.ledger.account.GlAccount glAccountId="1" accountName="LOẠI TÀI KHOẢN TÀI SẢN" parentGlAccountId="" glResourceTypeEnumId="GlrtMoney"   glAccountTypeEnumId="GatCurrentAsset" glAccountClassEnumId="ASSET"/>
 
@@ -346,7 +598,7 @@
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatOperatingExpense" glAccountId="131" organizationPartyId="TT133Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatPrepaidExpenses" glAccountId="331" organizationPartyId="TT133Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatGiftExpense" glAccountId="6421" organizationPartyId="TT133Settings"/><!--6417-->
-    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatRetainedEarnings" glAccountId="421" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatRetainedEarnings" glAccountId="4212" organizationPartyId="TT133Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatSales" glAccountId="511" organizationPartyId="TT133Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatTax" glAccountId="333" organizationPartyId="TT133Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatPayrollTax" glAccountId="3335" organizationPartyId="TT133Settings"/>
@@ -385,6 +637,12 @@
 
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatCommissionPayable" glAccountId="331" organizationPartyId="TT133Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatIncomeTax" glAccountId="821" organizationPartyId="TT133Settings"/>
+
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatDiscounts" glAccountId="511" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatFinancialExpense" glAccountId="635" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatFinancialIncome" glAccountId="515" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatSellingExpense" glAccountId="6421" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatGeneralAdminExpense" glAccountId="6422" organizationPartyId="TT133Settings"/>
 
             <!-- Mapping Invoice Item Type with glAccountId -->
     <mantle.ledger.config.ItemTypeGlAccount glAccountId="6421" direction="O" itemTypeEnumId="ItemDiscount" organizationPartyId="TT133Settings"/><!--changed account from 641 to 6418-->
@@ -662,8 +920,9 @@
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtInvoicePayment"/><!-- AR Unapplied -->
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="Y" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtInvoicePayment"/><!-- AP (applied) -->
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtInvoicePayment"/><!-- AP Unapplied -->
-    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="113" isApplied="E" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtFinancialAccount"/><!-- Financial Account In Transit Deposits -->
-    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="113" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtFinancialAccount"/><!-- Financial Account In Transit Withdrawals -->
+    <!--<mantle.ledger.config.PaymentTypeGlAccount glAccountId="113" isApplied="E" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtFinancialAccount"/>&lt;!&ndash; Financial Account In Transit Deposits &ndash;&gt;
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="113" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtFinancialAccount"/>&lt;!&ndash; Financial Account In Transit Withdrawals &ndash;&gt;
+    -->
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="Y" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtPrePayment"/><!-- AR (applied) -->
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtPrePayment"/><!-- AR Unapplied -->
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="Y" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtPrePayment"/><!-- AP (applied) -->
@@ -748,4 +1007,20 @@
     <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceCommission" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttCommissionInvoice" glAccountId="6421"/> <!-- 212200000 -->
     <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceTax" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttTaxInvoice" glAccountId="333"/> <!-- 212300000 -->
     <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceGarnishment" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttGarnishmentInvoice" glAccountId="338"/> <!-- 212400000 -->
+
+    <!--<gsources.accounting.AccClosingEntry closingEntryId="9000" name="1.Kết chuyển các khoản giảm trừ doanh thu" organizationPartyId="TT133Settings" orderIndex="1" formula="DuNo(521)" creditGlAccountTypeEnumId="GatDiscounts" debitGlAccountTypeEnumId="GatSales" closeTimePeriod="F" isDebitCreditFlag="D"/>    -->
+    <moquivi.accounting.AccClosingEntry closingEntryId="9001" name="2.Kết chuyển doanh thu thuần trong kỳ" organizationPartyId="TT133Settings" orderIndex="2" formula="DuCo(511)" creditGlAccountTypeEnumId="GatProfitLoss" debitGlAccountTypeEnumId="GatSales" closeTimePeriod="N" isDebitCreditFlag="C"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9002" name="3.Kết chuyển doanh thu hoạt động tài chính trong kỳ" organizationPartyId="TT133Settings" orderIndex="3" formula="DuCo(515)" creditGlAccountTypeEnumId="GatProfitLoss" debitGlAccountTypeEnumId="GatFinancialIncome" closeTimePeriod="N" isDebitCreditFlag="C"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9003" name="4.Kết chuyển chi phí hoạt động tài chính trong kỳ" organizationPartyId="TT133Settings" orderIndex="4" formula="DuNo(635)" creditGlAccountTypeEnumId="GatFinancialExpense" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9004" name="5.Kết chuyển chi phí giá vốn hàng bán trong kỳ" organizationPartyId="TT133Settings"  orderIndex="5" formula="DuNo(632)" creditGlAccountTypeEnumId="GatCogs" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9005" name="6.Kết chuyển chi phí hàng bán trong kỳ" organizationPartyId="TT133Settings" orderIndex="6" formula="DuNo(6421)" creditGlAccountTypeEnumId="GatSellingExpense" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9006" name="7.Kết chuyển chi phí quản lý trong kỳ" organizationPartyId="TT133Settings" orderIndex="7" formula="DuNo(6422)" creditGlAccountTypeEnumId="GatGeneralAdminExpense" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9007" name="8.Kết chuyển thu nhập khác trong kỳ" organizationPartyId="TT133Settings" orderIndex="8" formula="DuCo(711)" creditGlAccountTypeEnumId="GatProfitLoss" debitGlAccountTypeEnumId="GatOtherIncome" closeTimePeriod="N" isDebitCreditFlag="C"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9008" name="9.Kết chuyển chi phí khác trong kỳ" organizationPartyId="TT133Settings" orderIndex="9" formula="DuNo(811)" creditGlAccountTypeEnumId="GatOtherExpense" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9009" name="10.Kết chuyển chi phí thuế TNDN trong kỳ" organizationPartyId="TT133Settings" orderIndex="10" formula="DuNo(821)" creditGlAccountTypeEnumId="GatIncomeTax" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9010" name="11.Kết chuyển lãi lỗ trong kỳ" organizationPartyId="TT133Settings" orderIndex="11" formula="DuCo(911)" creditGlAccountTypeEnumId="GatRetainedEarnings" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="L" isDebitCreditFlag="C"/>
+
+
+    <mantle.ledger.LedgerServices.initPartyAccountingConfiguration sourcePartyId="TT133Settings"
+                                                                   organizationPartyId="ORG_COMPANY_CORP" realTimeGlSummary="Y"/>
 </entity-facade-xml>

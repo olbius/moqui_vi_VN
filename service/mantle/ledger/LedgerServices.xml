@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This software is in the public domain under CC0 1.0 Universal plus a 
+Grant of Patent License.
+
+To the extent possible under law, the author(s) have dedicated all
+copyright and related and neighboring rights to this software to the
+public domain worldwide. This software is distributed without any
+warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication
+along with this software (see the LICENSE.md file). If not, see
+<http://creativecommons.org/publicdomain/zero/1.0/>.
+-->
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+    <service verb="init" noun="PartyAccountingConfiguration">
+        <in-parameters>
+            <parameter name="sourcePartyId" required="true"/>
+            <parameter name="organizationPartyId" required="true"/>
+            <auto-parameters entity-name="mantle.ledger.config.PartyAcctgPreference" include="nonpk"/>
+            <parameter name="startYear" format="0000"><description>If specified creates fiscal time periods (year, quarter, month) starting that
+                year and through the following year, otherwise starts now and creates current and next year, quarter, and month</description></parameter>
+        </in-parameters>
+        <actions>
+            <entity-find-one entity-name="mantle.ledger.config.PartyAcctgPreference" value-field="existingPartyAcctgPreference">
+                <field-map field-name="organizationPartyId"/>
+            </entity-find-one>
+            <if condition="existingPartyAcctgPreference">
+                <return message="Party [${organizationPartyId}] already has a PartyAcctgPreference record, so not initializing accounting configuration."/>
+            </if>
+
+            <!-- create an error Journal mantle.ledger.transaction.GlJournal -->
+            <entity-find-one entity-name="mantle.party.Organization" value-field="organization">
+                <field-map field-name="partyId" from="organizationPartyId"/></entity-find-one>
+            <set field="errorGlJournalId" value="${organizationPartyId}Error"/>
+            <service-call name="create#mantle.ledger.transaction.GlJournal"
+                    in-map="[organizationPartyId:organizationPartyId, glJournalId:errorGlJournalId,
+                        glJournalTypeEnumId:'GLJRNL_ERROR', isPosted:'N',
+                        glJournalName:('Error Journal for ' + (organization?.organizationName ?: organizationPartyId))]"/>
+
+            <!-- copy the mantle.ledger.config.PartyAcctgPreference -->
+            <entity-find-one entity-name="mantle.ledger.config.PartyAcctgPreference" value-field="sourcePartyAcctgPreference">
+                <field-map field-name="organizationPartyId" from="sourcePartyId"/>
+            </entity-find-one>
+            <if condition="!sourcePartyAcctgPreference"><return error="true" message="Could not find PartyAcctgPreference for source party [${sourcePartyId}]"/></if>
+            <set field="partyAcctgPreference" from="sourcePartyAcctgPreference.cloneValue()"/>
+            <entity-set value-field="partyAcctgPreference" include="nonpk" set-if-empty="false"/>
+            <service-call name="create#mantle.ledger.config.PartyAcctgPreference"
+                    in-map="partyAcctgPreference + [organizationPartyId:organizationPartyId, errorGlJournalId:errorGlJournalId]"/>
+
+            <!-- copy mantle.ledger.account.GlAccountOrganization -->
+            <entity-find entity-name="mantle.ledger.account.GlAccountOrganization" list="recordList">
+                <econdition field-name="organizationPartyId" from="sourcePartyId"/></entity-find>
+            <iterate list="recordList" entry="record"><set field="record.organizationPartyId" from="organizationPartyId"/>
+                <entity-create value-field="record"/></iterate>
+
+            <!-- copy mantle.ledger.config.AssetTypeGlAccount -->
+            <entity-find entity-name="mantle.ledger.config.AssetTypeGlAccount" list="recordList">
+                <econdition field-name="organizationPartyId" from="sourcePartyId"/></entity-find>
+            <iterate list="recordList" entry="record">
+                <set field="record.organizationPartyId" from="organizationPartyId"/>
+                <set field="record.assetTypeGlAccountId" from="null"/>
+                <entity-sequenced-id-primary value-field="record"/>
+                <entity-create value-field="record"/>
+            </iterate>
+
+            <!-- copy mantle.ledger.config.GlAccountTypeDefault -->
+            <entity-find entity-name="mantle.ledger.config.GlAccountTypeDefault" list="recordList">
+                <econdition field-name="organizationPartyId" from="sourcePartyId"/></entity-find>
+            <iterate list="recordList" entry="record"><set field="record.organizationPartyId" from="organizationPartyId"/>
+                <entity-create value-field="record"/></iterate>
+
+            <!-- copy mantle.ledger.config.InvoiceTypeTransType -->
+            <entity-find entity-name="mantle.ledger.config.InvoiceTypeTransType" list="recordList">
+                <econdition field-name="organizationPartyId" from="sourcePartyId"/></entity-find>
+            <iterate list="recordList" entry="record"><set field="record.organizationPartyId" from="organizationPartyId"/>
+                <entity-create value-field="record"/></iterate>
+
+            <!-- copy mantle.ledger.config.ItemTypeGlAccount -->
+            <entity-find entity-name="mantle.ledger.config.ItemTypeGlAccount" list="recordList">
+                <econdition field-name="organizationPartyId" from="sourcePartyId"/></entity-find>
+            <iterate list="recordList" entry="record"><set field="record.organizationPartyId" from="organizationPartyId"/>
+                <entity-create value-field="record"/></iterate>
+
+            <!-- copy mantle.ledger.config.PaymentTypeGlAccount -->
+            <entity-find entity-name="mantle.ledger.config.PaymentTypeGlAccount" list="recordList">
+                <econdition field-name="organizationPartyId" from="sourcePartyId"/></entity-find>
+            <iterate list="recordList" entry="record"><set field="record.organizationPartyId" from="organizationPartyId"/>
+                <entity-create value-field="record"/></iterate>
+
+            <!-- copy mantle.ledger.config.PaymentInstrumentGlAccount -->
+            <entity-find entity-name="mantle.ledger.config.PaymentInstrumentGlAccount" list="recordList">
+                <econdition field-name="organizationPartyId" from="sourcePartyId"/></entity-find>
+            <iterate list="recordList" entry="record"><set field="record.organizationPartyId" from="organizationPartyId"/>
+                <entity-create value-field="record"/></iterate>
+
+            <!-- copy mantle.ledger.config.FinancialAccountTypeGlAccount -->
+            <entity-find entity-name="mantle.ledger.config.FinancialAccountTypeGlAccount" list="recordList">
+                <econdition field-name="organizationPartyId" from="sourcePartyId"/></entity-find>
+            <iterate list="recordList" entry="record"><set field="record.organizationPartyId" from="organizationPartyId"/>
+                <entity-create value-field="record"/></iterate>
+            <!-- copy mantle.ledger.config.FinancialAccountReasonGlAccount -->
+            <entity-find entity-name="mantle.ledger.config.FinancialAccountReasonGlAccount" list="recordList">
+                <econdition field-name="organizationPartyId" from="sourcePartyId"/></entity-find>
+            <iterate list="recordList" entry="record"><set field="record.organizationPartyId" from="organizationPartyId"/>
+                <entity-create value-field="record"/></iterate>
+
+            <!-- TODO: CreditCardTypeGlAccount, GlAccountTypePartyDefault, ProductCategoryGlAccount, ProductGlAccount, TaxAuthorityGlAccount, VarianceReasonGlAccount -->
+
+            <!--moquivn-->
+            <!-- copy moquivi.accounting.AccClosingEntry -->
+            <entity-find entity-name="moquivi.accounting.AccClosingEntry" list="recordList">
+                <econdition field-name="organizationPartyId" from="sourcePartyId"/></entity-find>
+            <iterate list="recordList" entry="record"><set field="record.organizationPartyId" from="organizationPartyId"/>
+                <entity-create value-field="record"/></iterate>
+
+            <!-- setup mantle.party.time.TimePeriod for FiscalMonth, FiscalQuarter, FiscalYear -->
+            <if condition="startYear"><then>
+                <set field="nextYearInt" from="((Calendar) ec.user.nowCalendar).get(Calendar.YEAR) + 1"/>
+                <set field="lastYear" from="ec.l10n.format(nextYearInt, '0000')"/>
+
+                <set field="curYear" from="startYear"/>
+                <set field="prevPeriodId" from="null"/>
+                <while condition="curYear &lt;= lastYear">
+                    <set field="fromDate" from="ec.l10n.parseDate(curYear + '-01-01', 'yyyy-MM-dd')"/>
+                    <service-call name="mantle.party.TimeServices.getOrCreate#TimePeriod" out-map="curYearOut"
+                            in-map="[partyId:organizationPartyId, timePeriodTypeId:'FiscalYear', fromDate:fromDate, previousPeriodId:prevPeriodId]"/>
+                    <service-call name="mantle.party.TimeServices.get#DescendantPeriods" out-map="quartersOut"
+                            in-map="[parentPeriodId:curYearOut.timePeriodId, timePeriodTypeId:'FiscalQuarter', createMissing:true]"/>
+                    <iterate list="quartersOut.timePeriodList" entry="quarterPeriod">
+                        <service-call name="mantle.party.TimeServices.get#DescendantPeriods" out-map="quartersOut"
+                                in-map="[parentPeriodId:quarterPeriod.timePeriodId, timePeriodTypeId:'FiscalMonth', createMissing:true]"/>
+                    </iterate>
+
+                    <set field="prevPeriodId" from="curYearOut.timePeriodId"/>
+                    <set field="curYear" from="((curYear as int) + 1) as String"/>
+                </while>
+            </then><else>
+                <service-call name="mantle.ledger.LedgerServices.check#NextFiscalTimePeriods"
+                        in-map="[organizationPartyId:organizationPartyId]"/>
+            </else></if>
+        </actions>
+    </service>
+
+    <!-- =================================================== -->
+    <!-- ========== Financial TimePeriod Services ========== -->
+    <!-- =================================================== -->
+
+    <service verb="close" noun="FinancialTimePeriod" transaction-timeout="1800" transaction="force-new">
+        <in-parameters>
+            <parameter name="timePeriodId" required="true"/>
+            <parameter name="closePrevious" type="Boolean" default="false"/>
+            <parameter name="closeChildren" type="Boolean" default="false"/>
+        </in-parameters>
+        <actions>
+            <entity-find-one entity-name="mantle.party.time.TimePeriod" value-field="timePeriod" for-update="true"/>
+            <service-call name="mantle.party.TimeServices.get#TimePeriodInfo" in-map="[timePeriod:timePeriod]" out-map="periodInfo"/>
+            <set field="fromTimestamp" from="periodInfo.fromTimestamp"/>
+            <set field="thruTimestamp" from="periodInfo.thruTimestamp"/>
+
+            <log message="Closing period ${timePeriodId} ${timePeriod.periodName}"/>
+
+            <if condition="timePeriod.isClosed == 'Y'">
+                <message error="true">Not closing period ${ec.resource.expand('TimePeriodNameTemplate','',timePeriod)}, already closed.</message></if>
+            <if condition="ec.user.nowTimestamp.before(timePeriod.thruDate)">
+                <message error="true">Not closing period ${ec.resource.expand('TimePeriodNameTemplate','',timePeriod)}, period has not ended (ends on ${timePeriod.thruDate}).</message></if>
+
+            <!-- don't allow a period to close if the previous period is not closed -->
+            <set field="previousTimePeriod" from="timePeriod.previous"/>
+            <if condition="previousTimePeriod &amp;&amp; previousTimePeriod.isClosed != 'Y'">
+                <if condition="closePrevious"><then>
+                    <service-call name="mantle.ledger.LedgerServices.close#FinancialTimePeriod"
+                            in-map="[timePeriodId:previousTimePeriod.timePeriodId, closePrevious:closePrevious, closeChildren:closeChildren]"/>
+                </then><else>
+                    <message error="true">Not closing period ${ec.resource.expand('TimePeriodNameTemplate','',timePeriod)}, previous period ${ec.resource.expand('TimePeriodNameTemplate','',previousTimePeriod)} not closed.</message>
+                </else></if>
+            </if>
+
+            <!-- if any child periods make sure they are closed -->
+            <entity-find entity-name="mantle.party.time.TimePeriod" list="childTimePeriodList">
+                <econdition field-name="parentPeriodId" from="timePeriodId"/>
+                <order-by field-name="fromDate"/>
+            </entity-find>
+            <iterate list="childTimePeriodList" entry="childTimePeriod"><if condition="childTimePeriod.isClosed != 'Y'">
+                <if condition="closeChildren"><then>
+                    <service-call name="mantle.ledger.LedgerServices.close#FinancialTimePeriod"
+                            in-map="[timePeriodId:childTimePeriod.timePeriodId, closePrevious:closePrevious, closeChildren:closeChildren]"/>
+                </then><else>
+                    <message error="true">Not closing period ${ec.resource.expand('TimePeriodNameTemplate','',timePeriod)}, child period ${ec.resource.expand('TimePeriodNameTemplate','',childTimePeriod)} not closed.</message>
+                </else></if>
+            </if></iterate>
+
+            <service-call name="moquivi.accounting.LedgerServices.create#FinancialTimePeriodClosingAcctgTrans" in-map="[timePeriodId:timePeriodId]" out-map="resOut"/>
+            <log message="acctgTransIdByAccClosingEntry::${resOut?.acctgTransIdByAccClosingEntry}" level="debug"/>
+
+            <!-- make sure there are no unposted transactions within the time period -->
+            <entity-find-count entity-name="mantle.ledger.transaction.AcctgTrans" count-field="unpostedTransCount">
+                <econdition field-name="isPosted" operator="not-equals" value="Y" or-null="true"/>
+                <econdition field-name="transactionDate" operator="greater-equals" from="fromTimestamp"/>
+                <econdition field-name="transactionDate" operator="less-equals" from="thruTimestamp"/>
+            </entity-find-count>
+            <if condition="unpostedTransCount &gt; 0">
+                <message error="true">Not closing period ${ec.resource.expand('TimePeriodNameTemplate','',timePeriod)}, found ${unpostedTransCount} unposted transactions in period.</message></if>
+
+            <!-- check errors before continuing -->
+            <check-errors/>
+
+            <!-- first close the TimePeriod to avoid further postings -->
+            <set field="timePeriod.isClosed" value="Y"/>
+            <entity-update value-field="timePeriod"/>
+
+            <!-- recalculate postedDebits, postedCredits, endingBalance, etc on GlAccountOrgTimePeriod records for this time period -->
+            <service-call name="mantle.ledger.LedgerServices.recalculate#GlAccountOrgTimePeriodAmounts"
+                    in-map="[timePeriodId:timePeriodId]"/>
+
+            <message>Closed period ${timePeriod.periodName} and verified summary totals</message>
+        </actions>
+    </service>
+
+    <service verb="create" noun="PeriodCloseAcctgTrans">
+        <in-parameters>
+            <parameter name="timePeriodId" required="true"/>
+            <parameter name="postTransactions" type="Boolean" default="true"/>
+            <parameter name="glJournalId"/>
+            <parameter name="netIncomeGlAccountId"/>
+        </in-parameters>
+        <out-parameters><parameter name="acctgTransId"/></out-parameters>
+        <actions>
+            <entity-find-one entity-name="mantle.party.time.TimePeriod" value-field="timePeriod" for-update="true"/>
+            <set field="organizationPartyId" from="timePeriod.partyId"/>
+            <service-call name="mantle.party.TimeServices.get#TimePeriodInfo" in-map="[timePeriod:timePeriod]" out-map="periodInfo"/>
+            <set field="transactionDate" from="periodInfo.thruTimestampLate"/>
+            <if condition="ec.user.nowTimestamp &lt; periodInfo.thruTimestamp"><message>Fiscal period ${timePeriodId} has not yet ended (ends on ${timePeriod.thruDate})</message></if>
+            <if condition="timePeriod.isClosed != 'Y'"><message>Fiscal period ${timePeriodId} is not yet closed, Period Closing transactions may be posted after a period is closed and posting period close transactions before a period is closed may result in non-zero balances, requiring another closing transaction</message></if>
+
+            <!-- Thuc hien but toan ket chuyen Lai Lo 911 4212 Last-->
+            <entity-find entity-name="moquivi.accounting.AccClosingEntry" list="listAccClosingEntry">
+                <econdition field-name="organizationPartyId"/>
+                <econdition field-name="closeTimePeriod" value="L"/>
+                <order-by field-name="orderIndex"/>
+            </entity-find>
+            <iterate entry="accClosingEntry" list="listAccClosingEntry">
+                <set field="acctgTransId" from="null"/>
+                <set field="formula" from="accClosingEntry.formula"/>
+                <if condition="!formula"><return message="AccClosingEntry: Formula of ${accClosingEntry.closingEntryId} is null"/></if>
+                <service-call name="moquivi.accounting.reports.FormulaServices.evaluate#GlAccountOrgTimePeriod"
+                              in-map="[function:formula, organizationPartyId:organizationPartyId, timePeriodId:timePeriodId]"
+                              out-map="resFormula" out-map-add-to-existing="false"
+                />
+                <set field="formulaValue" from="resFormula.glAccountValueMap ?: null"/>
+
+                <if condition="!formulaValue"><continue/></if>
+                <set field="txDesc" value="${accClosingEntry.name} - Closing for Period ${timePeriod.periodName}"/>
+                <iterate list="formulaValue.entrySet()" entry="entry">
+                    <set field="glAccountId" from="entry.key"/>
+                    <set field="amountValue" from="entry.value"/>
+                    <if condition="amountValue">
+                        <entity-find-one entity-name="mantle.ledger.account.GlAccount" value-field="glAccount" cache="true">
+                            <field-map field-name="glAccountId"/></entity-find-one>
+                        <set field="glAccountTypeEnumId" from="glAccount?.glAccountTypeEnumId"/>
+                        <if condition="!acctgTransId">
+                            <service-call name="mantle.ledger.LedgerServices.create#AcctgTrans" out-map="createOut" out-map-add-to-existing="false"
+                                          in-map="[acctgTransTypeEnumId:'AttNetIncomeClosing', organizationPartyId:organizationPartyId,
+                            transactionDate:transactionDate, description:txDesc]"/>
+                            <set field="acctgTransId" from="createOut.acctgTransId"/>
+                        </if>
+
+                        <set field="tempC" from="[:]"/>
+                        <set field="tempC.amount" from="amountValue"/>
+                        <set field="tempC.debitCreditFlag" value="C"/>
+                        <if condition="accClosingEntry.isDebitCreditFlag == 'C'">
+                            <then>
+                                <service-call name="mantle.ledger.LedgerServices.get#DefaultGlAccountByType" out-map="creditGlAccountOut" out-map-add-to-existing="false"
+                                              in-map="[glAccountTypeEnumId:accClosingEntry.creditGlAccountTypeEnumId, organizationPartyId:organizationPartyId]"/>
+                                <set field="tempC.glAccountId" from="creditGlAccountOut.glAccountId"/>
+                                <set field="tempC.glAccountTypeEnumId" from="accClosingEntry.creditGlAccountTypeEnumId"/>
+                            </then><else>
+                            <set field="tempC.glAccountId" from="glAccountId"/>
+                            <set field="tempC.glAccountTypeEnumId" from="glAccountTypeEnumId"/>
+                        </else>
+                        </if>
+                        <service-call name="mantle.ledger.LedgerServices.create#AcctgTransEntry" in-map="tempC + [acctgTransId:acctgTransId]"/>
+
+                        <set field="tempD" from="[:]"/>
+                        <set field="tempD.amount" from="amountValue"/>
+                        <set field="tempD.debitCreditFlag" value="D"/>
+                        <if condition="accClosingEntry.isDebitCreditFlag == 'D'">
+                            <then>
+                                <service-call name="mantle.ledger.LedgerServices.get#DefaultGlAccountByType" out-map="debitGlAccountOut" out-map-add-to-existing="false"
+                                              in-map="[glAccountTypeEnumId:accClosingEntry.debitGlAccountTypeEnumId, organizationPartyId:organizationPartyId]"/>
+                                <set field="tempD.glAccountId" from="debitGlAccountOut.glAccountId"/>
+                                <set field="tempD.glAccountTypeEnumId" from="accClosingEntry.debitGlAccountTypeEnumId"/>
+                            </then><else>
+                            <set field="tempD.glAccountId" from="glAccountId"/>
+                            <set field="tempD.glAccountTypeEnumId" from="glAccountTypeEnumId"/>
+                        </else>
+                        </if>
+                        <service-call name="mantle.ledger.LedgerServices.create#AcctgTransEntry" in-map="tempD + [acctgTransId:acctgTransId]"/>
+                    </if>
+                </iterate>
+                <if condition="postTransactions">
+                    <service-call name="mantle.ledger.LedgerServices.post#AcctgTrans" in-map="[acctgTransId:acctgTransId]" out-map-add-to-existing="false"/>
+                </if>
+            </iterate>
+
+            <!-- recalc this period -->
+            <service-call name="mantle.ledger.LedgerServices.recalculate#GlAccountOrgTimePeriodAmounts"
+                          in-map="[timePeriodId:timePeriodId]"/>
+
+            <!-- recalc parent/child periods; this query finds all parents, and using thruDate only last of children -->
+            <entity-find entity-name="mantle.party.time.TimePeriodAndType" list="otherTimePeriodList">
+                <econdition field-name="timePeriodId" operator="not-equals" from="timePeriodId"/>
+                <econdition field-name="fromDate" operator="less-equals" from="timePeriod.thruDate"/>
+                <econdition field-name="thruDate" operator="greater-equals" from="timePeriod.thruDate"/>
+                <econdition field-name="periodPurposeEnumId" value="Fiscal"/>
+                <econdition field-name="partyId" from="organizationPartyId"/>
+            </entity-find>
+            <iterate list="otherTimePeriodList" entry="otherTimePeriod">
+                <service-call name="mantle.ledger.LedgerServices.recalculate#GlAccountOrgTimePeriodAmounts"
+                              in-map="[timePeriodId:otherTimePeriod.timePeriodId]"/>
+            </iterate>
+        </actions>
+    </service>
+</services>

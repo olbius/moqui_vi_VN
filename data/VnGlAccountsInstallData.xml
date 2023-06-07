@@ -194,4 +194,8 @@
     <moqui.basic.Enumeration enumId="GatOtherIntangibleFixedAsset" enumTypeId="GlAccountType" parentEnumId="GatIntangibleFixedAsset" description="Tài sản vô hình khác"/>
     <moqui.basic.Enumeration enumId="GatAccrualPayable" enumTypeId="GlAccountType" parentEnumId="GatAccountsPayable" description="Phải trả dồn tích"/>
 
+    <moqui.basic.Enumeration enumId="GatSellingExpense" parentEnumId="" enumTypeId="GlAccountType" description="Selling Expense"/>
+    <moqui.basic.Enumeration enumId="GatFinancialIncome" parentEnumId="" enumTypeId="GlAccountType" description="Financial Income"/>
+    <moqui.basic.Enumeration enumId="GatFinancialExpense" parentEnumId="" enumTypeId="GlAccountType" description="Financial Expense"/>
+    <moqui.basic.Enumeration enumId="GatGeneralAdminExpense" parentEnumId="" enumTypeId="GlAccountType" description="General Administration Expense"/>
 </entity-facade-xml>

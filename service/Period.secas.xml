@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<secas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-eca-2.1.xsd">
+    <seca id="TimePeriodCloseCreatePeriodCloseAcctgTrans" service="mantle.ledger.LedgerServices.close#FinancialTimePeriod" when="post-service" >
+        <condition><expression>parameters.timePeriodId</expression></condition>
+        <actions>
+            <entity-find-one entity-name="mantle.party.time.TimePeriod" value-field="timePeriodSelected">
+                <field-map field-name="timePeriodId" from="parameters.timePeriodId"/>
+            </entity-find-one>
+            <if condition="timePeriodSelected?.isClosed =='Y'">
+                <service-call name="mantle.ledger.LedgerServices.create#PeriodCloseAcctgTrans"
+                              in-map="[timePeriodId:parameters.timePeriodId]" out-map="serviceResult"
+                />
+                <log level="trace" message="Called service mantle.ledger.LedgerServices.create#PeriodCloseAcctgTrans"/>
+            </if>
+        </actions>
+    </seca>
+</secas>

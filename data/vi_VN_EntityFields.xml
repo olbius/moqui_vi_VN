@@ -306,4 +306,9 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderWishList" locale="vi_VN" localized="danh sách mong muốn"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderGiftRegistry" locale="vi_VN" localized="Đăng ký quà tặng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="OrderAutoReorder" locale="vi_VN" localized="Tự động đặt lại"/>
+
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="GatFinancialExpense" locale="vi_VN" localized="Chi phí tài chính"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="GatFinancialIncome" locale="vi_VN" localized="Doanh thu hoạt động tài chính"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="GatSellingExpense" locale="vi_VN" localized="Chi phí bán hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="GatGeneralAdminExpense" locale="vi_VN" localized="Chi phí quản lý doanh nghiệp"/>
 </entity-facade-xml>

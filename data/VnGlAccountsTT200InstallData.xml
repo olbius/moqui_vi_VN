@@ -615,7 +615,7 @@
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatOperatingExpense" glAccountId="131" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatPrepaidExpenses" glAccountId="331" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatGiftExpense" glAccountId="6417" organizationPartyId="TT200Settings"/>
-    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatRetainedEarnings" glAccountId="421" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatRetainedEarnings" glAccountId="4212" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatSales" glAccountId="511" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatTax" glAccountId="333" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatPayrollTax" glAccountId="3335" organizationPartyId="TT200Settings"/>
@@ -653,8 +653,13 @@
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatOtherIntangibleFixedAsset" glAccountId="2138" organizationPartyId="TT200Settings"/>
 
     <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatCommissionPayable" glAccountId="331" organizationPartyId="TT200Settings"/>
-    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatIncomeTax" glAccountId="821" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatIncomeTax" glAccountId="8211" organizationPartyId="TT200Settings"/>
 
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatDiscounts" glAccountId="521" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatFinancialExpense" glAccountId="635" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatFinancialIncome" glAccountId="515" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatSellingExpense" glAccountId="641" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.GlAccountTypeDefault glAccountTypeEnumId="GatGeneralAdminExpense" glAccountId="642" organizationPartyId="TT200Settings"/>
 
             <!--Mapping Invoice Item types and account ids -->
     <moqui.basic.EnumerationType description="Item Type (Order, Return, Invoice)" enumTypeId="ItemType"/>
@@ -1273,6 +1278,19 @@
             <!--Chi hộ khuyến mại-->
             <!--    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoicePrepaid" organizationPartyId="ORG_COMPANY_CORP" isPayable="Y" acctgTransTypeEnumId="AttPrepaidInvoice" glAccountId="331"/>-->
             <!--    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoicePrepaid" organizationPartyId="ORG_COMPANY_CORP" isPayable="N" acctgTransTypeEnumId="AttPrepaidInvoice" glAccountId="131"/>-->
+
+    <moquivi.accounting.AccClosingEntry closingEntryId="9000" name="1.Kết chuyển các khoản giảm trừ doanh thu" organizationPartyId="TT200Settings" orderIndex="1" formula="DuNo(521)" creditGlAccountTypeEnumId="GatDiscounts" debitGlAccountTypeEnumId="GatSales" closeTimePeriod="F" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9001" name="2.Kết chuyển doanh thu thuần trong kỳ" organizationPartyId="TT200Settings" orderIndex="2" formula="DuCo(511)" creditGlAccountTypeEnumId="GatProfitLoss" debitGlAccountTypeEnumId="GatSales" closeTimePeriod="N" isDebitCreditFlag="C"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9002" name="3.Kết chuyển doanh thu hoạt động tài chính trong kỳ" organizationPartyId="TT200Settings" orderIndex="3" formula="DuCo(515)" creditGlAccountTypeEnumId="GatProfitLoss" debitGlAccountTypeEnumId="GatFinancialIncome" closeTimePeriod="N" isDebitCreditFlag="C"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9003" name="4.Kết chuyển chi phí hoạt động tài chính trong kỳ" organizationPartyId="TT200Settings" orderIndex="4" formula="DuNo(635)" creditGlAccountTypeEnumId="GatFinancialExpense" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9004" name="5.Kết chuyển chi phí giá vốn hàng bán trong kỳ" organizationPartyId="TT200Settings"  orderIndex="5" formula="DuNo(632)" creditGlAccountTypeEnumId="GatCogs" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9005" name="6.Kết chuyển chi phí hàng bán trong kỳ" organizationPartyId="TT200Settings" orderIndex="6" formula="DuNo(641)" creditGlAccountTypeEnumId="GatSellingExpense" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9006" name="7.Kết chuyển chi phí quản lý trong kỳ" organizationPartyId="TT200Settings" orderIndex="7" formula="DuNo(642)" creditGlAccountTypeEnumId="GatGeneralAdminExpense" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9007" name="8.Kết chuyển thu nhập khác trong kỳ" organizationPartyId="TT200Settings" orderIndex="8" formula="DuCo(711)" creditGlAccountTypeEnumId="GatProfitLoss" debitGlAccountTypeEnumId="GatOtherIncome" closeTimePeriod="N" isDebitCreditFlag="C"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9008" name="9.Kết chuyển chi phí khác trong kỳ" organizationPartyId="TT200Settings" orderIndex="9" formula="DuNo(811)" creditGlAccountTypeEnumId="GatOtherExpense" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9009" name="10.Kết chuyển chi phí thuế TNDN trong kỳ" organizationPartyId="TT200Settings" orderIndex="10" formula="DuNo(8211)" creditGlAccountTypeEnumId="GatIncomeTax" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="N" isDebitCreditFlag="D"/>
+    <moquivi.accounting.AccClosingEntry closingEntryId="9010" name="11.Kết chuyển lãi lỗ trong kỳ" organizationPartyId="TT200Settings" orderIndex="11" formula="DuCo(911)" creditGlAccountTypeEnumId="GatRetainedEarnings" debitGlAccountTypeEnumId="GatProfitLoss" closeTimePeriod="L" isDebitCreditFlag="C"/>
+
     <mantle.ledger.LedgerServices.initPartyAccountingConfiguration sourcePartyId="TT200Settings"
                                                                    organizationPartyId="ORG_COMPANY_CORP" realTimeGlSummary="Y"/>
 </entity-facade-xml>

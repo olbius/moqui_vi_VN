@@ -691,6 +691,7 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="GatUnreceivedInventory" locale="vi_VN" localized="Hàng hóa chưa nhận"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="GatWipInventory" locale="vi_VN" localized="Công việc đang được thực hiện"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="GatWriteOff" locale="vi_VN" localized="Các khoản giảm trừ"/>
+
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="GEN_ADMIN_EXPENSE" locale="vi_VN" localized="Chi phí chung và hành chính"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="GEOT_CITY" locale="vi_VN" localized="Thành phố"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="GEOT_COUNTRY" locale="vi_VN" localized="Quốc gia"/>

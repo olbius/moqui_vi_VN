@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This software is in the public domain under CC0 1.0 Universal plus a
+Grant of Patent License.
+
+To the extent possible under law, the author(s) have dedicated all
+copyright and related and neighboring rights to this software to the
+public domain worldwide. This software is distributed without any
+warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication
+along with this software (see the LICENSE.md file). If not, see
+<http://creativecommons.org/publicdomain/zero/1.0/>.
+-->
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.1.xsd">
+    <entity entity-name="AccClosingEntry" package="moquivi.accounting">
+        <field name="closingEntryId" type="id" is-pk="true"/>
+        <field name="organizationPartyId" type="id" is-pk="true"/>
+        <field name="name" type="text-medium"/>
+        <field name="code" type="text-medium"/>
+        <field name="description" type="text-medium"/>
+        <field name="orderIndex" type="number-integer"/>
+        <field name="formula" type="text-medium"/>
+        <field name="creditGlAccountTypeEnumId" type="id"/>
+        <field name="debitGlAccountTypeEnumId" type="id"/>
+        <field name="closeTimePeriod" type="text-indicator"/>
+        <field name="isDebitCreditFlag" type="text-indicator"/>
+
+        <relationship type="one" title="Organization" related="mantle.party.Party" short-alias="organization">
+            <key-map field-name="organizationPartyId" related="partyId"/></relationship>
+        <relationship type="one" title="CreditGlAccountType" related="moqui.basic.Enumeration" short-alias="creditGlAccountType">
+            <key-map field-name="creditGlAccountTypeEnumId"/></relationship>
+        <relationship type="one" title="DebitGlAccountType" related="moqui.basic.Enumeration" short-alias="debitGlAccountType">
+            <key-map field-name="debitGlAccountTypeEnumId"/></relationship>
+    </entity>
+</entities>
