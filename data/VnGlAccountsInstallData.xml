@@ -198,4 +198,11 @@
     <moqui.basic.Enumeration enumId="GatFinancialIncome" parentEnumId="" enumTypeId="GlAccountType" description="Financial Income"/>
     <moqui.basic.Enumeration enumId="GatFinancialExpense" parentEnumId="" enumTypeId="GlAccountType" description="Financial Expense"/>
     <moqui.basic.Enumeration enumId="GatGeneralAdminExpense" parentEnumId="" enumTypeId="GlAccountType" description="General Administration Expense"/>
+
+    <!--Bảng cân đối kế toán-->
+    <moquivi.accounting.AccReportType reportTypeId="9000" name="Bảng cân đối kế toán" template="B01-DN" description="Hình thức biểu hiện của phương pháp tổng hợp cân đối kế toán và là một báo cáo kế toán chủ yếu"/>
+
+    <moquivi.accounting.AccReport reportId="9010" reportTypeId="9000" name="Bảng cân đối kế toán" flag="T" description="Bảng cân đối kế toán mặc định"/>
+
+    <moquivi.accounting.AccReport reportId="9020" reportTypeId="9000" name="Bảng cân đối kế toán" flag="M" description="Bảng cân đối kế toán mặc định"/>
 </entity-facade-xml>

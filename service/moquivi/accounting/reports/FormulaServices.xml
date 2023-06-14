@@ -13,6 +13,200 @@ along with this software (see the LICENSE.md file). If not, see
 <http://creativecommons.org/publicdomain/zero/1.0/>.
 -->
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.1.xsd">
+    <service verb="calculate" noun="TargetValue">
+        <in-parameters>
+            <parameter name="targetId" required="true"/>
+            <parameter name="reportId" required="true"/>
+            <parameter name="reportIdM" required="true"/>
+            <parameter name="reportIdT" required="true"/>
+            <parameter name="timePeriodId" required="true"/>
+            <parameter name="isClosed" required="true"/>
+            <parameter name="organizationPartyId" default-value="ORG_COMPANY_CORP"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="value" type="BigDecimal"/>
+        </out-parameters>
+        <actions>
+            <set field="value" from="0.0"/>
+            <entity-find-one entity-name="moquivi.accounting.AccReportTarget" value-field="reportTarget">
+                <field-map field-name="organizationPartyId" from="organizationPartyId"/>
+                <field-map field-name="targetId" from="targetId"/>
+                <field-map field-name="reportId" from="isClosed == 'Y' ? reportIdM : reportIdT"/>
+            </entity-find-one>
+
+            <if condition="!reportTarget"><return /></if>
+
+            <entity-find entity-name="moquivi.accounting.AccReportTarget" list="tmpChildrenList">
+                <econdition field-name="organizationPartyId" from="organizationPartyId"/>
+                <econdition field-name="reportId" from="reportId"/>
+                <econdition field-name="parentTargetId" from="targetId"/>
+                <select-field field-name="parentTargetId,targetId,reportId,code,name,demonstration,displaySign,unionSign,orderIndex"/>
+                <order-by field-name="orderIndex"/>
+            </entity-find>
+
+            <if condition="!tmpChildrenList">
+                <then>
+                    <set field="strTmp" from="reportTarget.formula"/>
+                    <if condition="!strTmp"><return /></if>
+                    <service-call name="moquivi.accounting.reports.FormulaServices.calculate#Formula"
+                                  in-map="[formula:strTmp, timePeriodId:timePeriodId, organizationPartyId:organizationPartyId]"
+                                  out-map="res" out-map-add-to-existing="false"
+                    />
+                    <set field="value" from="res?.value ? res.value : 0.0"/>
+                </then><else>
+                <set field="childValue" from="0.0"/>
+                <iterate list="tmpChildrenList" entry="tmpChildren">
+                    <!--<log message="context 1 TargetValue: ${context}"/>-->
+                    <service-call name="moquivi.accounting.reports.FormulaServices.calculate#TargetValue"
+                                  in-map="context + [targetId:tmpChildren.targetId]"
+                                  out-map="res" out-map-add-to-existing="false"
+                    />
+                    <!--<log message="context 2 TargetValue: ${context}"/>-->
+                    <set field="childValue" from="res?.value ? res.value : 0.0"/>
+                    <if condition="tmpChildren.unionSign == 'S'">
+                        <then><set field="value" from="value.subtract(childValue)"/></then>
+                        <else><set field="value" from="value.add(childValue)"/></else>
+                    </if>
+                </iterate>
+            </else></if>
+        </actions>
+    </service>
+
+    <service verb="calculate" noun="Formula">
+        <in-parameters>
+            <parameter name="formula" required="true"/>
+            <parameter name="timePeriodId" required="true"/>
+            <parameter name="organizationPartyId" default-value="ORG_COMPANY_CORP"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="value" type="BigDecimal"/>
+        </out-parameters>
+        <actions>
+            <set field="value" from="0.0"/>
+            <set field="formula" from="formula.replaceAll('\\s','')"/>
+            <!--// calculate Plus sign-->
+            <set field="strPLusList" from="formula.split('\\+') as List"/>
+            <iterate list="strPLusList" entry="strPLus">
+                <!-- // calculate Subtract sign-->
+                <if condition="strPLus.contains('-')">
+                    <then>
+                        <set field="strSubtractList" from="strPLus.split('-') as List"/>
+                        <set field="strSubtractFirst" from="strSubtractList.remove(0)"/>
+                        <service-call name="moquivi.accounting.reports.FormulaServices.calculate#ValueByFunction"
+                                      in-map="[function:strSubtractFirst, timePeriodId:timePeriodId, organizationPartyId:organizationPartyId]" out-map="res" out-map-add-to-existing="false"
+                        />
+                        <set field="value" from="value.add(res?.value ?: 0.0)"/>
+
+                        <iterate list="strSubtractList" entry="strSubtract">
+                            <service-call name="moquivi.accounting.reports.FormulaServices.calculate#ValueByFunction"
+                                          in-map="[function:strSubtract, timePeriodId:timePeriodId, organizationPartyId:organizationPartyId]" out-map="res" out-map-add-to-existing="false"
+                            />
+                            <set field="value" from="value.subtract(res?.value ?: 0.0)"/>
+                        </iterate>
+                    </then><else>
+                    <service-call name="moquivi.accounting.reports.FormulaServices.calculate#ValueByFunction"
+                                  in-map="[function:strPLus, timePeriodId:timePeriodId, organizationPartyId:organizationPartyId]" out-map="res" out-map-add-to-existing="false"
+                    />
+                    <set field="value" from="value.add(res?.value ?: 0.0)"/>
+                </else></if>
+            </iterate>
+        </actions>
+    </service>
+
+    <service verb="calculate" noun="ValueByFunction">
+        <in-parameters>
+            <parameter name="function" required="true"/>
+            <parameter name="timePeriodId" required="true"/>
+            <parameter name="organizationPartyId" default-value="ORG_COMPANY_CORP"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="value" type="BigDecimal"/>
+            <parameter name="valueNoClosing" type="BigDecimal"/>
+        </out-parameters>
+        <actions>
+            <set field="value" from="0.0"/>
+            <set field="valueNoClosing" from="0.0"/>
+            <set field="function" from="function.trim()"/>
+            <!--
+            // 1. DuNo
+		    // 2. DuCo
+		    // 4. LuyKePhatSinhCo
+		    // 5. LuyKePhatSinhNo
+		    // 6. LuongTinhDuNo
+		    // 7. LuongTinhDuCo
+		    // 8. DuNoPhatSinh
+		    // 9. DuCoPhatSinh
+		    -->
+            <set field="strAccountCode" from="function.substring(function.indexOf('(') + 1, function.length() - 1)"/>
+            <entity-find entity-name="mantle.ledger.account.GlAccount" list="glAccountList" limit="1">
+                <econdition field-name="accountCode" from="strAccountCode"/>
+            </entity-find>
+            <if condition="!glAccountList"><return/></if>
+            <set field="glAccountId" from="glAccountList.first.glAccountId"/>
+            <set field="glAccountIdChildList" from="[]"/>
+
+            <service-call name="moquivi.accounting.LedgerServices.get#GlAccountIdChildList"
+                          in-map="[glAccountId:glAccountId]" out-map="listChild" out-map-add-to-existing="false"/>
+            <script>glAccountIdChildList.addAll(listChild?.glAccountIdChildList ?: [])</script>
+
+            <!--find data-->
+            <entity-find entity-name="mantle.ledger.report.GlAccountOrgTimePeriodSummary" list="glAccountOrgTimePeriodSumList">
+                <econdition field-name="glAccountId" operator="in" from="glAccountIdChildList"/>
+                <econdition field-name="timePeriodId"/>
+                <econdition field-name="organizationPartyId"/>
+                <select-field field-name="organizationPartyId,timePeriodId,postedDebits,postedCredits,postedDebitsNoClosing,postedCreditsNoClosing,beginningBalance,endingBalance"/>
+            </entity-find>
+            <if condition="!glAccountOrgTimePeriodSumList"><return/></if>
+            <!--// 1. DuNo-->
+            <if condition="function.startsWith('DuNo(')">
+                <then>
+                    <set field="value" from="(glAccountOrgTimePeriodSumList.first.postedDebits ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedCredits ?: 0.0)"/>
+                    <set field="valueNoClosing" from="(glAccountOrgTimePeriodSumList.first.postedDebitsNoClosing ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedCreditsNoClosing ?: 0.0)"/>
+                </then>
+                <!--// 2. DuCo-->
+                <else-if condition="function.startsWith('DuCo(')">
+                    <set field="value" from="(glAccountOrgTimePeriodSumList.first.postedCredits ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedDebits ?: 0.0)"/>
+                    <set field="valueNoClosing" from="(glAccountOrgTimePeriodSumList.first.postedCreditsNoClosing ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedDebitsNoClosing ?: 0.0)"/>
+                </else-if>
+                <!--// 4. LuyKePhatSinhCo-->
+                <else-if condition="function.startsWith('LuyKePhatSinhCo(')">
+                    <set field="value" from="glAccountOrgTimePeriodSumList.first.postedCredits ?: 0.0"/>
+                    <set field="valueNoClosing" from="glAccountOrgTimePeriodSumList.first.postedCreditsNoClosing ?: 0.0"/>
+                </else-if>
+                <!--// 5. LuyKePhatSinhNo-->
+                <else-if condition="function.startsWith('LuyKePhatSinhNo(')">
+                    <set field="value" from="glAccountOrgTimePeriodSumList.first.postedDebits ?: 0.0"/>
+                    <set field="valueNoClosing" from="glAccountOrgTimePeriodSumList.first.postedDebitsNoClosing ?: 0.0"/>
+                </else-if>
+                <!--// 6. LuongTinhDuNo-->
+                <else-if condition="function.startsWith('LuongTinhDuNo(')">
+                    <set field="value" from="(glAccountOrgTimePeriodSumList.first.postedDebits ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedCredits ?: 0.0)"/>
+                    <set field="valueNoClosing" from="(glAccountOrgTimePeriodSumList.first.postedDebitsNoClosing ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedCreditsNoClosing ?: 0.0)"/>
+                    <if condition="value &lt; 0.0"><set field="value" from="0.0"/></if>
+                    <if condition="valueNoClosing &lt; 0.0"><set field="valueNoClosing" from="0.0"/></if>
+                </else-if>
+                <!--// 7. LuongTinhDuCo-->
+                <else-if condition="function.startsWith('LuongTinhDuCo(')">
+                    <set field="value" from="(glAccountOrgTimePeriodSumList.first.postedCredits ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedDebits ?: 0.0)"/>
+                    <set field="valueNoClosing" from="(glAccountOrgTimePeriodSumList.first.postedCreditsNoClosing ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedDebitsNoClosing ?: 0.0)"/>
+                    <if condition="value &lt; 0.0"><set field="value" from="0.0"/></if>
+                    <if condition="valueNoClosing &lt; 0.0"><set field="valueNoClosing" from="0.0"/></if>
+                </else-if>
+                <!--// 8.DuNoPhatSinh-->
+                <else-if condition="function.startsWith('DuNoPhatSinh(')">
+                    <set field="value" from="(glAccountOrgTimePeriodSumList.first.postedDebits ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedCredits ?: 0.0)"/>
+                    <set field="valueNoClosing" from="(glAccountOrgTimePeriodSumList.first.postedDebitsNoClosing ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedCreditsNoClosing ?: 0.0)"/>
+                </else-if>
+                <!--// 9. DuCoPhatSinh-->
+                <else-if condition="function.startsWith('DuCoPhatSinh(')">
+                    <set field="value" from="(glAccountOrgTimePeriodSumList.first.postedCredits ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedDebits ?: 0.0)"/>
+                    <set field="valueNoClosing" from="(glAccountOrgTimePeriodSumList.first.postedCreditsNoClosing ?: 0.0).subtract(glAccountOrgTimePeriodSumList.first.postedDebitsNoClosing ?: 0.0)"/>
+                </else-if>
+            </if>
+            <!--<log message="function: ${function}, value: ${value}"/>-->
+        </actions>
+    </service>
+
     <service verb="evaluate" noun="GlAccountOrgTimePeriod">
         <in-parameters>
             <parameter name="function" required="true"/>
@@ -37,7 +231,7 @@ along with this software (see the LICENSE.md file). If not, see
             <set field="glAccountId" from="glAccount.glAccountId"/>
             <set field="glAccountIdChildList" from="[]"/>
 
-            <service-call name="gsources.accounting.AccountingServices.get#GlAccountIdChildList"
+            <service-call name="moquivi.accounting.LedgerServices.get#GlAccountIdChildList"
                           in-map="[glAccountId:glAccountId]" out-map="listChild" out-map-add-to-existing="false"/>
             <script>glAccountIdChildList.addAll(listChild?.glAccountIdChildList ?: [])</script>
 

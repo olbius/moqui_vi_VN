@@ -114,6 +114,12 @@ along with this software (see the LICENSE.md file). If not, see
             <iterate list="recordList" entry="record"><set field="record.organizationPartyId" from="organizationPartyId"/>
                 <entity-create value-field="record"/></iterate>
 
+            <!-- copy moquivi.accounting.AccReportTarget -->
+            <entity-find entity-name="moquivi.accounting.AccReportTarget" list="recordList">
+                <econdition field-name="organizationPartyId" from="sourcePartyId"/></entity-find>
+            <iterate list="recordList" entry="record"><set field="record.organizationPartyId" from="organizationPartyId"/>
+                <entity-create value-field="record"/></iterate>
+
             <!-- setup mantle.party.time.TimePeriod for FiscalMonth, FiscalQuarter, FiscalYear -->
             <if condition="startYear"><then>
                 <set field="nextYearInt" from="((Calendar) ec.user.nowCalendar).get(Calendar.YEAR) + 1"/>

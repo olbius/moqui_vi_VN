@@ -13,6 +13,63 @@ along with this software (see the LICENSE.md file). If not, see
 <http://creativecommons.org/publicdomain/zero/1.0/>.
 -->
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.1.xsd">
+    <entity entity-name="AccReportType" package="moquivi.accounting">
+        <field name="reportTypeId" type="id" is-pk="true"/>
+        <field name="name" type="text-medium"/>
+        <field name="template" type="text-medium"/>
+        <field name="description" type="text-medium"/>
+
+        <relationship type="many" related="moquivi.accounting.AccReport" short-alias="accReports"/>
+    </entity>
+
+    <entity entity-name="AccReport" package="moquivi.accounting">
+        <field name="reportId" type="id" is-pk="true"/>
+        <field name="reportTypeId" type="id" is-pk="true"/>
+        <field name="name" type="text-medium"/>
+        <field name="description" type="text-medium"/>
+        <field name="flag" type="text-indicator"/>
+
+        <relationship type="one" related="moquivi.accounting.AccReportType" short-alias="accReportType"/>
+    </entity>
+
+    <!--entity entity-name="AccReportFunction" package="moquivi.accounting">
+        <field name="functionId" type="id" is-pk="true"/>
+        <field name="name" type="text-medium"/>
+        <field name="code" type="text-medium"/>
+        <field name="description" type="text-medium"/>
+    </entity>-->
+
+    <!-- Assign functions to reportType -->
+<!--    <entity entity-name="AccRepFuncRepType" package="moquivi.accounting">
+        <field name="functionId" type="id" is-pk="true"/>
+        <field name="reportTypeId" type="id" is-pk="true"/>
+
+        <relationship type="one" related="moquivi.accounting.AccReportType" short-alias="accReportType"/>
+        <relationship type="one" related="moquivi.accounting.AccReportFunction" short-alias="accReportFunction"/>
+    </entity>-->
+
+    <!-- Define report target -->
+    <entity entity-name="AccReportTarget" package="moquivi.accounting">
+        <field name="targetId" type="id" is-pk="true"/>
+        <field name="reportId" type="id" is-pk="true"/>
+        <field name="organizationPartyId" type="id" is-pk="true"/>
+        <field name="parentTargetId" type="id"/>
+        <field name="name" type="text-medium"/>
+        <field name="code" type="text-medium"/>
+        <field name="description" type="text-medium"/>
+        <field name="demonstration" type="text-medium"/>
+        <field name="displaySign" type="text-indicator"/>
+        <field name="unionSign" type="text-indicator"/>
+        <field name="displayStyle" type="text-indicator"/>
+        <field name="orderIndex" type="number-integer"/>
+        <field name="formula" type="text-long"/>
+
+        <relationship type="many" title="AccReport" related="moquivi.accounting.AccReport" short-alias="accReport">
+            <key-map field-name="reportId" related="reportId"/></relationship>
+        <relationship type="one" title="Organization" related="mantle.party.Party" short-alias="organization">
+            <key-map field-name="organizationPartyId" related="partyId"/></relationship>
+    </entity>
+
     <entity entity-name="AccClosingEntry" package="moquivi.accounting">
         <field name="closingEntryId" type="id" is-pk="true"/>
         <field name="organizationPartyId" type="id" is-pk="true"/>

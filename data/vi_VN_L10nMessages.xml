@@ -2394,7 +2394,8 @@
     <moqui.basic.LocalizedMessage original="Void" localized="Vô hiệu" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Write Off" localized="Loại bỏ" locale="vi_VN"/>
 
-
+    <moqui.basic.LocalizedMessage original="Number Code" localized="Mã số" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Demonstration" localized="Thuyết minh" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="${accClosingEntry.name} for Period ${timePeriod.periodName}" locale="vi_VN" localized="${accClosingEntry.name} - Kỳ kế toán ${timePeriod.periodName}"/>
     <moqui.basic.LocalizedMessage original="${accClosingEntry.name} - Closing for Period ${timePeriod.periodName}" locale="vi_VN" localized="${accClosingEntry.name} - Đóng kỳ kế toán ${timePeriod.periodName}"/>
 </entity-facade-xml>

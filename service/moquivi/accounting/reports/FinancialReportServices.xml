@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This software is in the public domain under CC0 1.0 Universal plus a
+Grant of Patent License.
+
+To the extent possible under law, the author(s) have dedicated all
+copyright and related and neighboring rights to this software to the
+public domain worldwide. This software is distributed without any
+warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication
+along with this software (see the LICENSE.md file). If not, see
+<http://creativecommons.org/publicdomain/zero/1.0/>.
+-->
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.1.xsd">
+    <service verb="get" noun="FinancialStatementReport">
+        <in-parameters>
+            <parameter name="timePeriodId" required="true"/>
+            <parameter name="reportTypeId" default-value="9000"/><!--Balance Sheet-->
+            <parameter name="flag" default-value="T"/>
+            <parameter name="organizationPartyId" default-value="ORG_COMPANY_CORP"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="resultList" type="List" >
+                <parameter name="result" type="Map">
+                    <parameter name="name"/>
+                    <parameter name="code"/>
+                    <parameter name="targetId"/>
+                    <parameter name="demonstration"/>
+                    <parameter name="displaySign"/>
+                    <parameter name="orderIndex"/>
+                    <parameter name="value" type="BigDecimal"/>
+                    <parameter name="previousValue" type="BigDecimal"/>
+                    <parameter name="childrenList" type="List" >
+                        <parameter name="childrenMap" type="Map"/>
+                    </parameter>
+                </parameter>
+            </parameter>
+            <parameter name="timePeriod" type="Map"/>
+            <parameter name="previousTimePeriod" type="Map"/>
+        </out-parameters>
+        <actions>
+            <set field="resultList" from="[]"/>
+            <entity-find-one entity-name="mantle.party.time.TimePeriod" value-field="timePeriod">
+                <field-map field-name="timePeriodId" from="timePeriodId"/>
+            </entity-find-one>
+            <if condition="!timePeriod"><return /></if>
+            <set field="timePeriodId" from="timePeriod.timePeriodId"/>
+            <set field="isClosed" from="timePeriod.isClosed"/>
+
+            <set field="previousTimePeriodId" from="null"/>
+            <set field="previousIsClosed" from="null"/>
+            <service-call name="moquivi.accounting.LedgerServices.get#PreviousTimePeriod"
+                in-map="[timePeriodId:timePeriodId, timePeriod:timePeriod]" out-map="resPre" out-map-add-to-existing="false"
+            />
+            <set field="previousTimePeriod" from="resPre?.preTimePeriod"/>
+            <if condition="previousTimePeriod">
+                <then>
+                    <set field="previousTimePeriodId" from="previousTimePeriod.timePeriodId"/>
+                    <set field="previousIsClosed" from="previousTimePeriod.isClosed"/>
+                </then><else>
+                    <set field="previousTimePeriod" from="timePeriod"/>
+                    <set field="previousTimePeriodId" from="timePeriodId"/>
+                    <set field="previousIsClosed" from="isClosed"/>
+            </else></if>
+
+            <!--get reportId-->
+            <set field="reportId" from="null"/>
+            <entity-find entity-name="moquivi.accounting.AccReport" list="accReportList">
+                <econdition field-name="reportTypeId" from="reportTypeId"/>
+                <!--<econdition field-name="flag" from="flag"/>-->
+                <order-by field-name="flag"/>
+            </entity-find>
+            <if condition="!accReportList"><return /></if>
+            <set field="reportId" from="accReportList.findAll({ it.flag == flag})?.first?.reportId"/>
+            <set field="reportIdM" from="accReportList.findAll({ it.flag == 'M'})?.first?.reportId"/>
+            <set field="reportIdT" from="accReportList.findAll({ it.flag == 'T'})?.first?.reportId"/>
+            <if condition="!reportId"><return /></if>
+
+            <!--Get report target-->
+            <entity-find entity-name="moquivi.accounting.AccReportTarget" list="accReportTargetList">
+                <econdition field-name="organizationPartyId" from="organizationPartyId"/>
+                <econdition field-name="reportId" from="reportId"/>
+                <econdition field-name="parentTargetId" operator="is-null"/>
+                <select-field field-name="parentTargetId,targetId,reportId,code,name,demonstration,displaySign,orderIndex"/>
+                <order-by field-name="orderIndex"/>
+            </entity-find>
+
+            <!--Get Financial Statement Tree-->
+            <iterate list="accReportTargetList" entry="accReportTarget">
+                <set field="item" from="[:]"/>
+                <set field="targetId" from="accReportTarget.targetId"/>
+                <set field="value" from="0.0" type="BigDecimal"/>
+                <set field="previousValue" from="0.0" type="BigDecimal"/>
+                <service-call name="moquivi.accounting.reports.FormulaServices.calculate#TargetValue"
+                    in-map="[targetId:targetId, reportId:reportId, reportIdM:reportIdM, reportIdT:reportIdT, timePeriodId:timePeriodId, isClosed:isClosed, organizationPartyId:organizationPartyId]"
+                    out-map="resValue" out-map-add-to-existing="false"
+                />
+                <set field="value" from="resValue?.value ?: 0.0" type="BigDecimal"/>
+                <if condition="previousTimePeriodId == timePeriodId">
+                    <then>
+                        <set field="previousValue" from="value" type="BigDecimal"/>
+                    </then><else>
+                    <service-call name="moquivi.accounting.reports.FormulaServices.calculate#TargetValue"
+                                  in-map="[targetId:targetId, reportId:reportId, reportIdM:reportIdM, reportIdT:reportIdT, timePeriodId:previousTimePeriodId, isClosed:previousIsClosed, organizationPartyId:organizationPartyId]"
+                                  out-map="resValuePrevious" out-map-add-to-existing="false"
+                    />
+                    <set field="previousValue" from="resValuePrevious?.value ?: 0.0" type="BigDecimal" />
+                </else></if>
+
+                <service-call name="moquivi.accounting.reports.FinancialReportServices.get#FinancialStmChildrenTree"
+                              in-map="[
+                                parentTargetId:targetId,
+                                reportId:reportId,
+                                reportIdM:reportIdM,
+                                reportIdT:reportIdT,
+                                timePeriodId:timePeriodId,
+                                isClosed:isClosed,
+                                previousTimePeriodId:previousTimePeriodId,
+                                previousIsClosed:previousIsClosed,
+                                organizationPartyId:organizationPartyId
+                              ]"
+                              out-map="resChildrenList" out-map-add-to-existing="false"
+                />
+                <script>
+                    item.name = accReportTarget.name
+                    item.code = accReportTarget.code
+                    item.targetId = accReportTarget.targetId
+                    item.demonstration = accReportTarget.demonstration
+                    item.displaySign = accReportTarget.displaySign
+                    item.orderIndex = accReportTarget.orderIndex
+                    item.value = value
+                    item.previousValue = previousValue
+                    item.childrenList = resChildrenList?.resultList ?: []
+                    resultList.add(item)
+                </script>
+            </iterate>
+<!--
+            <log message="resultListJSON:${groovy.json.JsonOutput.toJson(resultList)}"/>
+-->
+        </actions>
+    </service>
+
+    <service verb="get" noun="FinancialStmChildrenTree">
+        <in-parameters>
+            <parameter name="parentTargetId" required="true"/>
+            <parameter name="reportId" required="true"/>
+            <parameter name="reportIdM" required="true"/>
+            <parameter name="reportIdT" required="true"/>
+            <parameter name="timePeriodId" required="true"/><parameter name="isClosed" required="true"/>
+            <parameter name="previousTimePeriodId" required="true"/><parameter name="previousIsClosed" required="true"/>
+            <parameter name="organizationPartyId" default-value="ORG_COMPANY_CORP"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="resultList" type="List"/>
+        </out-parameters>
+        <actions>
+            <set field="resultList" from="[]"/>
+            <entity-find entity-name="moquivi.accounting.AccReportTarget" list="tmpChildrenList">
+                <econdition field-name="organizationPartyId" from="organizationPartyId"/>
+                <econdition field-name="reportId" from="reportId"/>
+                <econdition field-name="parentTargetId" from="parentTargetId"/>
+                <select-field field-name="parentTargetId,targetId,reportId,code,name,demonstration,displaySign,unionSign,orderIndex"/>
+                <order-by field-name="orderIndex"/>
+            </entity-find>
+
+            <if condition="!tmpChildrenList"><return /></if>
+
+            <!--Get Financial Statement Tree-->
+            <iterate list="tmpChildrenList" entry="tmpChildren">
+                <set field="item" from="[:]"/>
+                <set field="targetId" from="tmpChildren.targetId"/>
+                <set field="value" from="0.0" type="BigDecimal"/>
+                <set field="previousValue" from="0.0" type="BigDecimal"/>
+                <service-call name="moquivi.accounting.reports.FormulaServices.calculate#TargetValue"
+                              in-map="[targetId:targetId, reportId:reportId, reportIdM:reportIdM, reportIdT:reportIdT, timePeriodId:timePeriodId, isClosed:isClosed, organizationPartyId:organizationPartyId]"
+                              out-map="resValue" out-map-add-to-existing="false"
+                />
+                <set field="value" from="resValue?.value ?: 0.0" type="BigDecimal"/>
+                <if condition="previousTimePeriodId == timePeriodId">
+                    <then>
+                        <set field="previousValue" from="value" type="BigDecimal"/>
+                    </then><else>
+                    <service-call name="moquivi.accounting.reports.FormulaServices.calculate#TargetValue"
+                                  in-map="[targetId:targetId, reportId:reportId, reportIdM:reportIdM, reportIdT:reportIdT, timePeriodId:previousTimePeriodId, isClosed:previousIsClosed, organizationPartyId:organizationPartyId]"
+                                  out-map="resValuePrevious" out-map-add-to-existing="false"
+                    />
+                    <set field="previousValue" from="resValuePrevious?.value ?: 0.0" type="BigDecimal" />
+                </else></if>
+                <!--<log message="context 1 FinancialStmChildrenTree: ${context}"/>-->
+                <service-call name="moquivi.accounting.reports.FinancialReportServices.get#FinancialStmChildrenTree"
+                              in-map="context + [parentTargetId:targetId]"
+                              out-map="resChildrenList" out-map-add-to-existing="false"
+                />
+                <!--<log message="context 2 FinancialStmChildrenTree: ${context}"/>-->
+                <script>
+                    item.name = tmpChildren.name
+                    item.code = tmpChildren.code
+                    item.targetId = tmpChildren.targetId
+                    item.demonstration = tmpChildren.demonstration
+                    item.displaySign = tmpChildren.displaySign
+                    item.orderIndex = tmpChildren.orderIndex
+                    item.value = value
+                    item.previousValue = previousValue
+                    item.childrenList = resChildrenList?.resultList
+                    resultList.add(item)
+                </script>
+            </iterate>
+        </actions>
+    </service>
+</services>
