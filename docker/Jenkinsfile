@@ -13,14 +13,19 @@ pipeline {
       steps {
         dir('moqui') {
             git branch: 'master', credentialsId: '7edd89d3-5fc8-4d96-89ad-d093cbf8e2c0', url: 'git@github.com:moqui/moqui-framework.git'
-//             sh "git checkout tags/v3.0.0"
+            sh "git checkout tags/v3.0.0"
             withDockerContainer("openjdk:11-jdk") {
                 sh "./gradlew getRuntime"
                 sh "./gradlew getComponent -Pcomponent=PopCommerce"
             }
         }
        dir('moqui/runtime/component/moqui_vi_VN') {
+            sh "rm -rf *"
             git branch: 'main', credentialsId: '7edd89d3-5fc8-4d96-89ad-d093cbf8e2c0', url: 'git@github.com:olbius/moqui_vi_VN.git'
+       }
+       dir('moqui/runtime/component/SimpleScreens') {
+           sh "rm -rf *"
+           git branch: 'master', credentialsId: '7edd89d3-5fc8-4d96-89ad-d093cbf8e2c0', url: 'git@github.com:olbius/SimpleScreens.git'
         }
         dir('moqui') {
              withDockerContainer("openjdk:11-jdk") {
