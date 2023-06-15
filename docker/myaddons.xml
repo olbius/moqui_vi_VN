@@ -1,3 +1,4 @@
 <addons default-repository="github">
     <component name="moqui_vi_VN" group="olbius" version="" branch="main" repository="github"/>
+    <component name="SimpleScreens" group="olbius" version="2.2.0" branch="master" repository="github"/>
 </addons>
