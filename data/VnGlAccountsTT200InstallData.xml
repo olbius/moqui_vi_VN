@@ -8,7 +8,7 @@
     <mantle.party.Organization organizationName="TT200Settings Accounting, etc Settings" partyId="TT200Settings"/>
             <!-- Don't set as OrgInternal so it doesn't show up with others: <mantle.party.PartyRole partyId="TT200Settings" roleTypeId="OrgInternal"/> -->
     <mantle.ledger.transaction.GlJournal glJournalId="TT200SettingsError" glJournalName="Default Settings Error Journal" organizationPartyId="TT200Settings" glJournalTypeEnumId="GLJRNL_ERROR" isPosted="N"/>
-    <mantle.ledger.config.PartyAcctgPreference organizationPartyId="TT200Settings" baseCurrencyUomId="VND" cogsMethodEnumId="CogsAverageCost" errorGlJournalId="TT200SettingsError" invoiceIdPrefix="" invoiceSequenceEnumId="InvSqStandard" orderIdPrefix="" orderSequenceEnumId="OrdSqStandard" fiscalYearStartMonth="1" fiscalYearStartDay="1" hourlyTimePeriodTypeId="PayrollWeek" salaryTimePeriodTypeId="PayrollBiWeek" taxClassificationEnumId="TxcCCorp" taxFormEnumId="TxfUsIrs1120" employerClassEnumId="EmclsUsIrsRegularOther" payrollTaxFormEnumId="PtxfUsIrs941" settlementTermId="NetLastNext"/>
+    <mantle.ledger.config.PartyAcctgPreference organizationPartyId="TT200Settings" baseCurrencyUomId="VND" cogsMethodEnumId="CogsActualCost" errorGlJournalId="TT200SettingsError" invoiceIdPrefix="" invoiceSequenceEnumId="InvSqStandard" orderIdPrefix="" orderSequenceEnumId="OrdSqStandard" fiscalYearStartMonth="1" fiscalYearStartDay="1" hourlyTimePeriodTypeId="PayrollWeek" salaryTimePeriodTypeId="PayrollBiWeek" taxClassificationEnumId="TxcCCorp" taxFormEnumId="TxfUsIrs1120" employerClassEnumId="EmclsUsIrsRegularOther" payrollTaxFormEnumId="PtxfUsIrs941" settlementTermId="NetLastNext"/>
 
 
 

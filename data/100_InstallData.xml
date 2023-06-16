@@ -4,4 +4,16 @@
     <mantle.party.PartySettingType partySettingTypeId="ZaloSecretKey" description="Zalo OA app secret key" />
     <mantle.party.PartySettingType partySettingTypeId="ZaloRefreshToken" description="Zalo Refresh Token valid in 3 months" />
     <mantle.party.PartySettingType partySettingTypeId="ZaloAccessToken" description="Zalo Access Token valid in 25 hour" />
+
+    <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="GlAccountCodeMask" preferenceValue=""/>
+    <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="TelecomNumber.DefaultCountryCode" preferenceValue="84"/>
+    <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="PostalAddress.DefaultCountry" preferenceValue="VNM"/>
+    <!--
+    <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="FacilityActive" preferenceValue=""/>
+    <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="FacilityGeneralDefault" preferenceValue=""/>
+    <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="ACTIVE_ORGANIZATION" preferenceValue=""/>
+    <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="AllStoresMarkupLabelOrder" preferenceValue=""/>
+    <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="AllStoresMarkupLabelShipment" preferenceValue=""/>
+    <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="OrderSalesStoreDefault" preferenceValue=""/>
+    -->
 </entity-facade-xml>

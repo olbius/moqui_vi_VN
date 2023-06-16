@@ -143,14 +143,14 @@
     <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntAuthorized" toStatusId="PmntPromised" transitionName="Chưa xác thực"/>
     <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntAuthorized" toStatusId="PmntDelivered" transitionName="Đã chuyển"/>
     <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntAuthorized" toStatusId="PmntCancelled" transitionName="Hủy"/>
-    <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntAuthorized" toStatusId="PmntVoid" transitionName="Rỗng"/>
+    <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntAuthorized" toStatusId="PmntVoid" transitionName="Vô hiệu"/>
     <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntAuthorized" toStatusId="PmntDeclined" transitionName="Từ chối"/>
 
     <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntDelivered" toStatusId="PmntAuthorized" transitionName="Chưa chuyển"/>
     <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntDelivered" toStatusId="PmntPromised" transitionName="Undeliver and Unauthorize"/>
     <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntDelivered" toStatusId="PmntConfirmed" transitionName="Xác nhận"/>
     <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntDelivered" toStatusId="PmntCancelled" transitionName="Hủy"/>
-    <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntDelivered" toStatusId="PmntVoid" transitionName="Rỗng"/>
+    <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntDelivered" toStatusId="PmntVoid" transitionName="Vô hiệu"/>
     <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntDelivered" toStatusId="PmntDeclined" transitionName="Từ chối"/>
     <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="PmntConfirmed" toStatusId="PmntDelivered" transitionName="Chưa xác nhận"/>
 

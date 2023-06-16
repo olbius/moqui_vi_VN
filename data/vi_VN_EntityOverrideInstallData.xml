@@ -2313,7 +2313,7 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="PmntDelivered" locale="vi_VN" localized="Đã chuyển tiền"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="PmntConfirmed" locale="vi_VN" localized="Xác nhận đã nhận được tiền"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="PmntCancelled" locale="vi_VN" localized="Đã hủy"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="PmntVoid" locale="vi_VN" localized="Rỗng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="PmntVoid" locale="vi_VN" localized="Vô hiệu"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="PmntDeclined" locale="vi_VN" localized="Từ chối không trả"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="PricingRuleCreated" locale="vi_VN" localized="Đã tạo"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="PricingRuleApproved" locale="vi_VN" localized="Đã duyệt"/>
@@ -3002,4 +3002,47 @@
     <moqui.basic.Uom uomId="PP_THOI" uomTypeEnumId="UT_PROD_PACK_MEASURE" abbreviation="THOI" description="Thỏi"/>
     <moqui.basic.Uom uomId="PP_CHIEC" uomTypeEnumId="UT_PROD_PACK_MEASURE" abbreviation="CHIEC" description="Chiếc"/>
     <moqui.basic.Uom uomId="PP_KEG50L" uomTypeEnumId="UT_PROD_PACK_MEASURE" abbreviation="KEG50L" description="Keg 50L"/>
+
+    <!-- User Group for full-access Administrators -->
+    <moqui.security.UserGroup userGroupId="ADMIN" description="Quản trị viên (toàn quyền truy cập)" groupTypeEnumId="UgtMoquiAdmin"/>
+    <moqui.security.UserGroup userGroupId="ADMIN_ADV" description="Quản trị viên - Nâng cao" groupTypeEnumId="UgtMoquiAdmin"/>
+
+    <!-- A default/automatic group for all users -->
+    <moqui.security.UserGroup userGroupId="ALL_USERS" description="Tất cả người dùng (tất cả thành viên người dùng theo mặc định)"/>
+
+    <!--POPC-->
+    <moqui.security.UserGroup userGroupId="POP_COMMERCE_ADMIN" description="POPC ERP Quản trị viên" groupTypeEnumId="UgtPopcAdmin"/>
+    <moqui.security.UserGroup userGroupId="PopcAdminAccounting" description="POPC Kế toán" groupTypeEnumId="UgtPopcAdmin"/>
+    <moqui.security.UserGroup userGroupId="PopcAdminCatalogContent" description="POPC Danh mục và nội dung" groupTypeEnumId="UgtPopcAdmin"/>
+    <moqui.security.UserGroup userGroupId="PopcAdminPurchasing" description="POPC Thu mua" groupTypeEnumId="UgtPopcAdmin"/>
+    <moqui.security.UserGroup userGroupId="PopcAdminPurchasingSup" description="POPC Giám sát mua hàng" groupTypeEnumId="UgtPopcAdmin"/>
+    <moqui.security.UserGroup userGroupId="PopcAdminSales" description="POPC Bán hàng" groupTypeEnumId="UgtPopcAdmin"/>
+    <moqui.security.UserGroup userGroupId="PopcAdminSalesSup" description="POPC Giám sát bán hàng" groupTypeEnumId="UgtPopcAdmin"/>
+    <moqui.security.UserGroup userGroupId="PopcAdminWarehouse" description="POPC Kho" groupTypeEnumId="UgtPopcAdmin"/>
+    <moqui.security.UserGroup userGroupId="PopcWhClericalLtd" description="POPC Văn thư kho - Org Ltd" groupTypeEnumId="UgtPopcAdmin"/>
+    <moqui.security.UserGroup userGroupId="PopcWhGeneralLtd" description="POPC Tổng kho - Org Ltd" groupTypeEnumId="UgtPopcAdmin"/>
+
+    <!--SimpleScreens-->
+    <moqui.security.UserGroup userGroupId="MY_ACCOUNT_USERS" description="Tài khoản của tôi" groupTypeEnumId="UgtMyAccount"/>
+
+
+
+    <!-- NOTE: SettlementTerm is not an Enumeration because it needs additional fields -->
+    <mantle.account.invoice.SettlementTerm settlementTermId="Immediate" termTypeEnumId="TtFinPaymentDays" description="Thanh toán luôn (Ngay khi giao nhận hàng)" termValue="0" termValueUomId="TF_day"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="Net10" termTypeEnumId="TtFinPaymentDays" description="Thanh toán trong vòng 10 ngày" termValue="10" termValueUomId="TF_day"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="Net15" termTypeEnumId="TtFinPaymentDays" description="Thanh toán trong vòng 15 ngày" termValue="15" termValueUomId="TF_day"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="Net30" termTypeEnumId="TtFinPaymentDays" description="Thanh toán trong vòng 30 ngày" termValue="30" termValueUomId="TF_day"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="Net60" termTypeEnumId="TtFinPaymentDays" description="Thanh toán trong vòng 60 ngày" termValue="60" termValueUomId="TF_day"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="Net90" termTypeEnumId="TtFinPaymentDays" description="Thanh toán trong vòng 90 ngày" termValue="90" termValueUomId="TF_day"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="Net15thCur" termTypeEnumId="TtFinPaymentDayCurMonth" description="Thanh toán trước ngày 15 tháng này" termValue="15"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="NetLastCur" termTypeEnumId="TtFinPaymentDayCurMonth" description="Thanh toán trong tháng này" termValue="31"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="Net1stNext" termTypeEnumId="TtFinPaymentDayNextMonth" description="Thanh toán trước ngày mồng 1 của tháng sau" termValue="1"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="Net15thNext" termTypeEnumId="TtFinPaymentDayNextMonth" description="Thanh toán trước ngày 15 tháng sau" termValue="15"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="NetLastNext" termTypeEnumId="TtFinPaymentDayNextMonth" description="Thanh toán trong tháng sau" termValue="31"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="Net30Disc2Pct10" termTypeEnumId="TtFinPaymentDisc" description="Thanh toán trong vòng 30 ngày, chiết khấu 2% nếu thanh toán trong vòng 10 ngày" termValue="30" termValueUomId="TF_day"/>
+    <mantle.account.invoice.SettlementTerm settlementTermId="Net45Disc2Pct15" termTypeEnumId="TtFinPaymentDisc" description="Thanh toán trong vòng 45 ngày, chiết khấu 2% trong vòng 15 ngày" termValue="45" termValueUomId="TF_day"/>
+
+    <mantle.account.invoice.SettlementTerm settlementTermId="OrderPayment50Split30Days" termTypeEnumId="TtFinPaymentDays"
+                                           description="Trả trước một nửa, trả trước một nửa sau 30 ngày kể từ ngày xuất hóa đơn" termValue="30" termValueUomId="TF_day"
+                                           orderPmtServiceRegisterId="OrderPayment50Split"/>
 </entity-facade-xml>
