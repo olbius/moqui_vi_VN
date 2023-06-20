@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-facade-xml type="seed">
+    <moqui.basic.LocalizedMessage original="Built on Moqui 3.1.0-rc1"
+                                  localized="Built on Moqui 3.1.0-rc1 copyright @Chương trình Hỗ trợ doanh nghiệp chuyển đổi số giai đoạn 2021-2025 của Bộ Kế hoạch và Đầu tư phối hợp Dự án USAID LinkSME việt hóa và tùy biến dựa trên phần mềm Moqui" locale="vi_VN"/>
+
     <moqui.basic.LocalizedMessage original="Add Product" localized="Thêm sản phẩm" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Minimum Stock" localized="Tồn kho tối thiếu" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Reorder Quantity" localized="Số lượng tái nhập hàng" locale="vi_VN"/>
