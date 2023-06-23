@@ -16,4 +16,70 @@
     <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="AllStoresMarkupLabelShipment" preferenceValue=""/>
     <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="OrderSalesStoreDefault" preferenceValue=""/>
     -->
+
+    <!--Overrides SimpleScreensSetupData.xml-->
+    <!-- ==================================================== -->
+    <!-- ========== Pre-configured form-list finds ========== -->
+    <!-- ==================================================== -->
+    <moqui.screen.form.FormListFind formListFindId="AI_FI_AR_CUST_STMT" formConfigId="AI_FI_AR_CUST_STMT"
+                                    description="Báo cáo khách hàng (AR)" orderByField="+invoiceDate"
+                                    formLocation="component://SimpleScreens/screen/SimpleScreens/Accounting/Invoice/FindInvoice.xml.form_list$InvoiceList">
+        <fields fieldName="statusId" fieldOperator="in" fieldValue="InvoiceInProcess,InvoiceFinalized,InvoiceSent,InvoiceAcked"/>
+        <userGroups userGroupId="ALL_USERS"/>
+    </moqui.screen.form.FormListFind>
+
+    <moqui.screen.form.FormListFind formListFindId="AC_REP_SAL_AN_BY_PRD" formConfigId="AC_REP_SAL_AN_BY_PRD"
+                                    description="Theo sản phẩm tháng trước" orderByField="pseudoId"
+                                    formLocation="component://SimpleScreens/screen/SimpleScreens/Accounting/Reports/SalesAnalysis.xml.form_list$SalesAnalysis">
+        <fields fieldName="pageNoLimit" fieldOperator="equals" fieldValue="true"/>
+        <fields fieldName="issuedDate" fieldPeriod="month" fieldPerOffset="-1"/>
+        <userGroups userGroupId="ALL_USERS"/>
+    </moqui.screen.form.FormListFind>
+
+    <moqui.screen.form.FormListFind formListFindId="AC_REP_INVAGD_RECSUM" formConfigId="AC_REP_INVAGD_RECSUM"
+                                    description="Tóm tắt khoản phải thu" orderByField="toName,invoiceId"
+                                    formLocation="component://SimpleScreens/screen/SimpleScreens/Accounting/Reports/InvoiceAgingDetail.xml.form_list$InvoiceAgingList">
+        <fields fieldName="pageNoLimit" fieldOperator="equals" fieldValue="true"/>
+        <fields fieldName="dateField" fieldOperator="equals" fieldValue="dueDate"/>
+        <fields fieldName="invoiceType" fieldOperator="equals" fieldValue="Receivable"/>
+        <fields fieldName="periodDays" fieldOperator="equals" fieldValue="30"/>
+        <userGroups userGroupId="ALL_USERS"/>
+    </moqui.screen.form.FormListFind>
+
+    <moqui.screen.form.FormListFind formListFindId="AC_REP_INVAGD_RECDET" formConfigId="AC_REP_INVAGD_RECDET"
+                                    description="Chi tiết khoản phải thu" orderByField="toName,invoiceId"
+                                    formLocation="component://SimpleScreens/screen/SimpleScreens/Accounting/Reports/InvoiceAgingDetail.xml.form_list$InvoiceAgingList">
+        <fields fieldName="pageNoLimit" fieldOperator="equals" fieldValue="true"/>
+        <fields fieldName="dateField" fieldOperator="equals" fieldValue="dueDate"/>
+        <fields fieldName="invoiceType" fieldOperator="equals" fieldValue="Receivable"/>
+        <fields fieldName="periodDays" fieldOperator="equals" fieldValue="30"/>
+        <userGroups userGroupId="ALL_USERS"/>
+    </moqui.screen.form.FormListFind>
+
+    <moqui.screen.form.FormListFind formListFindId="AC_REP_INVAGD_PAYSUM" formConfigId="AC_REP_INVAGD_PAYSUM"
+                                    description="Tóm tắt khoản phải trả" orderByField="fromName,invoiceId"
+                                    formLocation="component://SimpleScreens/screen/SimpleScreens/Accounting/Reports/InvoiceAgingDetail.xml.form_list$InvoiceAgingList">
+        <fields fieldName="pageNoLimit" fieldOperator="equals" fieldValue="true"/>
+        <fields fieldName="dateField" fieldOperator="equals" fieldValue="dueDate"/>
+        <fields fieldName="invoiceType" fieldOperator="equals" fieldValue="Payable"/>
+        <fields fieldName="periodDays" fieldOperator="equals" fieldValue="30"/>
+        <userGroups userGroupId="ALL_USERS"/>
+    </moqui.screen.form.FormListFind>
+
+    <moqui.screen.form.FormListFind formListFindId="AC_REP_INVAGD_PAYDET" formConfigId="AC_REP_INVAGD_PAYDET"
+                                    description="Chi tiết khoản phải trả" orderByField="fromName,invoiceId"
+                                    formLocation="component://SimpleScreens/screen/SimpleScreens/Accounting/Reports/InvoiceAgingDetail.xml.form_list$InvoiceAgingList">
+        <fields fieldName="pageNoLimit" fieldOperator="equals" fieldValue="true"/>
+        <fields fieldName="dateField" fieldOperator="equals" fieldValue="dueDate"/>
+        <fields fieldName="invoiceType" fieldOperator="equals" fieldValue="Payable"/>
+        <fields fieldName="periodDays" fieldOperator="equals" fieldValue="30"/>
+        <userGroups userGroupId="ALL_USERS"/>
+    </moqui.screen.form.FormListFind>
+
+    <moqui.screen.form.FormListFind formListFindId="AT_FTE_AR_CUST_LEDG" formConfigId="AT_FTE_AR_CUST_LEDG"
+                                    description="Sổ cái khách hàng (AR)" orderByField="-transactionDate,-acctgTransId,acctgTransEntrySeqId"
+                                    formLocation="component://SimpleScreens/screen/SimpleScreens/Accounting/Transaction/FindTransactionEntry.xml.form_list$TransactionEntryList">
+        <fields fieldName="transactionDate" fieldPeriod="year" fieldPerOffset="0"/>
+        <userGroups userGroupId="ALL_USERS"/>
+    </moqui.screen.form.FormListFind>
 </entity-facade-xml>

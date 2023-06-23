@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This software is in the public domain under CC0 1.0 Universal plus a
+Grant of Patent License.
+
+To the extent possible under law, the author(s) have dedicated all
+copyright and related and neighboring rights to this software to the
+public domain worldwide. This software is distributed without any
+warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication
+along with this software (see the LICENSE.md file). If not, see
+<http://creativecommons.org/publicdomain/zero/1.0/>.
+-->
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-3.xsd">
+
+    <!-- ========================================================= -->
+    <!-- mantle.party -->
+    <!-- ========================================================= -->
+
+    <view-entity entity-name="PartyDetail" package="mantle.party">
+        <member-entity entity-alias="PTY" entity-name="mantle.party.Party"/>
+        <member-entity entity-alias="PER" entity-name="mantle.party.Person" join-from-alias="PTY" join-optional="true">
+            <key-map field-name="partyId"/></member-entity>
+        <member-entity entity-alias="ORG" entity-name="mantle.party.Organization" join-from-alias="PTY" join-optional="true">
+            <key-map field-name="partyId"/></member-entity>
+        <alias-all entity-alias="PTY"/>
+        <alias-all entity-alias="PER"/>
+        <alias-all entity-alias="ORG"/>
+
+        <alias name="partyName" function="concat_ws" type="text-medium"><complex-alias operator=",">
+            <complex-alias expression="' '"/>
+            <complex-alias-field entity-alias="PER" field="lastName"/>
+            <complex-alias-field entity-alias="PER" field="middleName"/>
+            <complex-alias-field entity-alias="PER" field="firstName"/>
+            <complex-alias-field entity-alias="ORG" field="organizationName"/>
+        </complex-alias>
+        </alias>
+    </view-entity>
+</entities>

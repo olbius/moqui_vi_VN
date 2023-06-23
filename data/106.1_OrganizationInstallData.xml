@@ -56,6 +56,17 @@
         <settings partySettingTypeId="ZaloSecretKey" settingValue=""/>
         <settings partySettingTypeId="ZaloRefreshToken" settingValue=""/>
         <settings partySettingTypeId="ZaloAccessToken" settingValue=""/>
+
+        <settings partySettingTypeId="OrgTemplateShipmentPick" settingValue="component://moqui_vi_VN/template/shipment/ShipmentPick.xsl-fo.ftl"/>
+        <settings partySettingTypeId="OrgTemplateShipmentPack" settingValue="component://moqui_vi_VN/template/shipment/ShipmentPack.xsl-fo.ftl"/>
+        <settings partySettingTypeId="OrgTemplateShipmentByPackage" settingValue="component://moqui_vi_VN/template/shipment/ShipmentByPackage.xsl-fo.ftl"/>
+        <settings partySettingTypeId="OrgTemplateShipmentInsert" settingValue="component://moqui_vi_VN/template/shipment/ShipmentInsert.xsl-fo.ftl"/>
+
+        <settings partySettingTypeId="OrgTemplateOrderPrint" settingValue="component://moqui_vi_VN/template/order/Order.xsl-fo.ftl"/>
+
+        <settings partySettingTypeId="OrgTemplateInvoicePrint" settingValue="component://moqui_vi_VN/template/account/Invoice.xsl-fo.ftl"/>
+        <settings partySettingTypeId="OrgTemplatePaymentDetail" settingValue="component://moqui_vi_VN/template/account/PaymentDetail.xsl-fo.ftl"/>
+        <settings partySettingTypeId="OrgTemplatePaymentCheck" settingValue="component://moqui_vi_VN/template/account/PaymentCheck.xsl-fo.ftl"/>
     </mantle.party.Party>
     <mantle.party.Organization partyId="ORG_COMPANY_CORP" organizationName="The Company Name"/>
     <mantle.party.PartyRole partyId="ORG_COMPANY_CORP" roleTypeId="OrgInternal"/>
