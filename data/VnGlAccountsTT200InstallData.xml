@@ -1055,6 +1055,11 @@
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_FEE_COST" glAccountId="6425" direction="I" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_CUSTMARKET_COST" glAccountId="6418" direction="I" organizationPartyId="TT200Settings"/>
     <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_COMPMARKET_COST" glAccountId="6418" direction="I" organizationPartyId="TT200Settings"/>
+
+    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ItemExpUtilElec" glAccountId="6417" direction="E" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ItemExpUtilWater" glAccountId="6417" direction="E" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ItemExpUtilTrash" glAccountId="6417" direction="E" organizationPartyId="TT200Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="ItemExpUtilVehFuel" glAccountId="6417" direction="E" organizationPartyId="TT200Settings"/>
             <!--
                 <mantle.ledger.config.ItemTypeGlAccount  itemTypeEnumId="PITM_OTHERMARKET_COST" glAccountId="6418" direction="I" organizationPartyId="TT200Settings"/>
             -->
