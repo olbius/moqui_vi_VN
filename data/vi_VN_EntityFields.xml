@@ -706,22 +706,37 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AtrNoTransReason" locale="vi_VN" localized="Không có lý do giao dịch"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AtrPaymentNotPosted" locale="vi_VN" localized="Thanh toán không được ghi sổ"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AtrSuccess" locale="vi_VN" localized="Thành công"/>
+
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttAmortization" locale="vi_VN" localized="Khấu hao ghi tăng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttAssetIssuance" locale="vi_VN" localized="Xuất kho tài sản"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttAssetReceipt" locale="vi_VN" localized="Nhập kho tài sản"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttAssetVariance" locale="vi_VN" localized="Biến động tài sản"/>
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBalanceVariance" locale="vi_VN" localized="Biến động số dư"/>
+-->
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBankAdjustment" locale="vi_VN" localized="Điều chỉnh tài khoản ngân hàng"/>
+-->
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBankDeposit" locale="vi_VN" localized="Gửi tiền vào tài khoản ngân hàng"/>
+-->
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBankTransfer" locale="vi_VN" localized="Chuyển tiền giữa các tài khoản ngân hàng"/>
+-->
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBankWithdrawal" locale="vi_VN" localized="Tiền rút tiền từ tài khoản ngân hàng"/>
+-->
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBorrowingsFinLiabilities" locale="vi_VN" localized="Khoản vay, các khoản nợ cho thuê tài chính"/>
+-->
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttCapitalization" locale="vi_VN" localized="Giao dịch vốn hóa"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttCommissionInvoice" locale="vi_VN" localized="Hóa đơn hoa hồng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttCreditLine" locale="vi_VN" localized="Giao dịch tín dụng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttCreditMemo" locale="vi_VN" localized="Bản ghi nhớ tín dụng khách hàng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttCustRtnInvoice" locale="vi_VN" localized="Hóa đơn khách hàng trả lại"/>
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttDepositInterest" locale="vi_VN" localized="Lãi suất tiền gửi"/>
+-->
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttDepreciation" locale="vi_VN" localized="Khấu hao ghi giảm"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttDisbursement" locale="vi_VN" localized="Giải ngân"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttExternal" locale="vi_VN" localized="Giao dịch với bên ngoài"/>
@@ -749,9 +764,9 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttPaymentApplied" locale="vi_VN" localized="Khớp lệnh thanh toán"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttPaymentInOutAppl" locale="vi_VN" localized="Khớp lệnh thanh toán vào/ra"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttPayrollInvoice" locale="vi_VN" localized="Hóa đơn lương"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttPayrollOtherInvoice" locale="vi_VN" localized="Biên chế hóa đơn khác"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttPayrollOtherInvoice" locale="vi_VN" localized="Hóa đơn ngoài lương"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttPeriodClosing" locale="vi_VN" localized="Điều chỉnh đóng kì"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttPrepaidInvoice" locale="vi_VN" localized="Hóa đơn trả trước"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttPrepaidInvoice" locale="vi_VN" localized="Chi hộ khuyến mại"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttPurchaseInvoice" locale="vi_VN" localized="Hóa đơn mua hàng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttReceipt" locale="vi_VN" localized="Phiếu thu"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttReturnInventory" locale="vi_VN" localized="Trả lại kho"/>
@@ -762,6 +777,20 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttTaxInvoice" locale="vi_VN" localized="Hóa đơn thuế"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttVendCreditMemo" locale="vi_VN" localized="Bản ghi nhớ tín dụng nhà cung cấp"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttVendRtnInvoice" locale="vi_VN" localized="Hóa đơn trả lại nhà cung cấp"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBankDeposit" locale="vi_VN" localized="Nộp tiền vào tài khoản ngân hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBankWithdrawal" locale="vi_VN" localized="Rút tiền từ tài khoản ngân hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBankTransfer" locale="vi_VN" localized="Chuyển tiền giữa các tài khoản ngân hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBankAdjustment" locale="vi_VN" localized="Điều chỉnh tài khoản ngân hàng"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBalanceVariance" locale="vi_VN" localized="Biến động số dư"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttDepositInterest" locale="vi_VN" localized="Thu lãi tiền gửi"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttBorrowingsFinLiabilities" locale="vi_VN" localized="Vay, nợ thuê tài chính"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttStockEvent" locale="vi_VN" localized="Xử lý kiểm kho"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttToolsAllocation" locale="vi_VN" localized="Phân bổ CCDC"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttFixedAssetAllocation" locale="vi_VN" localized="Phân bổ TSCĐ"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttEquipmentIncrease" locale="vi_VN" localized="Ghi tăng CCDC"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttEquipmentDecrease" locale="vi_VN" localized="Ghi giảm CCDC"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AttFixedAssetDecrease" locale="vi_VN" localized="Ghi giảm TSCĐ"/>
+
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AUTHZA_ALL" locale="vi_VN" localized="Tất cả"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AUTHZA_CREATE" locale="vi_VN" localized="Tạo mới"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="AUTHZA_DELETE" locale="vi_VN" localized="Xóa"/>
@@ -1274,20 +1303,34 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceCommission" locale="vi_VN" localized="Hoa hồng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceCreditMemo" locale="vi_VN" localized="Bản ghi nhớ tín dụng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceGarnishment" locale="vi_VN" localized="Thu hồi nợ"/>
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceHealthInsurance" locale="vi_VN" localized="Hóa đơn bảo hiểm y tế"/>
+-->
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceIncomeTax" locale="vi_VN" localized="Thuế thu nhập hóa đơn"/>
+-->
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceLaborUnionFee" locale="vi_VN" localized="Hóa đơn phí công đoàn lao động"/>
+-->
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceOtherTax" locale="vi_VN" localized="Hóa đơn khác"/>
+-->
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoicePayroll" locale="vi_VN" localized="Trả lương cho nhân viên"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoicePayrollOther" locale="vi_VN" localized="Thưởng, v.v. (các khoản ngoài lương)"/>
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoicePayrollTax" locale="vi_VN" localized="Thuế biên chế hóa đơn"/>
+-->
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoicePrepaid" locale="vi_VN" localized="Chi hộ khuyến mại"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceReturn" locale="vi_VN" localized="Trả lại"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceSales" locale="vi_VN" localized="Bán hàng/Mua hàng"/>
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceSocialInsurance" locale="vi_VN" localized="Hóa đơn bảo hiểm xã hội"/>
+-->
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceTax" locale="vi_VN" localized="Thuế"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceTemplate" locale="vi_VN" localized="Bản mẫu"/>
+<!--
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvoiceUnemploymentInsurance" locale="vi_VN" localized="Hóa đơn bảo hiểm thất nghiệp"/>
+-->
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InVrDamaged" locale="vi_VN" localized="Bị hư hại"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InVrFound" locale="vi_VN" localized="Tìm thấy"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InVrInit" locale="vi_VN" localized="Khởi tạo"/>

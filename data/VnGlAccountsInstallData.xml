@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<entity-facade-xml type="install">-->
 <entity-facade-xml type="seed-initial">
+    <!--===================-->
+    <!--Add for PaymentType-->
+    <!--===================-->
+    <moqui.basic.Enumeration description="Customer Refund" enumId="PtCustomerRefund" parentEnumId="PtDisbursement" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Vendor Payment" enumId="PtVendorPayment" parentEnumId="PtDisbursement" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Vendor Prepaid Payment" enumId="PtVendorPrepaidPayment" parentEnumId="PtDisbursement" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Commission Payment" enumId="PtCommissionPayment" parentEnumId="PtDisbursement" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Tax Payment" enumId="PtTaxPayment" parentEnumId="PtDisbursement" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Sales Tax Payment" enumId="PtSalesTaxPayment" parentEnumId="PtTaxPayment" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Payroll Tax Payment" enumId="PtPayrollTaxPayment" parentEnumId="PtTaxPayment" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Income Tax Payment" enumId="PtIncomeTaxPayment" parentEnumId="PtTaxPayment" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Gift Certificate Withdrawal" enumId="PtGiftCertificateWithdrawal" parentEnumId="PtDisbursement" enumTypeId="PaymentType"/>
+
+    <moqui.basic.Enumeration description="Receipt" enumId="PtReceipt" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Customer Payment" enumId="PtCustomerPayment" parentEnumId="PtReceipt" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Customer Deposit" enumId="PtCustomerDeposit" parentEnumId="PtReceipt" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Interest Receipt" enumId="PtInterestReceipt" parentEnumId="PtReceipt" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Gift Certificate Deposit" enumId="PtGiftCertificateDeposit" parentEnumId="PtReceipt" enumTypeId="PaymentType"/>
+
+    <moqui.basic.Enumeration description="Promotion Prepaid Payment" enumId="PtPromotionPrepaidPayment" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Other Tax Payment" enumId="PtOtherTaxPayment" parentEnumId="PtTaxPayment" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Labor Union Fee Payment" enumId="PtLaborUnionFeePayment" parentEnumId="PtPayrollPayment" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Social Insurance Payment" enumId="PtSocialInsurancePayment" parentEnumId="PtPayrollPayment" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Health Insurance Payment" enumId="PtHealthInsurancePayment" parentEnumId="PtPayrollPayment" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="Unemployment Insurance Payment" enumId="PtUnemploymentInsurancePayment" parentEnumId="PtPayrollPayment" enumTypeId="PaymentType"/>
+
+    <!-- payment types for POS PAID IN/OUT -->
+    <moqui.basic.Enumeration description="POS Paid Out" enumId="PtPosPaidOut" parentEnumId="PtDisbursement" enumTypeId="PaymentType"/>
+    <moqui.basic.Enumeration description="POS Paid In" enumId="PtPosPaidIn" parentEnumId="PtReceipt" enumTypeId="PaymentType"/>
+
+    <!--===================-->
+    <!--Add for InvoiceType-->
+    <!--===================-->
+    <moqui.basic.Enumeration description="Chi hộ khuyến mại" enumId="InvoicePrepaid" enumTypeId="InvoiceType"/>
+
+    <moqui.basic.Enumeration description="Invoice Payroll Tax" enumId="InvoicePayrollTax" parentEnumId="InvoiceTax" enumTypeId="InvoiceType"/>
+    <moqui.basic.Enumeration description="Invoice Income Tax" enumId="InvoiceIncomeTax" parentEnumId="InvoiceTax" enumTypeId="InvoiceType"/>
+    <moqui.basic.Enumeration description="Invoice Other Tax" enumId="InvoiceOtherTax" parentEnumId="InvoiceTax" enumTypeId="InvoiceType"/>
+    <moqui.basic.Enumeration description="Labor Union Fee Invoice" enumId="InvoiceLaborUnionFee" parentEnumId="InvoicePayroll" enumTypeId="InvoiceType"/>
+    <moqui.basic.Enumeration description="Social Insurance Invoice" enumId="InvoiceSocialInsurance" parentEnumId="InvoicePayroll" enumTypeId="InvoiceType"/>
+    <moqui.basic.Enumeration description="Health Insurance Invoice" enumId="InvoiceHealthInsurance" parentEnumId="InvoicePayroll" enumTypeId="InvoiceType"/>
+    <moqui.basic.Enumeration description="Unemployment Insurance Invoice" enumId="InvoiceUnemploymentInsurance" parentEnumId="InvoicePayroll" enumTypeId="InvoiceType"/>
+
+    <!--===================-->
+    <!--Add for AcctgTransType-->
+    <!--===================-->
+    <!--Current Asset Transfer: Bank deposit/withdrawal/transfer -->
+    <moqui.basic.Enumeration enumId="AttBankDeposit" description="Deposit Money Into Bank Account" parentEnumId="AttObligation" enumTypeId="AcctgTransType"/>
+    <moqui.basic.Enumeration enumId="AttBankWithdrawal" description="Withdrawal Money From Bank Account" parentEnumId="AttObligation" enumTypeId="AcctgTransType"/>
+    <moqui.basic.Enumeration enumId="AttBankTransfer" description="Transfer Money Between Bank Accounts" parentEnumId="AttObligation" enumTypeId="AcctgTransType"/>
+    <moqui.basic.Enumeration enumId="AttBankAdjustment" description="Bank Account Adjustment" parentEnumId="AttObligation" enumTypeId="AcctgTransType"/>
+    <moqui.basic.Enumeration enumId="AttBalanceVariance" description="Balance Variance" parentEnumId="AttObligation" enumTypeId="AcctgTransType"/>
+    <moqui.basic.Enumeration enumId="AttDepositInterest" description="Deposit Interest" parentEnumId="AttObligation" enumTypeId="AcctgTransType"/>
+    <moqui.basic.Enumeration enumId="AttBorrowingsFinLiabilities" description="Borrowings, Finance Lease Liabilities " parentEnumId="AttObligation" enumTypeId="AcctgTransType"/>
+
+    <moqui.basic.Enumeration enumId="AttStockEvent" description="Stock event" parentEnumId="" enumTypeId="AcctgTransType"/>
+    <moqui.basic.Enumeration enumId="AttPayrollOtherInvoice" description="Payroll Other Invoice" parentEnumId="AttObligation" enumTypeId="AcctgTransType"/>
+
+    <moqui.basic.Enumeration enumId="AttPrepaidInvoice" description="Prepaid Invoice" parentEnumId="AttObligation" enumTypeId="AcctgTransType"/>
+
+    <!--Enum Group Member: Acc TX Types-->
+    <moqui.basic.EnumGroupMember enumGroupEnumId="EngAccTxTypesInvoice" enumId="AttPrepaidInvoice"/>
+    <moqui.basic.EnumGroupMember enumGroupEnumId="EngAccTxTypesPayable" enumId="AttPrepaidInvoice"/>
+    <moqui.basic.EnumGroupMember enumGroupEnumId="EngAccTxTypesReceivable" enumId="AttPrepaidInvoice"/>
+
+    <moqui.basic.EnumGroupMember enumGroupEnumId="EngAccTxTypesInvoice" enumId="AttPayrollOtherInvoice"/>
+    <moqui.basic.EnumGroupMember enumGroupEnumId="EngAccTxTypesPayable" enumId="AttPayrollOtherInvoice"/>
+
+    <!--Relationship Between Invoice and Payment-->
+    <moqui.basic.Enumeration enumId="InvoiceTax" relatedEnumId="PtTaxPayment"/>
+    <moqui.basic.Enumeration enumId="InvoicePrepaid" relatedEnumId="PtPromotionPrepaidPayment"/>
+    <moqui.basic.Enumeration enumId="InvoiceCommission" relatedEnumId="PtCommissionPayment"/>
+    <moqui.basic.Enumeration enumId="InvoiceReturn" relatedEnumId="PtRefund"/>
+    <moqui.basic.Enumeration enumId="InvoicePayrollTax" relatedEnumId="PtPayrollTaxPayment"/>
+    <moqui.basic.Enumeration enumId="InvoiceIncomeTax" relatedEnumId="PtIncomeTaxPayment"/>
+    <moqui.basic.Enumeration enumId="InvoiceOtherTax" relatedEnumId="PtOtherTaxPayment"/>
+    <moqui.basic.Enumeration enumId="InvoiceLaborUnionFee" relatedEnumId="PtLaborUnionFeePayment"/>
+    <moqui.basic.Enumeration enumId="InvoiceSocialInsurance" relatedEnumId="PtSocialInsurancePayment"/>
+    <moqui.basic.Enumeration enumId="InvoiceHealthInsurance" relatedEnumId="PtHealthInsurancePayment"/>
+    <moqui.basic.Enumeration enumId="InvoiceUnemploymentInsurance" relatedEnumId="PtUnemploymentInsurancePayment"/>
 
     <!-- DEBIT classes -->
 

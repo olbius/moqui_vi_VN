@@ -942,26 +942,35 @@
     <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="111" organizationPartyId="TT133Settings" paymentInstrumentEnumId="PiCash" isPayable="E"/>
     <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="111" organizationPartyId="TT133Settings" paymentInstrumentEnumId="PiCod" isPayable="E"/>
 
-            <!-- mappings for payments -->
-            <!--<mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtCustomerRefund"/>
+    <!-- mappings for payments -->
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtCustomerRefund"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="Y" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtCustomerRefund"/>
 
-            <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtVendorPayment"/>
-            <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtVendorPrepaidPayment"/>
-            <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtCommissionPayment"/>
-            <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtGiftCertificateWithdrawal"/>
-            <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3334" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtSalesTaxPayment"/>
-            <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3331" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtIncomeTaxPayment"/>-->
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtVendorPayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtVendorPrepaidPayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="334" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtCommissionPayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtGiftCertificateWithdrawal"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3331" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtSalesTaxPayment"/>
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="334" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtPayrollPayment"/>
-            <!--<mantle.ledger.config.PaymentTypeGlAccount glAccountId="3335" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtPayrollTaxPayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3335" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtPayrollTaxPayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3334" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtIncomeTaxPayment"/>
 
-            <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtCustomerPayment"/>
-            <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtCustomerDeposit"/>
-            <mantle.ledger.config.PaymentTypeGlAccount glAccountId="515" isApplied="N" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtInterestReceipt"/>
-            <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtGiftCertificateDeposit"/>-->
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="131" isApplied="N" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtCustomerPayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtCustomerDeposit"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="1386" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtCustomerDeposit"/><!--244 TT200-->
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="515" isApplied="N" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtInterestReceipt"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtGiftCertificateDeposit"/>
 
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3338" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtOtherTaxPayment"/>
 
-            <!--    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="1388" isApplied="E" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtPromotionPrepaidPayment"/>-->
-            <!--    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtPromotionPrepaidPayment"/>-->
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3382" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtLaborUnionFeePayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3383" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtSocialInsurancePayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3384" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtHealthInsurancePayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="3385" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtUnemploymentInsurancePayment"/>
+
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="1388" isApplied="E" isPayable="N" organizationPartyId="TT133Settings" paymentTypeEnumId="PtPromotionPrepaidPayment"/>
+    <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="E" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtPromotionPrepaidPayment"/>
+
 
 
     <mantle.ledger.config.FinancialAccountTypeGlAccount glAccountId="141" finAccountTypeId="EmployeeAdvance" organizationPartyId="TT133Settings"/>
@@ -1001,13 +1010,25 @@
     <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceSales" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttPurchaseInvoice" glAccountId="331"/> <!-- 212000000 -->
     <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceCreditMemo" organizationPartyId="TT133Settings" isPayable="N" acctgTransTypeEnumId="AttVendCreditMemo" glAccountId="131"/> <!-- 121000000 -->
     <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceCreditMemo" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttCreditMemo" glAccountId="331"/> <!-- 212000000 -->
-    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceReturn" organizationPartyId="TT133Settings" isPayable="N" acctgTransTypeEnumId="AttVendRtnInvoice" glAccountId="131"/> <!-- 121000000 -->
-    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceReturn" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttCustRtnInvoice" glAccountId="331"/> <!-- 212000000 -->
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceReturn" organizationPartyId="TT133Settings" isPayable="N" acctgTransTypeEnumId="AttVendRtnInvoice" glAccountId="331"/> <!-- 121000000 -->
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceReturn" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttCustRtnInvoice" glAccountId="131"/> <!-- 212000000 -->
     <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoicePayroll" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttPayrollInvoice" glAccountId="334"/> <!-- 212100000 -->
-    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceCommission" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttCommissionInvoice" glAccountId="6421"/> <!-- 212200000 -->
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceCommission" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttCommissionInvoice" glAccountId="334"/> <!-- 212200000 -->
     <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceTax" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttTaxInvoice" glAccountId="333"/> <!-- 212300000 -->
     <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceGarnishment" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttGarnishmentInvoice" glAccountId="338"/> <!-- 212400000 -->
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoicePayrollOther" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttPayrollOtherInvoice" glAccountId="334"/>
 
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoicePayrollTax" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttTaxInvoice" glAccountId="3335"/>
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceIncomeTax" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttTaxInvoice" glAccountId="3334"/>
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceOtherTax" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttTaxInvoice" glAccountId="3338"/>
+
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceLaborUnionFee" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttPayrollInvoice" glAccountId="3382"/>
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceSocialInsurance" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttPayrollInvoice" glAccountId="3383"/>
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceHealthInsurance" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttPayrollInvoice" glAccountId="3384"/>
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoiceUnemploymentInsurance" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttPayrollInvoice" glAccountId="3385"/>
+    <!--Chi hộ khuyến mại-->
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoicePrepaid" organizationPartyId="TT133Settings" isPayable="Y" acctgTransTypeEnumId="AttPrepaidInvoice" glAccountId="331"/>
+    <mantle.ledger.config.InvoiceTypeTransType invoiceTypeEnumId="InvoicePrepaid" organizationPartyId="TT133Settings" isPayable="N" acctgTransTypeEnumId="AttPrepaidInvoice" glAccountId="1388"/>
     <!--Bảng cân đối kế toán B01b – DNN-->
     <!--flag T-->
     <moquivi.accounting.AccReportTarget targetId="300" reportId="9010" code="300" name="Tổng cộng tài sản (300 = 100 + 200)" unionSign="P" displayStyle="N" orderIndex="62" organizationPartyId="TT133Settings"/>
