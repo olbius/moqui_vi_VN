@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<secas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-eca-2.1.xsd">
+    <!--=====For Purchase Return Shipment -->
+    <!-- Deliver ReturnItems when Return Shipment Shipped (statusId=ShipShipped, shipmentTypeEnumId=ShpTpPurchaseReturn) -->
+    <seca id="ShipmentShippedReturnDeliver" service="update#mantle.shipment.Shipment" when="post-service">
+        <condition><expression>statusChanged &amp;&amp; statusId == 'ShipShipped'</expression></condition>
+        <actions><service-call name="moquivi.order.ReturnServices.deliver#ReturnShipmentItems" in-map="context"/></actions>
+    </seca>
+
+    <!-- On ReturnHeader Shipped process#ReturnItemResponses, all responses not yet processed;
+        consolidates responses as possible (especially for check refunds, replacement orders) -->
+    <seca id="ReturnDeliveredProcess" service="update#mantle.order.return.ReturnHeader" when="post-service">
+        <condition><expression>statusChanged &amp;&amp; statusId == 'ReturnShipped'</expression></condition>
+        <actions><service-call name="moquivi.order.ReturnServices.process#ReturnItemResponses" in-map="context"/></actions>
+    </seca>
+</secas>

@@ -17,6 +17,12 @@
     <moqui.security.UserGroupPreference userGroupId="ALL_USERS" preferenceKey="OrderSalesStoreDefault" preferenceValue=""/>
     -->
 
+    <!-- Return Response: Add sequenceNum -->
+    <moqui.basic.Enumeration enumId="RrspCredit" description="Credit" enumTypeId="ReturnResponse" sequenceNum="2"/>
+    <moqui.basic.Enumeration enumId="RrspRefund" description="Refund" enumTypeId="ReturnResponse" sequenceNum="1"/>
+    <moqui.basic.Enumeration enumId="RrspReplace" description="Replace" enumTypeId="ReturnResponse" sequenceNum="3"/>
+    <moqui.basic.Enumeration enumId="RrspManual" description="Manual" enumTypeId="ReturnResponse" sequenceNum="4"/>
+
     <!--Overrides SimpleScreensSetupData.xml-->
     <!-- ==================================================== -->
     <!-- ========== Pre-configured form-list finds ========== -->

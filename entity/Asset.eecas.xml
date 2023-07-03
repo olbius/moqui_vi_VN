@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eecas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-eca-2.1.xsd">
+    <eeca id="AssetIssuanceCreateByPurchaseReturn" entity="mantle.product.issuance.AssetIssuance" on-create="true" on-update="true" run-before="true" set-results="true">
+        <condition><expression>shipmentId &amp;&amp; shipmentItemSourceId &amp;&amp; !returnId &amp;&amp; !returnItemSeqId</expression></condition>
+        <actions>
+            <entity-find-one entity-name="mantle.shipment.ShipmentItemSource" value-field="shipmentItemSource"/>
+            <entity-find-one entity-name="mantle.shipment.Shipment" value-field="shipment"/>
+            <!-- Process for purchase return shipment-->
+            <if condition="shipment?.shipmentTypeEnumId == 'ShpTpPurchaseReturn' &amp;&amp; shipmentItemSource">
+                <set field="returnId" from="shipmentItemSource.returnId"/>
+                <set field="returnItemSeqId" from="shipmentItemSource.returnItemSeqId"/>
+                <log message="In eeca.AssetIssuanceCreateByPurchaseReturn add returnId and returnItemSeqId value"/>
+            </if>
+        </actions>
+    </eeca>
+
+    <eeca id="AssetDetailCreateByPurchaseReturn" entity="mantle.product.asset.AssetDetail" on-create="true" on-update="true" run-before="true" set-results="true">
+        <condition><expression>shipmentId &amp;&amp; assetIssuanceId &amp;&amp; !returnId &amp;&amp; !returnItemSeqId</expression></condition>
+        <actions>
+            <entity-find-one entity-name="mantle.product.issuance.AssetIssuance" value-field="assetIssuance"/>
+            <entity-find-one entity-name="mantle.shipment.Shipment" value-field="shipment"/>
+            <!-- Process for purchase return shipment-->
+            <if condition="shipment?.shipmentTypeEnumId == 'ShpTpPurchaseReturn' &amp;&amp; assetIssuance">
+                <entity-find-one entity-name="mantle.shipment.ShipmentItemSource" value-field="shipmentItemSource">
+                    <field-map field-name="shipmentItemSourceId" from="assetIssuance.shipmentItemSourceId"/>
+                </entity-find-one>
+                <set field="returnId" from="assetIssuance.returnId ?: shipmentItemSource.returnId"/>
+                <set field="returnItemSeqId" from="assetIssuance.returnItemSeqId ?: shipmentItemSource.returnItemSeqId"/>
+                <log message="In eeca.AssetDetailCreateByPurchaseReturn add returnId and returnItemSeqId value"/>
+            </if>
+        </actions>
+    </eeca>
+</eecas>

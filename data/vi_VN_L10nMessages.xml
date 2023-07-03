@@ -2812,7 +2812,8 @@
     <moqui.basic.LocalizedMessage original="${assetId} (${assetReceiptId ? 'Receipt ' + assetReceiptId : 'Issuance ' + assetIssuanceId})" localized="${assetId} (${assetReceiptId ? 'Nhập ' + assetReceiptId : 'Xuất ' + assetIssuanceId})" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Invoice Total: ${ec.l10n.formatCurrency(invoiceTotal, invoice.currencyUomId)}" localized="Tôổng hóa đơn: ${ec.l10n.formatCurrency(invoiceTotal, invoice.currencyUomId)}" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Invoice Total: ${ec.l10n.formatCurrency(invoice.invoiceTotal, invoice.currencyUomId)}, Unpaid: ${ec.l10n.formatCurrency(invoice.unpaidTotal, invoice.currencyUomId)}" localized="Tổng đơn hàng: ${ec.l10n.formatCurrency(invoice.invoiceTotal, invoice.currencyUomId)}, Chưa thanh toán: ${ec.l10n.formatCurrency(invoice.unpaidTotal, invoice.currencyUomId)}" locale="vi_VN"/>
-    <moqui.basic.LocalizedMessage original="Re-post Invoice" localized="Hủy ghi sổ hóa đơn" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Re-post Invoice" localized="Ghi sổ lại hóa đơn" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Post Invoice" localized="Ghi sổ hóa đơn" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Un-apply" localized="Hủy áp dụng" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Screen" localized="Màn hình" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Saved Find" localized="Tìm kiếm đã lưu" locale="vi_VN"/>
@@ -2895,6 +2896,14 @@
     <moqui.basic.LocalizedMessage original="Repeat" localized="Lặp lại" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Receipt #${assetReceiptId}" localized="Nhập #${assetReceiptId}" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Issuance #${assetIssuanceId}" localized="Xuất #${assetIssuanceId}" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Customer Org" localized="Khách hàng" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Set Packed" localized="Đã đóng gói" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="An Invoice will be generated for this Shipment when it is Packed and the Invoice Date will be set to the Packed Date." localized="Hóa đơn sẽ được tạo cho phiếu giao này khi nó được đóng gói và ngày lập hóa đơn sẽ được đặt thành ngày đóng gói." locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="In purchase return: Not posting Asset Issuance ${assetIssuanceId}" localized="Trả hàng NCC: Không tạo giao dịch xuất kho trả NCC (tài sản xuất ${assetIssuanceId})" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Credit Memo Invoice #${invoiceId}" localized="Hóa đơn ghi nhớ tín dụng #${invoiceId}" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Refund Payment #${paymentId}" localized="Thanh toán hoàn tiền #${paymentId}" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Return Shipment #${shipmentId}" localized="Phiếu giao trả lại #${shipmentId}" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Adjust Item" localized="Thành phần điều chỉnh" locale="vi_VN"/>
     <!--<moqui.basic.LocalizedMessage original="" localized="" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="" localized="" locale="vi_VN"/>-->
 

@@ -1086,7 +1086,7 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="FatrErrorAdjust" locale="vi_VN" localized="Điều chỉnh lỗi"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="FatrInitDeposit" locale="vi_VN" localized="Tiền gửi ban đầu"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="FatrPurchase" locale="vi_VN" localized="Mua"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="FatrRefund" locale="vi_VN" localized="Đền bù"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="FatrRefund" locale="vi_VN" localized="Hoàn tiền"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="FatrReplenish" locale="vi_VN" localized="Bổ sung"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="FatrTransfer" locale="vi_VN" localized="Sự chuyển khoản"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="FattAdjustment" locale="vi_VN" localized="Điều chỉnh"/>
@@ -2334,24 +2334,24 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrFixed" locale="vi_VN" localized="Đã sửa"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrInsufficient" locale="vi_VN" localized="Thông tin chưa đầy đủ"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrRejected" locale="vi_VN" localized="Loại bỏ"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnArrivedLate" locale="vi_VN" localized="08 đến quá muộn"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnBetterPrice" locale="vi_VN" localized="10 tìm thấy giá tốt hơn"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnCodPmtRejected" locale="vi_VN" localized="13 bị từ chối thanh toán COD"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnDamagedShip" locale="vi_VN" localized="01 bị hư hại trong vận chuyển"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnDefective" locale="vi_VN" localized="02 khiếm khuyết"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnDidNotWant" locale="vi_VN" localized="09 không muốn/thích"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnArrivedLate" locale="vi_VN" localized="08 Đến quá muộn"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnBetterPrice" locale="vi_VN" localized="10 Tìm thấy giá tốt hơn"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnCodPmtRejected" locale="vi_VN" localized="13 Bị từ chối thanh toán COD"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnDamagedShip" locale="vi_VN" localized="01 Bị hư hại trong vận chuyển"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnDefective" locale="vi_VN" localized="02 Khiếm khuyết"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnDidNotWant" locale="vi_VN" localized="09 Không muốn/thích"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnDupShip" locale="vi_VN" localized="06 Lô hàng trùng lặp"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnGiftNotWant" locale="vi_VN" localized="07 Món quà, không muốn"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnMisShip" locale="vi_VN" localized="03 mặt hàng sai vận chuyển"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnNotExpected" locale="vi_VN" localized="04 không như mong đợi"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnMisShip" locale="vi_VN" localized="03 Mặt hàng sai vận chuyển"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnNotExpected" locale="vi_VN" localized="04 Không như mong đợi"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnOrderAdj" locale="vi_VN" localized="14 Điều chỉnh đơn hàng"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnOther" locale="vi_VN" localized="99 khác"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnPoorService" locale="vi_VN" localized="11 dịch vụ khách hàng kém"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnOther" locale="vi_VN" localized="99 Khác"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnPoorService" locale="vi_VN" localized="11 Dịch vụ khách hàng kém"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnUnlikeDescribed" locale="vi_VN" localized="12 Không giống như hình ảnh/mô tả"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnWrongSize" locale="vi_VN" localized="05 không phù hợp/kích thước sai"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrsnWrongSize" locale="vi_VN" localized="05 Không phù hợp/kích thước sai"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrspCredit" locale="vi_VN" localized="Tín dụng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrspManual" locale="vi_VN" localized="Thủ công"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrspRefund" locale="vi_VN" localized="Đền bù"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrspRefund" locale="vi_VN" localized="Hoàn tiền"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrspReplace" locale="vi_VN" localized="Thay thế"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrUnresolved" locale="vi_VN" localized="Chưa được giải quyết"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="RrWontFix" locale="vi_VN" localized="Sẽ không sửa chữa"/>
