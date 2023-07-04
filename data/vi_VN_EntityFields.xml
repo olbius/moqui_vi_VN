@@ -195,7 +195,7 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="RqmtStOrdered" locale="vi_VN" localized="Đặt hàng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="RqmtStRejected" locale="vi_VN" localized="Đã từ chối"/>
 
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="ShipInput" locale="vi_VN" localized="Đầu vào"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="ShipInput" locale="vi_VN" localized="Nhập liệu"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="ShipScheduled" locale="vi_VN" localized="Lên kế hoạch"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="ShipPicked" locale="vi_VN" localized="Chọn"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="ShipPacked" locale="vi_VN" localized="Đóng gói"/>
@@ -248,7 +248,7 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="LEAD_CONVERTED" locale="vi_VN" localized="Đã chuyển đổi"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="LEAD_QUALIFIED" locale="vi_VN" localized="Đạt tiêu chuẩn"/>
 
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="DlvTripInput" locale="vi_VN" localized="Đầu vào"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="DlvTripInput" locale="vi_VN" localized="Nhập liệu"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="DlvTripShipped" locale="vi_VN" localized="Vận chuyển"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="DlvTripDelivered" locale="vi_VN" localized="Đã giao hàng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="DlvTripRejected" locale="vi_VN" localized="Đã từ chối"/>
@@ -303,7 +303,7 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="CommissionApproved" locale="vi_VN" localized="Đã duyệt"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="CommissionCanceled" locale="vi_VN" localized="Đã huỷ"/>
 
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="AstTrfInput" locale="vi_VN" localized="Đầu vào"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="AstTrfInput" locale="vi_VN" localized="Nhập liệu"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="AstTrfCompleted" locale="vi_VN" localized="Hoàn thành"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.StatusItem" fieldName="description" pkValue="AstTrfCancel" locale="vi_VN" localized="Hủy bỏ"/>
 
@@ -1344,7 +1344,7 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvSqEnfRestartYr" locale="vi_VN" localized="Được thi hành và khởi động lại vào năm tài chính (không có khoảng trống, mỗi org, đặt lại thành 1 mỗi năm)"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="InvSqStandard" locale="vi_VN" localized="Tiêu chuẩn (nhanh hơn, có thể có khoảng cách, trên mỗi hệ thống)"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemAddtlFeature" locale="vi_VN" localized="Tính năng bổ sung"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemAdjAdvertising" locale="vi_VN" localized="Quảng cáo"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemAdjAdvertising" locale="vi_VN" localized="Điều chỉnh quảng cáo"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemAdjJointAdv" locale="vi_VN" localized="Quảng cáo chung"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemAdvancePay" locale="vi_VN" localized="Trả tiền trước"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemAsset" locale="vi_VN" localized="Tài sản - Tài sản cố định"/>
@@ -1376,8 +1376,8 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemDiscountAppease" locale="vi_VN" localized="Giảm giá - Ứng dụng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemDonation" locale="vi_VN" localized="Quyên góp"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemDoubleTimePremium" locale="vi_VN" localized="Cao gấp đôi thời gian"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpAdvertising" locale="vi_VN" localized="Quảng cáo"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCharitable" locale="vi_VN" localized="Sự đóng góp từ thiện"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpAdvertising" locale="vi_VN" localized="Chi phí quảng cáo"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCharitable" locale="vi_VN" localized="Chi phí đóng góp từ thiện"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCommCellular" locale="vi_VN" localized="Giao tiếp di động"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCommissionFee" locale="vi_VN" localized="Hoa hồng/phí"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCommNetwork" locale="vi_VN" localized="Cộng đồng mạng"/>
@@ -2026,7 +2026,7 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="POSM" locale="vi_VN" localized="POSM"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PostalAddress.DefaultCountry" locale="vi_VN" localized="Quốc gia sử dụng làm mặc định trong các mẫu cho địa chỉ bưu chính"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PppComponent" locale="vi_VN" localized="Giá thành phần"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PppPurchase" locale="vi_VN" localized="Mua/ban đầu"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PppPurchase" locale="vi_VN" localized="Mua/Khởi tạo"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PppRecurring" locale="vi_VN" localized="Phí định kỳ"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PppUsage" locale="vi_VN" localized="Phí sử dụng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PptAverage" locale="vi_VN" localized="Chi phí trung bình"/>
@@ -2049,7 +2049,7 @@
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PREPAID_INVENTORY" locale="vi_VN" localized="Tiền hàng trả trước"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PRICING_GROUP" locale="vi_VN" localized="Nhóm giá"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ProductPriceModify" locale="vi_VN" localized="Sản phẩm Sửa đổi"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ProductStorePromotion" locale="vi_VN" localized="Quảng cáo cửa hàng sản phẩm"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ProductStorePromotion" locale="vi_VN" localized="Khuyến mãi kênh/cửa hàng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PROF_SERVICES" locale="vi_VN" localized="Những dịch vụ chuyên nghiệp"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PROMOTION_PREPAID" locale="vi_VN" localized="Chi hộ khuyến mại"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="PROMOTIONAL_MATERIALS" locale="vi_VN" localized="Tài liệu quảng cáo"/>

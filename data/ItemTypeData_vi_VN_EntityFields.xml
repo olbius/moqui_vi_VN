@@ -250,9 +250,9 @@ along with this software (see the LICENSE.md file). If not, see
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemInventory" locale="vi_VN" localized="Tài sản - Hàng tồn kho"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemAsset" locale="vi_VN" localized="Tài sản - Tài sản cố định"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpense" locale="vi_VN" localized="Chi phí"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpAdvertising" locale="vi_VN" localized="Quảng cáo"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCharitable" locale="vi_VN" localized="Sự đóng góp từ thiện"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCommTelephone" locale="vi_VN" localized="Điện thoại giao tiếp"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpAdvertising" locale="vi_VN" localized="Chí phí quảng cáo"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCharitable" locale="vi_VN" localized="Chi phí đóng góp từ thiện"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCommTelephone" locale="vi_VN" localized="Chi phí điện thoại"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCommCellular" locale="vi_VN" localized="Giao tiếp di động"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCommNetwork" locale="vi_VN" localized="Giao tiếp mạng"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemExpCommissionFee" locale="vi_VN" localized="Hoa hồng/phí"/>
@@ -310,7 +310,7 @@ along with this software (see the LICENSE.md file). If not, see
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemPromoDiscount" locale="vi_VN" localized="Giảm giá khuyến mại"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemFreeFills" locale="vi_VN" localized="Điền miễn phí"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemSlottingFees" locale="vi_VN" localized="Phí khe hở"/>
-    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemAdjAdvertising" locale="vi_VN" localized="Quảng cáo"/>
+    <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemAdjAdvertising" locale="vi_VN" localized="Điều chỉnh quảng cáo"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemAdjJointAdv" locale="vi_VN" localized="Quảng cáo chung"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemPayrollIncome" locale="vi_VN" localized="Thu nhập lương"/>
     <moqui.basic.LocalizedEntityField entityName="moqui.basic.Enumeration" fieldName="description" pkValue="ItemHourlyEarnings" locale="vi_VN" localized="Thu nhập hàng giờ"/>

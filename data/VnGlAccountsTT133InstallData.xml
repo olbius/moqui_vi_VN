@@ -907,7 +907,8 @@
 
             <!--Chi hộ khuyến mại-->
     <mantle.ledger.config.ItemTypeGlAccount glAccountId="1388" direction="E" itemTypeEnumId="PROMOTION_PREPAID" organizationPartyId="TT133Settings"/>
-
+    <mantle.ledger.config.ItemTypeGlAccount glAccountId="6422" direction="E" itemTypeEnumId="ItemExpOfficeSup" organizationPartyId="TT133Settings"/>
+    <mantle.ledger.config.ItemTypeGlAccount glAccountId="6421" direction="E" itemTypeEnumId="ItemExpAdvertising" organizationPartyId="TT133Settings"/>
 
             <!-- Default mapping between payment types and account ids -->
 
@@ -933,6 +934,7 @@
     <mantle.ledger.config.PaymentTypeGlAccount glAccountId="331" isApplied="N" isPayable="Y" organizationPartyId="TT133Settings" paymentTypeEnumId="PtPrePaymentInventory"/><!-- Prepaid Inventory -->
 
     <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="112" organizationPartyId="TT133Settings" paymentInstrumentEnumId="PiCreditCard" isPayable="E"/>
+    <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="112" organizationPartyId="TT133Settings" paymentInstrumentEnumId="PiWireTransfer" isPayable="E"/>
     <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="112" organizationPartyId="TT133Settings" paymentInstrumentEnumId="PiDebitCard" isPayable="E"/>
             <!--
                 <mantle.ledger.config.PaymentInstrumentGlAccount glAccountId="112" organizationPartyId="TT133Settings" paymentInstrumentEnumId="PiBankTransfer" isPayable="E"/>

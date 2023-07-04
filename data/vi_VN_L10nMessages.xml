@@ -86,7 +86,7 @@
     <moqui.basic.LocalizedMessage localized="Đặc trưng" original="Features" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage localized="Kích thước" original="Dimensions" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage localized="Kết hợp" original="Associated" locale="vi_VN"/>
-    <moqui.basic.LocalizedMessage localized="Giá bán" original="Prices" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage localized="Giá" original="Prices" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage localized="Thêm kích thước" original="Add Dimension" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage localized="Thêm tính năng" original="Apply Feature" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage localized="Sản phẩm" original="Products" locale="vi_VN"/>
@@ -338,7 +338,7 @@
     <moqui.basic.LocalizedMessage original="Appr Order Quantity" localized="Số lượng đơn đặt hàng" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Approval" localized="Approval" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Approve" localized="Phê duyệt" locale="vi_VN"/>
-    <moqui.basic.LocalizedMessage original="Approve Warnings" localized="Phê duyệt cảnh báo" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Approve Warnings" localized="Phê duyệt (cảnh báo)" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Approved" localized="Đã xác nhận" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="AR Aging Summary" localized="Lão hóa tài khoản phải thu" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="AR Customer Statement" localized="Báo cáo khách hàng AR" locale="vi_VN"/>
@@ -1799,7 +1799,7 @@
     <moqui.basic.LocalizedMessage original="Validate Address" localized="Xác thực địa chỉ" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Value" localized="Giá trị" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Variance Reason" localized="Lý do chênh lệch" locale="vi_VN"/>
-    <moqui.basic.LocalizedMessage original="Vendor" localized="Người bán" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Vendor" localized="Nhà cung cấp" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Vendor Org" localized="Nhà cung cấp" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Vendors" localized="Nhà cung cấp" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Verify" localized="Xác minh" locale="vi_VN"/>
@@ -2904,8 +2904,25 @@
     <moqui.basic.LocalizedMessage original="Refund Payment #${paymentId}" localized="Thanh toán hoàn tiền #${paymentId}" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Return Shipment #${shipmentId}" localized="Phiếu giao trả lại #${shipmentId}" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Adjust Item" localized="Thành phần điều chỉnh" locale="vi_VN"/>
-    <!--<moqui.basic.LocalizedMessage original="" localized="" locale="vi_VN"/>
-    <moqui.basic.LocalizedMessage original="" localized="" locale="vi_VN"/>-->
+    <moqui.basic.LocalizedMessage original="For This" localized="Cho việc này" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Void Payment and Invoices" localized="Vô hiệu thanh toán và hóa đơn" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Pick${pickContainer ? ' and Move to Container ' + (pickContainer.serialNumber ?: pickContainer.containerId) : ''}" localized="Chọn${pickContainer ? ' và di chuyển tới Container ' + (pickContainer.serialNumber ?: pickContainer.containerId) : ''}" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="No GL Account mapping found" localized="Không tìm thấy cấu hình tài khoản" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="- Place Part" localized="- Đặt hàng" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="- Hold Part" localized="- Giữ đơn" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="- Approve Part" localized="- Duyệt" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="- Complete Part" localized="- Hoàn thành" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Force complete order part? This normally happens automatically and only when all items are shipped." localized="Buộc hoàn thành phần đơn hàng? Điều này thường xảy ra tự động và chỉ khi tất cả các mặt hàng được vận chuyển." locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Fixed Asset" localized="Tài sản cố định" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Supplies" localized="Vật tư" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Rental Asset" localized="Tài sản cho thuê" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Replacement" localized="Thay thế" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Cost for accounting if different from Price, used to set Asset Acquire Cost on receipt" localized="Chi phí kế toán nếu khác với giá, được sử dụng để đặt chi phí mua tài sản khi nhận" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Leave empty to use Calc Price" localized="Để trống để sử dụng giá được tính toán" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Quantity Accepted" localized="SL được chấp nhận" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Quantity Rejected" localized="SL bị từ chối" locale="vi_VN"/>
+    <moqui.basic.LocalizedMessage original="Rejection Reason" localized="Lý do từ chối" locale="vi_VN"/>
+    <!--<moqui.basic.LocalizedMessage original="" localized="" locale="vi_VN"/>-->
 
     <moqui.basic.LocalizedMessage original="Number Code" localized="Mã số" locale="vi_VN"/>
     <moqui.basic.LocalizedMessage original="Demonstration" localized="Thuyết minh" locale="vi_VN"/>
